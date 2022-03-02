@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import { IntlProvider } from 'react-intl';
 import { init } from '../common/locales/translate.config';
 
+export const LanguageContext = createContext();
+
 export const LanguageProvider = (props: any) => {
   const { children } = props;
 
