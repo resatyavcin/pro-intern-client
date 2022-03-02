@@ -5,7 +5,7 @@ import React from 'react';
 import { Select, SelectProps } from 'antd';
 
 //import components
-import FormItemUI from './FormItemUI';
+import FormItemUI from './formItemUI';
 import { DefaultOptionType } from 'antd/lib/select';
 
 const { Option, OptGroup } = Select;

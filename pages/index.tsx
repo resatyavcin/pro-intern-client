@@ -9,9 +9,9 @@ import { Tabs } from 'antd';
 const { TabPane } = Tabs;
 
 //Components import
-import CardUI from '../components/ui/card/CardUI';
+import CardUI from '../components/ui/card/cardUI';
 import InputUI from '../components/ui/form/inputUI';
-import ButtonUI from '../components/ui/button/ButtonUI';
+import ButtonUI from '../components/ui/button/buttonUI';
 import SelectUI from '../components/ui/form/selectUI';
 
 const Home: NextPage = () => {

@@ -16,9 +16,7 @@ function InputUI(props: IInputProps) {
       {type === 'password' ? (
         <Input.Password {...props} />
       ) : (
-        <InputMask mask="+\9\0 999 999 99 99" maskChar=" ">
-          {() => <Input {...props} />}
-        </InputMask>
+        <InputMask mask="+\9\0 999 999 99 99">{() => <Input {...props} />}</InputMask>
       )}
     </Form.Item>
   );

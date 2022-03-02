@@ -13,6 +13,7 @@
     "fix:all": "yarn run format && yarn run lint:fix"
   },
   "dependencies": {
+    "@types/react-input-mask": "^3.0.1",
     "antd": "^4.18.9",
     "i18next": "^21.6.12",
     "next": "12.1.0",
