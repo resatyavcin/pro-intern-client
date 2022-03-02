@@ -1,27 +1,16 @@
-//Import React
-import { useState, createContext } from 'react';
-
 //Import Provider
+import { useRouter } from 'next/router';
 import { IntlProvider } from 'react-intl';
-import { init, languages } from '../common/locales/translate';
-
-export const LanguageContext = createContext();
+import { init } from '../common/locales/translate.config';
 
 export const LanguageProvider = (props: any) => {
   const { children } = props;
 
-  const [switchLang, setSwitchLang] = useState<languages>('TR');
-
-  const values = {
-    switchLang,
-    setSwitchLang
-  };
+  const { locale } = useRouter();
 
   return (
-    <LanguageContext.Provider value={values}>
-      <IntlProvider messages={init(switchLang)} locale={switchLang} defaultLocale={switchLang}>
-        {children}
-      </IntlProvider>
-    </LanguageContext.Provider>
+    <IntlProvider messages={init()} locale={locale === undefined ? 'tr' : locale} defaultLocale={locale}>
+      {children}
+    </IntlProvider>
   );
 };
