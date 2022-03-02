@@ -1,3 +1,5 @@
 export const translationEN = {
-    WELCOME: 'WELCOME'
+    WELCOME: 'WELCOME',
+    REGISTER: 'REGISTER',
+    LOGIN: 'LOGIN',
 }

@@ -11,10 +11,9 @@ export const resourceLanguage = {
 
 export const init = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const a = useRouter();
+  const { locale } = useRouter();
 
-  console.log(a)
-  switch (a.locale) {
+  switch (locale) {
     case 'tr':
       return resourceLanguage.translationTR;
     case 'en':

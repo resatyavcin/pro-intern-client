@@ -1,3 +1,5 @@
 export const translationTR = {
-    WELCOME: 'HOŞGELDİNİZ'
+    WELCOME: 'HOŞGELDİNİZ',
+    REGISTER: 'KAYDOL',
+    LOGIN: 'GİRİŞ YAP',
 }

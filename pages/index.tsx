@@ -1,44 +1,58 @@
 //Next Import
 import type { NextPage } from 'next';
 import AuthLayout from '../core/AuthLayout';
-import { Form, Input, Button } from 'antd';
-import { Card } from 'antd';
-import { Typography } from 'antd';
-
+import { Form, Typography } from 'antd';
+import { Divider } from 'antd';
 const { Title, Text } = Typography;
+import { Tabs } from 'antd';
+
+const { TabPane } = Tabs;
+
+//Components import
+import CardUI from '../components/ui/card/CardUI';
+import InputUI from '../components/ui/form/inputUI';
+import ButtonUI from '../components/ui/button/ButtonUI';
+import SelectUI from '../components/ui/form/selectUI';
 
 const Home: NextPage = () => {
   const [form] = Form.useForm();
 
   return (
     <AuthLayout>
-      <Card>
-        <img
-          width={74}
-          height={74}
-          src={
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/BA%C4%B0B%C3%9C_logo.png/484px-BA%C4%B0B%C3%9C_logo.png'
-          }
-        />
-        <Title level={2}>
-          AIBU
-          <Text type="warning">STAJ</Text>
-        </Title>
+      <CardUI>
+        <Title level={4}>Kaydolun ve Staj Yönetimine Başlayın!</Title>
+        <Text>Yönetici yada öğrenci olarak kaydolun ve sonrasında kimlik doğrulamasına geçin.</Text>
+        <Divider />
 
-        <Form layout={'horizontal'} form={form}>
-          <Form.Item label="Email">
-            <Input placeholder="email" addonAfter="@ibu.edu.tr" />
-          </Form.Item>
-          <Form.Item name="password" label="Password">
-            <Input.Password />
-          </Form.Item>
-          <Form.Item>
-            <Button block type="primary">
-              KAYDOL
-            </Button>
-          </Form.Item>
-        </Form>
-      </Card>
+        <Tabs defaultActiveKey="1" type="card">
+          <TabPane tab="Yönetici" key="1">
+            {' '}
+            <Form layout="vertical">
+              <InputUI name="email" label="Email" placeholder="Email" addonAfter="@ibu.edu.tr" />
+              <InputUI name="phone" label="Phone" placeholder="Phone" />
+              <InputUI type="password" name="password" label="Password" placeholder="Password" />
+
+              <ButtonUI label={'REGISTER'} block type="primary" />
+            </Form>
+          </TabPane>
+
+          <TabPane tab="Öğrenci" key="2">
+            <Form layout="vertical">
+              <SelectUI
+                name="department"
+                label="Bölüm Seçimi"
+                placeholder="Bölüm Seçimi"
+                optionTitle="Mühendislik Fakültesi"
+              />
+              <InputUI name="email" label="Email" placeholder="Email" addonAfter="@ogrenci.ibu.edu.tr" />
+              <InputUI name="phone" label="Phone" placeholder="Phone" />
+              <InputUI type="password" name="password" label="Password" placeholder="Password" />
+
+              <ButtonUI label={'REGISTER'} block type="primary" />
+            </Form>
+          </TabPane>
+        </Tabs>
+      </CardUI>
     </AuthLayout>
   );
 };
