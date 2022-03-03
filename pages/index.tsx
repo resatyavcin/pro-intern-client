@@ -19,11 +19,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 const adminRegisterForm = () => {
-  interface IFormInputs {
-    email: string;
-    phone: string;
-    password: string;
-  }
   const schema = yup
     .object({
       email: yup.string().email('Lütfen geçerli bir email adresi giriniz!').required('Email alanı zorunludur.'),
@@ -36,11 +31,12 @@ const adminRegisterForm = () => {
     control,
     handleSubmit,
     formState: { errors }
-  } = useForm<IFormInputs>({
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+  } = useForm({
     resolver: yupResolver(schema)
   });
 
-  const onSubmit = (data: IFormInputs) => console.log(data);
+  const onSubmit = (data: any) => console.log(data);
   return (
     <FormUI handleSubmit={handleSubmit(onSubmit)}>
       <InputUI
@@ -51,7 +47,7 @@ const adminRegisterForm = () => {
         placeholder="Email"
         addonAfter="@ibu.edu.tr"
       />
-      <InputUI errors={errors} control={control} name="phone" label="Phone" placeholder="Phone" />
+      <InputUI type="phone" errors={errors} control={control} name="phone" label="Phone" placeholder="Phone" />
       <InputUI
         errors={errors}
         control={control}
@@ -66,19 +62,20 @@ const adminRegisterForm = () => {
 };
 
 const studentRegisterForm = () => {
-  const { control, handleSubmit } = useForm();
+  // const { control, handleSubmit } = useForm();
 
-  const onSubmit: SubmitHandler = (data) => console.log(data);
+  // const onSubmit: SubmitHandler = (data) => console.log(data);
   return (
-    <FormUI handleSubmit={handleSubmit(onSubmit)}>
-      <SelectUI name="department" label="Bölüm Seçimi" placeholder="Bölüm Seçimi" optionTitle="Mühendislik Fakültesi" />
-      <InputUI control={control} name="tc" label="TC" placeholder="TC" />
-      <InputUI control={control} name="email" label="Email" placeholder="Email" addonAfter="@ogrenci.ibu.edu.tr" />
-      <InputUI control={control} name="phone" label="Phone" placeholder="Phone" />
-      <InputUI control={control} type="password" name="password" label="Password" placeholder="Password" />
+    <div></div>
+    // <FormUI handleSubmit={handleSubmit(onSubmit)}>
+    //   <SelectUI name="department" label="Bölüm Seçimi" placeholder="Bölüm Seçimi" optionTitle="Mühendislik Fakültesi" />
+    //   {/* <InputUI control={control} name="tc" label="TC" placeholder="TC" />
+    //   <InputUI control={control} name="email" label="Email" placeholder="Email" addonAfter="@ogrenci.ibu.edu.tr" />
+    //   <InputUI control={control} name="phone" label="Phone" placeholder="Phone" />
+    //   <InputUI control={control} type="password" name="password" label="Password" placeholder="Password" /> */}
 
-      <ButtonUI label={'REGISTER'} block type="primary" />
-    </FormUI>
+    //   <ButtonUI label={'REGISTER'} block type="primary" />
+    // </FormUI>
   );
 };
 

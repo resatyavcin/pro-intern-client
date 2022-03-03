@@ -7,20 +7,24 @@ import { Typography } from 'antd';
 import isEmpty from 'is-empty';
 const { Text } = Typography;
 
+export interface StringMap {
+  [key: string]: string;
+}
+
 interface IInputProps extends InputProps {
   control: Control<FieldValues, object> | undefined;
   name: string;
   label?: string;
   type?: string;
   rules?: Rule[] | undefined;
-  errors: string;
+  errors: { [key: string]: { [key: string]: { type: string } } };
 }
 
 function InputUI(props: IInputProps) {
   const { name, label, control, rules, errors } = props;
   const [blurControl, setBlurControl] = useState<string[]>([]);
 
-  function validateStatus<T extends string | undefined>(errors: T) {
+  function validateStatus<T extends object>(errors: T) {
     if (!isEmpty(errors) && Object.keys(errors).includes(`${name}`)) return 'error';
     if (!isEmpty(errors) || blurControl.includes(`${name}`)) return 'success';
     return '';
@@ -30,7 +34,7 @@ function InputUI(props: IInputProps) {
   return (
     <Fragment>
       <FormItemUI
-        errorLabel={validateStatus(errors) ? true : false}
+        errorLabel={!isEmpty(errors) ? true : false}
         name={name}
         label={label}
         rules={rules}
@@ -40,17 +44,24 @@ function InputUI(props: IInputProps) {
         <Controller
           control={control}
           name={name}
-          render={({ field: { onChange, value } }) => (
-            <Input
-              type={name}
-              name={name}
-              onBlur={() => {
-                setBlurControl([blurControl, `${name}`]);
-              }}
-              onChange={onChange}
-              value={value}
-            />
-          )}
+          render={({ field: { onChange, value } }) => {
+            return (
+              <Input
+                type={name}
+                name={name}
+                onBlur={() => {
+                  setBlurControl(() => {
+                    if (value === undefined) {
+                      return [];
+                    }
+                    return [...blurControl, `${name}`];
+                  });
+                }}
+                onChange={onChange}
+                value={value}
+              />
+            );
+          }}
         />
       </FormItemUI>
       {errors ? (
@@ -63,8 +74,3 @@ function InputUI(props: IInputProps) {
 }
 
 export default InputUI;
-{
-  /* <InputMask mask="+\9\0 999 999 99 99" maskPlaceholder={''}>
-{() => <Input {...props} />}
-</InputMask> */
-}
