@@ -6,7 +6,7 @@ const AuthLayout = (props: any) => {
 
   return (
     <div>
-      <Row style={{ maxWidth: '540px', margin: '0 auto', padding: '70px 24px' }}>
+      <Row style={{ maxWidth: '540px', margin: '60px auto' }}>
         <Col span={24}>{children}</Col>
       </Row>
     </div>

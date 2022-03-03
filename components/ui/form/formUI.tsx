@@ -13,7 +13,7 @@ function formUI(props: IFormProps) {
   const { children, handleSubmit } = props;
 
   return (
-    <Form onFinish={handleSubmit} layout="vertical">
+    <Form onFinish={handleSubmit} layout="vertical" {...props}>
       {children}
     </Form>
   );
