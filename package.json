@@ -13,12 +13,12 @@
     "fix:all": "yarn run format && yarn run lint:fix"
   },
   "dependencies": {
-    "@types/react-input-mask": "^3.0.1",
     "antd": "^4.18.9",
     "i18next": "^21.6.12",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-hook-form": "^7.27.1",
     "react-input-mask": "^2.0.4",
     "react-intl": "^5.24.6",
     "sass": "^1.49.9"
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@types/node": "17.0.21",
     "@types/react": "17.0.39",
+    "@types/react-input-mask": "^3.0.1",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",
     "husky": "^7.0.4",
