@@ -1,6 +1,10 @@
-//Import Provider
+//import Next & React
 import { useRouter } from 'next/router';
+
+//Import Provider
 import { IntlProvider } from 'react-intl';
+
+//import Config
 import { init } from '../common/locales/translate.config';
 
 export const LanguageProvider = (props: any) => {

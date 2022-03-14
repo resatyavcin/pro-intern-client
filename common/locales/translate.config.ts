@@ -1,5 +1,5 @@
-import { translationEN } from './en/translation';
-import { translationTR } from './tr/translation';
+import translationEN from './en/translation.json';
+import translationTR  from './tr/translation.json';
 import { useRouter } from 'next/router'
 
 export type languages = 'tr' | 'en';

@@ -4,14 +4,15 @@ import { FormattedMessage } from 'react-intl';
 import FormItemUI from '../form/formItemUI';
 
 interface IButtonProps extends ButtonProps {
-  label: string;
+  label?: string;
 }
 
 function ButtonUI(props: IButtonProps) {
-  const { label } = props;
+  const { label, children } = props;
   return (
     <FormItemUI>
       <Button {...props}>
+        {children}
         <FormattedMessage id={label} />
       </Button>
     </FormItemUI>

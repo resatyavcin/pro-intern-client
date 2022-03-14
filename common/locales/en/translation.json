@@ -1,0 +1,25 @@
+{
+    "WELCOME": "WELCOME",
+    "REGISTER": "REGISTER",
+    "LOGIN": "LOGIN",
+
+
+    "TIMELINE_INTERN_FILES_PROGRESS.0": "Application for internship by the student",
+    "TIMELINE_INTERN_FILES_PROGRESS.1": "Signing of internship files by student affairs",
+    "TIMELINE_INTERN_FILES_PROGRESS.2":"Signing of the internship files by the internship company",
+    "TIMELINE_INTERN_FILES_PROGRESS.3":"Finalization of the paperwork of the internship applied for",
+
+    "BUTTON_LABEL.EXPORTS": "Exports",
+
+
+
+    "DEPARTMENT.COMPUTER_ENGINEERING": "Computer Enginnering",
+    "DEPARTMENT.ELECTRICAL_ELECTRONICS_ENGINEERING": "Electrical Electronics Engineering",
+    "DEPARTMENT.FOOD_ENGINEERING": "The Food Engineering",
+    "DEPARTMENT.MACHINE_ENGINEERING": "Machine Engineering",
+    
+
+    "COLUMN.FIRST_NAME": "Name",
+    "COLUMN.LAST_NAME": "Lastname",
+    "COLUMN.DEPARTMENT": "Department"
+}

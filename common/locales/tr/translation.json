@@ -1,0 +1,29 @@
+{
+    "WELCOME": "HOŞGELDİNİZ",
+    "REGISTER": "KAYDOL",
+    "LOGIN": "GİRİŞ",
+
+    "TIMELINE_INTERN_FILES_PROGRESS.0": "Öğrenci tarafından staj başvurusunun yapılması",
+    "TIMELINE_INTERN_FILES_PROGRESS.1": "Staj dosyaların öğrenci işleri tarafından imzalanması",
+    "TIMELINE_INTERN_FILES_PROGRESS.2":"Staj dosyaların, staj yapılan şirket tarafından imzalanması",
+    "TIMELINE_INTERN_FILES_PROGRESS.3":"Başvurusu yapılan stajın evrak işlerin son bulması",
+
+
+    "BUTTON_LABEL.EXPORTS": "Dışarıya Aktar",
+    "BUTTON_LABEL.PREVIEW": "Önizleme",
+
+
+    "DEPARTMENT.COMPUTER_ENGINEERING": "Bilgisayar Mühendisliği",
+    "DEPARTMENT.ELECTRICAL_ELECTRONICS_ENGINEERING": "Elektrik Elektronik Mühendisliği",
+    "DEPARTMENT.FOOD_ENGINEERING": "Gıda Mühendisliği",
+    "DEPARTMENT.MACHINE_ENGINEERING": "Makina Mühendisliği",
+
+
+    "COLUMN.FIRST_NAME": "Ad",
+    "COLUMN.LAST_NAME": "Soyad",
+    "COLUMN.DEPARTMENT": "Bölüm"
+
+
+
+    
+}
