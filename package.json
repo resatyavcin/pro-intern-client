@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prepare": "husky install",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "prepare": "husky install",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --fix --ext \"**/*.{ts,tsx,js,jsx}\"",
     "format": "prettier . --write \"**/*.{ts,tsx,js,jsx,json}\"",
-    "fix:all": "yarn run format && yarn run lint:fix"
+    "fix:all": "npm run format && npm run lint:fix"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",

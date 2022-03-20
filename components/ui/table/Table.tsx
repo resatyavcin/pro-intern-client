@@ -50,7 +50,7 @@ function TableUI(props: ITableProps) {
 
   // rowSelection objects indicates the need for row selection
   const rowSelection = {
-    onChange: (selectedRowKeys, selectedRows) => {
+    onChange: (selectedRowKeys: any, selectedRows: any) => {
       console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
       setSelectedAvatar(selectedRows);
       if (selectedRows.length === 1) {
@@ -75,13 +75,14 @@ function TableUI(props: ITableProps) {
           <ButtonUI label="BUTTON_LABEL.EXPORTS" />
         </Col>
         <Col xs={12}>
-          {previewButtonVisibility ? (
-            <ButtonUI onClick={() => setSelectStudent(markStudent)} label="BUTTON_LABEL.PREVIEW" />
-          ) : null}
+          {previewButtonVisibility
+            ? // <ButtonUI onClick={() => setSelectStudent(markStudent)} label="BUTTON_LABEL.PREVIEW" />
+              null
+            : null}
         </Col>
         <Col>
           <TypographyUI typographyType="text" strong label={'Seçilen:'} />
-          {selectedAvatar ? (
+          {/* {selectedAvatar ? (
             <Avatar.Group maxCount={4}>
               {selectedAvatar?.map((avatar, i) => (
                 <Avatar key={i} style={{ backgroundColor: 'orange' }}>
@@ -90,7 +91,7 @@ function TableUI(props: ITableProps) {
                 </Avatar>
               ))}
             </Avatar.Group>
-          ) : null}
+          ) : null} */}
         </Col>
       </Row>
 

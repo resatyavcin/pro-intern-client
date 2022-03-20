@@ -13,8 +13,6 @@ import FormUI from '../components/ui/form/formUI';
 import TabPaneUI from '../components/ui/tab/tabPaneUI';
 import TabUI from '../components/ui/tab/tabUI';
 
-import { VALIDATE_STATUS } from '../common/constants/validateStatus/validateStatus';
-
 import { message } from 'antd';
 
 const adminRegisterForm = () => {
