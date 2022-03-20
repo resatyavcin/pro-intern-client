@@ -6,14 +6,13 @@ import { Form, FormProps } from 'antd';
 
 interface IFormProps extends FormProps {
   children: ReactNode;
-  handleSubmit: () => void;
 }
 
 function formUI(props: IFormProps) {
-  const { children, handleSubmit } = props;
+  const { children } = props;
 
   return (
-    <Form onFinish={handleSubmit} layout="vertical" {...props}>
+    <Form layout="vertical" style={{ padding: 5 }} {...props}>
       {children}
     </Form>
   );

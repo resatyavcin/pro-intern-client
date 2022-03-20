@@ -1,6 +1,6 @@
 import React from 'react';
 import { Result } from 'antd';
-import ButtonUI from '../ui/button/buttonUI';
+import ButtonUI from '../button/buttonUI';
 
 function ResultUI() {
   return (

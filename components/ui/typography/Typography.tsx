@@ -7,7 +7,7 @@ import { TextProps } from 'antd/lib/typography/Text';
 const { Text, Title, Paragraph } = Typography;
 
 interface ITypography extends TextProps {
-  label: string;
+  label?: string;
   typographyType: string;
 }
 

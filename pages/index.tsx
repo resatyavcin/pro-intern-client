@@ -5,58 +5,45 @@ import { Typography } from 'antd';
 import { Divider } from 'antd';
 const { Title, Text } = Typography;
 
-import { SubmitHandler, useForm } from 'react-hook-form';
-
 //Components import
 import CardUI from '../components/ui/card/cardUI';
 import InputUI from '../components/ui/form/inputUI';
 import ButtonUI from '../components/ui/button/buttonUI';
-import SelectUI from '../components/ui/form/selectUI';
 import FormUI from '../components/ui/form/formUI';
 import TabPaneUI from '../components/ui/tab/tabPaneUI';
 import TabUI from '../components/ui/tab/tabUI';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+
+import { VALIDATE_STATUS } from '../common/constants/validateStatus/validateStatus';
+
+import { message } from 'antd';
 
 const adminRegisterForm = () => {
-  const schema = yup
-    .object({
-      email: yup.string().email('Lütfen geçerli bir email adresi giriniz!').required('Email alanı zorunludur.'),
-      phone: yup.string().required('Telefon alanı zorunludur.'),
-      password: yup.string().required('Şifre alanı zorunludur.')
-    })
-    .required();
+  const onFinish = (values: any) => {
+    console.log('Success:', values);
+  };
 
-  const {
-    control,
-    handleSubmit,
-    formState: { errors }
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-  } = useForm({
-    resolver: yupResolver(schema)
-  });
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
+  };
 
-  const onSubmit = (data: any) => console.log(data);
   return (
-    <FormUI handleSubmit={handleSubmit(onSubmit)}>
+    <FormUI onFinish={onFinish} onFinishFailed={onFinishFailed}>
       <InputUI
-        errors={errors}
-        control={control}
         name="email"
         label="Email"
-        placeholder="Email"
-        addonAfter="@ibu.edu.tr"
+        placeholder="example@ogrenci.ibu.tr"
+        rules={[{ required: true, message: 'Please enter' }]}
+        feedback={VALIDATE_STATUS.SUCCESS}
       />
-      <InputUI type="phone" errors={errors} control={control} name="phone" label="Phone" placeholder="Phone" />
-      <InputUI
-        errors={errors}
-        control={control}
-        type="password"
-        name="password"
-        label="Password"
-        placeholder="Password"
+      <InputUI type="phone" name="phone" label="Phone" placeholder="+90 (5**) *** ** **" />
+      <InputUI type="password" name="password" label="Password" placeholder="Enter the password" />
+      <ButtonUI
+        htmlType="submit"
+        label={'REGISTER'}
+        onClick={() => message.success('Kaydınız Başarılı Bir şekilde olmuştur')}
+        block
+        type="primary"
       />
-      <ButtonUI htmlType="submit" label={'REGISTER'} block type="primary" />
     </FormUI>
   );
 };
@@ -94,6 +81,8 @@ const Home: NextPage = () => {
             {studentRegisterForm()}
           </TabPaneUI>
         </TabUI>
+        <Divider />
+        <Text>Yönetici yada öğrenci olarak kaydolun ve sonrasında kimlik doğrulamasına geçin.</Text>
       </CardUI>
     </AuthLayout>
   );

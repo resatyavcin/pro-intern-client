@@ -8,12 +8,13 @@ import MainLayout from '../core/MainLayout';
 import styles from '../assets/styles/Sidebar.module.scss';
 
 //import Components
-import TableUI from '../components/table/Table';
+import TableUI from '../components/ui/table/Table';
 
 import { useStudent } from '../context/StudentContext';
 
 import { Layout } from 'antd';
 import PreviewProfile from '../components/preview-profile/PreviewProfile';
+import ResultUI from '../components/ui/result/Result';
 
 const { Content } = Layout;
 
@@ -31,7 +32,8 @@ function Dashboard() {
             }}
             className={styles.siteLayoutBackground}
           >
-            <TableUI users={allStudent} />
+            <ResultUI />
+            {/* <TableUI users={allStudent} /> */}
           </Content>
         </Col>
         <Col xs={20} lg={8}>

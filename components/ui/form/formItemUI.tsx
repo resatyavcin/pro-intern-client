@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Form, FormItemProps } from 'antd';
 
+import { VALIDATE_STATUS } from '../../../common/constants/validateStatus/validateStatus';
 interface IFormItemProps extends FormItemProps {
-  errorLabel?: boolean;
+  feedback?: VALIDATE_STATUS;
 }
 
 function FormItemUI(props: IFormItemProps) {
-  const { children, errorLabel } = props;
+  const { children, feedback } = props;
   return (
-    <Form.Item style={errorLabel ? { marginBottom: '10px' } : { marginBottom: '18px' }} {...props}>
-      {children}
-    </Form.Item>
+    <Fragment>
+      {feedback ? (
+        <Form.Item hasFeedback validateStatus={feedback} {...props}>
+          {children}
+        </Form.Item>
+      ) : (
+        <Form.Item {...props}>{children}</Form.Item>
+      )}
+    </Fragment>
   );
 }
 

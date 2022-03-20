@@ -3,15 +3,15 @@ import React, { useState } from 'react';
 import { Avatar, Col, Row, Table } from 'antd';
 
 //import Components
-import ButtonUI from '../ui/button/buttonUI';
+import ButtonUI from '../button/buttonUI';
 import TypographyUI from '../typography/Typography';
 
 //imports Commons
-import { DEPARTMENT_CODE } from '../../common/constants/departmentCode/departmentCode';
+import { DEPARTMENT_CODE } from '../../../common/constants/departmentCode/departmentCode';
 
 //import Utils
-import { departmentCodeConverter } from '../../common/utils/departmentCodeConverter';
-import { useStudent } from '../../context/StudentContext';
+import { departmentCodeConverter } from '../../../common/utils/departmentCodeConverter';
+import { useStudent } from '../../../context/StudentContext';
 
 interface ITableProps {
   users?: Array<Object>;
