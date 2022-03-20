@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
 import { Form, FormItemProps } from 'antd';
 
-import { VALIDATE_STATUS } from '../../../common/constants/validateStatus/validateStatus';
 interface IFormItemProps extends FormItemProps {
-  feedback?: VALIDATE_STATUS;
+  feedback?: '' | 'success' | 'warning' | 'error' | 'validating' | undefined;
 }
 
 function FormItemUI(props: IFormItemProps) {

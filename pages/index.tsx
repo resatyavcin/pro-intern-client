@@ -33,7 +33,7 @@ const adminRegisterForm = () => {
         label="Email"
         placeholder="example@ogrenci.ibu.tr"
         rules={[{ required: true, message: 'Please enter' }]}
-        feedback={VALIDATE_STATUS.SUCCESS}
+        feedback={'success'}
       />
       <InputUI type="phone" name="phone" label="Phone" placeholder="+90 (5**) *** ** **" />
       <InputUI type="password" name="password" label="Password" placeholder="Enter the password" />
