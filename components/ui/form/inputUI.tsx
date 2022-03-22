@@ -10,15 +10,16 @@ interface IInputProps extends InputProps {
   label?: string;
   type?: string;
   rules?: Rule[] | undefined;
-  feedback?: '' | 'success' | 'warning' | 'error' | 'validating' | undefined;
+  feedback?: { feedType: '' | 'success' | 'warning' | 'error' | 'validating' | undefined; fieldName: string };
 }
 
 function InputUI(props: IInputProps) {
   const { name, label, rules, feedback } = props;
+
   return (
     <Fragment>
-      <FormItemUI name={name} label={label} rules={rules} feedback={feedback}>
-        <Input className={styles.baseInput} type={name} {...props} />
+      <FormItemUI name={name} label={label} rules={rules} feedback={feedback?.feedType}>
+        <Input type={name} {...props} />
       </FormItemUI>
     </Fragment>
   );

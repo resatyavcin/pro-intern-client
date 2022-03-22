@@ -5,11 +5,9 @@ const AuthLayout = (props: any) => {
   const { children } = props;
 
   return (
-    <div>
-      <Row style={{ maxWidth: '420px', margin: '60px auto' }}>
-        <Col span={24}>{children}</Col>
-      </Row>
-    </div>
+    <Row style={{ maxWidth: '380px', margin: '60px auto' }}>
+      <Col span={24}>{children}</Col>
+    </Row>
   );
 };
 

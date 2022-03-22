@@ -7,7 +7,7 @@ import styles from '../../../assets/styles/Card.module.scss';
 
 function CardUI(props: ICardProps) {
   const { children } = props;
-  return <Card className={styles.baseCard}>{children}</Card>;
+  return <Card>{children}</Card>;
 }
 
 export default CardUI;

@@ -13,7 +13,7 @@ function ButtonUI(props: IButtonProps) {
   const { label } = props;
   return (
     <FormItemUI>
-      <Button className={styles.baseButton} {...props}>
+      <Button {...props}>
         <FormattedMessage id={label} />
       </Button>
     </FormItemUI>
