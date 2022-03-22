@@ -21,7 +21,7 @@ function TableUI(props: ITableProps) {
   const { users } = props;
 
   //const { selectStudent, setSelectStudent } = useStudent();
-  const [setmarkStudent] = useState();
+  const [markStudent, setmarkStudent] = useState();
   const [selectedAvatar, setSelectedAvatar] = useState();
   const [previewButtonVisibility, setpreviewButtonVisibility] = useState(false);
 
