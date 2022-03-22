@@ -1,6 +1,5 @@
 //import React
 import React from 'react';
-import { Typography } from 'antd';
 
 //import Styles
 import styles from '../assets/styles/Sidebar.module.scss';
@@ -15,6 +14,7 @@ const Content = Layout;
 
 const MainLayout = (props: { children: React.ReactNode }) => {
   const { children } = props;
+
   return (
     <Layout style={{ height: '100vh' }}>
       {/* <SidebarUI /> */}

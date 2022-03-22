@@ -1,13 +1,13 @@
 import translationEN from './en/translation.json';
-import translationTR  from './tr/translation.json';
-import { useRouter } from 'next/router'
+import translationTR from './tr/translation.json';
+import { useRouter } from 'next/router';
 
 export type languages = 'tr' | 'en';
 
 export const resourceLanguage = {
-  translationEN,                                               
+  translationEN,
   translationTR
-}
+};
 
 export const init = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -20,4 +20,3 @@ export const init = () => {
       return resourceLanguage.translationEN;
   }
 };
-  

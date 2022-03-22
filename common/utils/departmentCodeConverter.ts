@@ -1,3 +1,2 @@
-export const departmentCodeConverter = (code: string) => {
- return 'DEPARTMENT.' + code;
-}
+export const departmentCodeConverter = (code: string) => 'DEPARTMENT.' + code;
+

@@ -11,6 +11,7 @@ interface ITimelineItemProps extends TimelineItemProps {
 }
 function TimelineItemUI(props: ITimelineItemProps) {
   const { children } = props;
+
   return <Item {...props}>{children}</Item>;
 }
 

@@ -56,16 +56,14 @@ function TimelineUI(props: ITimeline) {
 
   return (
     <Timeline {...props}>
-      {events.map((event, i) => {
-        return (
-          <TimelineItemUI key={i} dot={utilsRender(event, i)?.icon} color={utilsRender(event, i)?.color}>
-            <TypographyUI typographyType="text" label={event.label} />
-            <br />
-            {utilsRender(event, i)?.deadLine}
-            {utilsRender(event, i)?.countDown}
-          </TimelineItemUI>
-        );
-      })}
+      {events.map((event, i) => (
+        <TimelineItemUI key={i} dot={utilsRender(event, i)?.icon} color={utilsRender(event, i)?.color}>
+          <TypographyUI typographyType="text" label={event.label} />
+          <br />
+          {utilsRender(event, i)?.deadLine}
+          {utilsRender(event, i)?.countDown}
+        </TimelineItemUI>
+      ))}
     </Timeline>
   );
 }

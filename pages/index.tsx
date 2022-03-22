@@ -23,7 +23,7 @@ interface IFeedBack {
   feedType: feed;
 }
 
-const registerForm = () => {
+const RegisterForm = () => {
   const [feedBack, setFeedBack] = useState<IFeedBack[]>([]);
   const [password, setPassword] = useState<string>('');
 
@@ -35,16 +35,15 @@ const registerForm = () => {
     console.log('Failed:', errorInfo);
   };
 
-  const findFeedBackState = (fieldName: string) => {
-    return feedBack.find((element: IFeedBack) => element.fieldName === fieldName);
-  };
+  const findFeedBackState = (fieldName: string) =>
+    feedBack.find((element: IFeedBack) => element.fieldName === fieldName);
 
-  const findIndexFeedBackState = (fieldName: string) => {
-    return feedBack.findIndex((element: IFeedBack) => element.fieldName === fieldName);
-  };
+  const findIndexFeedBackState = (fieldName: string) =>
+    feedBack.findIndex((element: IFeedBack) => element.fieldName === fieldName);
 
   const isExist = (fieldName: string) => {
     const isExist = findFeedBackState(fieldName);
+
     if (!isExist || undefined) {
       return false;
     } else {
@@ -54,12 +53,14 @@ const registerForm = () => {
 
   const findFeedBackAndUpdate = (fieldName: string, status: feed) => {
     let newArr = [...feedBack];
+
     newArr[findIndexFeedBackState(fieldName)].feedType = status;
     setFeedBack(newArr);
   };
 
   const onChangeFields = (changedFields: any) => {
     const field = changedFields[0];
+
     if (changedFields[0]?.errors?.length > 0) {
       if (isExist(field.name[0])) {
         findFeedBackAndUpdate(field.name[0], 'error');
@@ -135,34 +136,32 @@ const registerForm = () => {
   );
 };
 
-const Home: NextPage = () => {
-  return (
-    <AuthLayout>
-      <CardUI>
-        <div style={{ display: 'flex' }}>
-          <FaUserCircle
-            style={{
-              width: '40px',
-              height: '40px',
-              color: '#52C41A',
-              backgroundColor: '#e5f5e0',
-              padding: 10,
-              borderRadius: '50%'
-            }}
-          />
-          <Title style={{ marginLeft: 12 }} level={2}>
-            Hemen Kaydol
-          </Title>
-        </div>
+const Home: NextPage = () => (
+  <AuthLayout>
+    <CardUI>
+      <div style={{ display: 'flex' }}>
+        <FaUserCircle
+          style={{
+            width: '40px',
+            height: '40px',
+            color: '#52C41A',
+            backgroundColor: '#e5f5e0',
+            padding: 10,
+            borderRadius: '50%'
+          }}
+        />
+        <Title style={{ marginLeft: 12 }} level={2}>
+          Hemen Kaydol
+        </Title>
+      </div>
 
-        <Text>Yönetici yada öğrenci olarak kaydolun ve sonra kimlik doğrulamasına geçin.</Text>
-        <Divider style={{ marginBottom: 20 }} />
-        {registerForm()}
-        <Divider style={{ marginTop: 0 }} />
-        <Text>Yönetici yada öğrenci olarak kaydolun ve sonrasında kimlik doğrulamasına geçin.</Text>
-      </CardUI>
-    </AuthLayout>
-  );
-};
+      <Text>Yönetici yada öğrenci olarak kaydolun ve sonra kimlik doğrulamasına geçin.</Text>
+      <Divider style={{ marginBottom: 20 }} />
+      <RegisterForm />
+      <Divider style={{ marginTop: 0 }} />
+      <Text>Yönetici yada öğrenci olarak kaydolun ve sonrasında kimlik doğrulamasına geçin.</Text>
+    </CardUI>
+  </AuthLayout>
+);
 
 export default Home;

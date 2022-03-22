@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Avatar, Col, Row, Table } from 'antd';
+import { Col, Row, Table } from 'antd';
 
 //import Components
 import ButtonUI from '../button/buttonUI';
@@ -20,8 +20,8 @@ interface ITableProps {
 function TableUI(props: ITableProps) {
   const { users } = props;
 
-  const { selectStudent, setSelectStudent } = useStudent();
-  const [markStudent, setmarkStudent] = useState();
+  //const { selectStudent, setSelectStudent } = useStudent();
+  const [setmarkStudent] = useState();
   const [selectedAvatar, setSelectedAvatar] = useState();
   const [previewButtonVisibility, setpreviewButtonVisibility] = useState(false);
 
@@ -56,6 +56,7 @@ function TableUI(props: ITableProps) {
       if (selectedRows.length === 1) {
         setpreviewButtonVisibility(true);
         setmarkStudent(selectedRows[selectedRows.length - 1]);
+
         return '';
       }
       setpreviewButtonVisibility(false);

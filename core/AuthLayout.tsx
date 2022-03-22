@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 
-const AuthLayout = (props: any) => {
+const AuthLayout = (props: { children: React.ReactNode }) => {
   const { children } = props;
 
   return (

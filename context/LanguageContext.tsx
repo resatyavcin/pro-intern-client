@@ -7,7 +7,7 @@ import { IntlProvider } from 'react-intl';
 //import Config
 import { init } from '../common/locales/translate.config';
 
-export const LanguageProvider = (props: any) => {
+export const LanguageProvider = (props: { children: React.ReactNode }) => {
   const { children } = props;
 
   const { locale } = useRouter();

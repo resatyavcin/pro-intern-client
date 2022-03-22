@@ -11,6 +11,7 @@ interface IButtonProps extends ButtonProps {
 
 function ButtonUI(props: IButtonProps) {
   const { label } = props;
+
   return (
     <FormItemUI>
       <Button {...props}>
