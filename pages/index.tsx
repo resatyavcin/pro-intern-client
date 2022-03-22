@@ -2,7 +2,7 @@
 import type { NextPage } from 'next';
 import { useState } from 'react';
 import AuthLayout from '../core/AuthLayout';
-import { Row, Typography } from 'antd';
+import { Typography } from 'antd';
 import { Divider } from 'antd';
 const { Title, Text } = Typography;
 
@@ -24,7 +24,6 @@ interface IFeedBack {
 }
 
 const registerForm = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [feedBack, setFeedBack] = useState<IFeedBack[]>([]);
   const [password, setPassword] = useState<string>('');
 
