@@ -7,6 +7,7 @@ import styles from '../../assets/styles/Header.module.scss';
 import { Avatar, Dropdown, Layout, Menu, Typography } from 'antd';
 
 const { Text } = Typography;
+const Header = Layout;
 
 const menu = (
   <Menu style={{ backgroundColor: '#f9f9f9' }}>
