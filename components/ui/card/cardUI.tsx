@@ -1,14 +1,62 @@
 import React from 'react';
-import { Card, CardProps } from 'antd';
+import { Card, CardProps, Divider } from 'antd';
+import { IconType } from 'react-icons';
+import TypographyUI from '../typography/Typography';
 
-interface ICardProps extends CardProps {}
+interface ICardProps extends CardProps {
+  icon: IconType;
+  headerTitle?: string;
+  headerLabel?: string;
+  footerLabel?: string;
+  footerLink?: string;
+}
 
 import styles from '../../../assets/styles/Card.module.scss';
 
 function CardUI(props: ICardProps) {
-  const { children } = props;
+  const { children, icon, headerTitle, headerLabel, footerLabel, footerLink } = props;
 
-  return <Card>{children}</Card>;
+  const CardIcon = icon;
+
+  return (
+    <Card className={styles.baseCard}>
+      <div>
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: 10 }} className="card_header">
+          <CardIcon
+            style={{
+              width: '35px',
+              height: '35px',
+              color: '#24e21e',
+              backgroundColor: '#cbfcc564',
+              padding: 7,
+              borderRadius: '50%'
+            }}
+          />
+          {headerTitle ? (
+            <TypographyUI
+              style={{ marginBottom: 0, marginLeft: 10 }}
+              typographyType="title"
+              level={3}
+              label={headerTitle}
+            />
+          ) : null}
+        </div>
+        {headerLabel ? <TypographyUI label={headerLabel} typographyType={'text'} /> : null}
+
+        <Divider style={{ marginBottom: 20 }} />
+      </div>
+      <div className="card_content">{children}</div>
+      <div className="card_footer">
+        {footerLabel && footerLabel ? (
+          <div style={{ textAlign: 'center' }}>
+            <Divider style={{ marginTop: 0 }} />
+            {footerLabel ? <TypographyUI label={footerLabel} typographyType={'text'} /> : null}
+            {footerLink ? <TypographyUI label={footerLink} typographyType={'link'} /> : null}
+          </div>
+        ) : null}
+      </div>
+    </Card>
+  );
 }
 
 export default CardUI;

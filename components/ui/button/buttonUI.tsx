@@ -14,7 +14,7 @@ function ButtonUI(props: IButtonProps) {
 
   return (
     <FormItemUI>
-      <Button {...props}>
+      <Button className={styles.baseButton} {...props}>
         <FormattedMessage id={label} />
       </Button>
     </FormItemUI>

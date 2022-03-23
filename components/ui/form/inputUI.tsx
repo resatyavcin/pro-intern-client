@@ -5,6 +5,8 @@ import { Rule } from 'antd/lib/form';
 
 import styles from '../../../assets/styles/Input.module.scss';
 
+const { Password, Search, Group, TextArea } = Input;
+
 interface IInputProps extends InputProps {
   name: string;
   label?: string;
@@ -16,10 +18,18 @@ interface IInputProps extends InputProps {
 function InputUI(props: IInputProps) {
   const { name, label, rules, feedback } = props;
 
+  const inputType = (fieldName: string) => {
+    switch (fieldName) {
+      case 'password':
+        return <Password className={styles.baseInput} type={name} {...props} />;
+      default:
+        return <Input className={styles.baseInput} type={name} {...props} />;
+    }
+  };
   return (
     <Fragment>
       <FormItemUI name={name} label={label} rules={rules} feedback={feedback?.feedType}>
-        <Input type={name} {...props} />
+        {inputType(name)}
       </FormItemUI>
     </Fragment>
   );

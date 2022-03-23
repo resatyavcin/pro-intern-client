@@ -5,7 +5,7 @@ const AuthLayout = (props: { children: React.ReactNode }) => {
   const { children } = props;
 
   return (
-    <Row style={{ maxWidth: '380px', margin: '60px auto' }}>
+    <Row style={{ maxWidth: '380px', margin: '30px auto' }}>
       <Col span={24}>{children}</Col>
     </Row>
   );

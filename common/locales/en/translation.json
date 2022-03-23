@@ -2,6 +2,10 @@
   "WELCOME": "WELCOME",
   "REGISTER": "REGISTER",
   "LOGIN": "LOGIN",
+  "FORGOT_PASSWORD": "SEND EMAIL",
+
+  "NAVIGATION.NEXT":"NEXT",
+  "NAVIGATION.BACK": "BACK",
 
   "TIMELINE_INTERN_FILES_PROGRESS.0": "Application for internship by the student",
   "TIMELINE_INTERN_FILES_PROGRESS.1": "Signing of internship files by student affairs",
@@ -18,5 +22,20 @@
 
   "COLUMN.FIRST_NAME": "Name",
   "COLUMN.LAST_NAME": "Lastname",
-  "COLUMN.DEPARTMENT": "Department"
+  "COLUMN.DEPARTMENT": "Department",
+
+  "REGISTER.HEADER_TITLE": "Now Register",
+  "REGISTER.HEADER_LABEL": "You may need to fill in the required fields and correctly to register.  ",
+  "REGISTER.FOOTER_LABEL": "Already have an account? ",
+  "REGISTER.FOOTER_LINK": "Log in",
+
+
+
+  "LOGIN.HEADER_TITLE": "Login",
+  "LOGIN.HEADER_LABEL": "You must fill in the required fields completely and correctly to log in.",
+  "LOGIN.FOOTER_LABEL": "Don't have an account?",
+  "LOGIN.FOOTER_LINK": " sign up",
+
+  "FORGOT_PASSWORD.HEADER_TITLE": "Forgot Password?",
+  "FORGOT_PASSWORD.HEADER_LABEL": "Please enter the email address the used to created your account, and we'll send to a link to reset your password."
 }

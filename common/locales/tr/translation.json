@@ -2,6 +2,11 @@
   "WELCOME": "HOŞGELDİNİZ",
   "REGISTER": "KAYDOL",
   "LOGIN": "GİRİŞ",
+  "FORGOT_PASSWORD": "E-POSTAYI GÖNDER",
+
+
+  "NAVIGATION.NEXT":"İLERİ",
+  "NAVIGATION.BACK": "GERİ",
 
   "TIMELINE_INTERN_FILES_PROGRESS.0": "Öğrenci tarafından staj başvurusunun yapılması",
   "TIMELINE_INTERN_FILES_PROGRESS.1": "Staj dosyaların öğrenci işleri tarafından imzalanması",
@@ -18,5 +23,24 @@
 
   "COLUMN.FIRST_NAME": "Ad",
   "COLUMN.LAST_NAME": "Soyad",
-  "COLUMN.DEPARTMENT": "Bölüm"
+  "COLUMN.DEPARTMENT": "Bölüm",
+
+
+  "REGISTER.HEADER_TITLE": "Hemen Kaydolun",
+  "REGISTER.HEADER_LABEL": "Kaydolmak için gerekli olan alanları eksiksiz ve doğru dordurmanız gerekmektedir.",
+  "REGISTER.FOOTER_LABEL": "Eğer hesabınız varsa",
+  "REGISTER.FOOTER_LINK": " giriş yapın",
+
+
+  "LOGIN.HEADER_TITLE": "Giriş",
+  "LOGIN.HEADER_LABEL": "Giriş yapmak için gerekli olan alanları eksiksiz ve doğru dordurmanız gerekmektedir.",
+  "LOGIN.FOOTER_LABEL": "Hesabınız yok mu?",
+  "LOGIN.FOOTER_LINK": " kaydolun",
+
+
+  "FORGOT_PASSWORD.HEADER_TITLE": "Şifremi unuttum?",
+  "FORGOT_PASSWORD.HEADER_LABEL": "Lütfen hesabınızı oluşturmak için kullandığınız e-posta adresini girin, şifrenizi sıfırlamak için bir bağlantı gönderelim."
+
+
+
 }
