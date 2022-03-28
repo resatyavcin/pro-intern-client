@@ -18,12 +18,9 @@ interface ITableProps {
 }
 
 function TableUI(props: ITableProps) {
-  const { users } = props;
+  //const { users } = props;
 
-  //const { selectStudent, setSelectStudent } = useStudent();
-  const [markStudent, setmarkStudent] = useState();
-  const [selectedAvatar, setSelectedAvatar] = useState();
-  const [previewButtonVisibility, setpreviewButtonVisibility] = useState(false);
+  const { allStudents, selectUser } = useStudent();
 
   const [checkStrictly, setCheckStrictly] = React.useState(false);
 
@@ -50,23 +47,9 @@ function TableUI(props: ITableProps) {
 
   // rowSelection objects indicates the need for row selection
   const rowSelection = {
-    onChange: (selectedRowKeys: any, selectedRows: any) => {
-      console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-      setSelectedAvatar(selectedRows);
-      if (selectedRows.length === 1) {
-        setpreviewButtonVisibility(true);
-        setmarkStudent(selectedRows[selectedRows.length - 1]);
-
-        return '';
-      }
-      setpreviewButtonVisibility(false);
+    onChange: (selectedRowKeys: string[], selectedRows: any) => {
+      selectUser(selectedRowKeys);
     }
-    // onSelect: (record, selected, selectedRows) => {
-    //   console.log(record, selected, selectedRows);
-    // },
-    // onSelectAll: (selected, selectedRows, changeRows) => {
-    //   console.log(selected, selectedRows, changeRows);
-    // }
   };
 
   return (
@@ -75,28 +58,11 @@ function TableUI(props: ITableProps) {
         <Col xs={4}>
           <ButtonUI label="BUTTON_LABEL.EXPORTS" />
         </Col>
-        <Col xs={12}>
-          {previewButtonVisibility
-            ? // <ButtonUI onClick={() => setSelectStudent(markStudent)} label="BUTTON_LABEL.PREVIEW" />
-              null
-            : null}
-        </Col>
-        <Col>
-          <TypographyUI typographyType="text" strong label={'Seçilen:'} />
-          {/* {selectedAvatar ? (
-            <Avatar.Group maxCount={4}>
-              {selectedAvatar?.map((avatar, i) => (
-                <Avatar key={i} style={{ backgroundColor: 'orange' }}>
-                  {avatar?.first_name.charAt(0).toUpperCase()}
-                  {avatar?.last_name.charAt(0).toUpperCase()}
-                </Avatar>
-              ))}
-            </Avatar.Group>
-          ) : null} */}
-        </Col>
+        <Col xs={12}></Col>
+        <Col></Col>
       </Row>
 
-      <Table rowKey="id" rowSelection={{ ...rowSelection, checkStrictly }} columns={columns} dataSource={users} />
+      <Table rowKey="id" rowSelection={{ ...rowSelection, checkStrictly }} columns={columns} dataSource={allStudents} />
     </>
   );
 }

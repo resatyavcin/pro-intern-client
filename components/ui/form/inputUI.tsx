@@ -28,7 +28,13 @@ function InputUI(props: IInputProps) {
   };
   return (
     <Fragment>
-      <FormItemUI name={name} label={label} rules={rules} feedback={feedback?.feedType}>
+      <FormItemUI
+        style={name === 'password' ? { marginBottom: 0 } : { marginBottom: 13 }}
+        name={name}
+        label={label}
+        rules={rules}
+        feedback={feedback?.feedType}
+      >
         {inputType(name)}
       </FormItemUI>
     </Fragment>

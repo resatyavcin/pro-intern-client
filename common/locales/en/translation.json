@@ -4,7 +4,9 @@
   "LOGIN": "LOGIN",
   "FORGOT_PASSWORD": "SEND EMAIL",
 
-  "NAVIGATION.NEXT":"NEXT",
+  "CHANGE": "Change",
+
+  "NAVIGATION.NEXT": "NEXT",
   "NAVIGATION.BACK": "BACK",
 
   "TIMELINE_INTERN_FILES_PROGRESS.0": "Application for internship by the student",
@@ -37,5 +39,14 @@
   "LOGIN.FOOTER_LINK": " sign up",
 
   "FORGOT_PASSWORD.HEADER_TITLE": "Forgot Password?",
-  "FORGOT_PASSWORD.HEADER_LABEL": "Please enter the email address the used to created your account, and we'll send to a link to reset your password."
+  "FORGOT_PASSWORD.HEADER_LABEL": "Please enter the email address the used to created your account, and we'll send to a link to reset your password.",
+
+
+
+  "RESPONSE.USER_NOT_FOUND": "User not found.",
+  "RESPONSE.USER_OR_PASS_WRONG": "User or password incorrect",
+  "RESPONSE.NOT_VERIFY": "Your account has not been activated. Please verify via the link in your e-mail.",
+  "RESPONSE.BLOCK_ACCOUNT": "Your account has been blocked. Please update it in the forgot password section.",
+  "RESPONSE.SERVER_ERR": "Your account has been blocked. Please update it in the forgot password section."
+  
 }

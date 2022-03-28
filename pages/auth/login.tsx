@@ -12,33 +12,48 @@ import FormUI from '../../components/ui/form/formUI';
 import { FaFingerprint } from 'react-icons/fa';
 import TypographyUI from '../../components/ui/typography/Typography';
 
+import { useAuth } from '../../context/AuthContext';
+
 const Login = () => {
+  const { login } = useAuth();
+
   const [passwordVisibility, setPasswordVisibility] = useState(false);
 
-  const showPasswordField = () => setPasswordVisibility(true);
-
+  const showPasswordField = (e: any) => {
+    e.preventDefault();
+    setPasswordVisibility(true);
+  };
   const hidePasswordField = () => setPasswordVisibility(false);
 
+  const onFinish = (values: any) => {
+    login({ ...values });
+  };
+
+  const onFinishFailed = (errorInfo: any) => {};
+
   return (
-    <FormUI>
+    <FormUI onFinish={onFinish} onFinishFailed={onFinishFailed}>
       <InputUI
         name="email"
         label="Email"
         placeholder="example@ogrenci.ibu.tr"
         disabled={passwordVisibility}
         suffix={
-          passwordVisibility ? (
-            <TypographyUI onClick={hidePasswordField} label={'Change'} typographyType={'link'} />
-          ) : null
+          passwordVisibility ? <TypographyUI onClick={hidePasswordField} label="CHANGE" typographyType="link" /> : null
         }
       />
-
       {passwordVisibility ? (
-        <InputUI type="password" name="password" label="Password" placeholder="Enter the password" />
+        <InputUI
+          style={{ marginBottom: 20 }}
+          type="password"
+          name="password"
+          label="Password"
+          placeholder="Enter the password"
+        />
       ) : null}
       <ButtonUI
-        onClick={passwordVisibility ? () => console.log('submit') : showPasswordField}
-        htmlType="submit"
+        onClick={passwordVisibility ? undefined : showPasswordField}
+        htmlType={passwordVisibility ? 'submit' : 'button'}
         label={passwordVisibility ? 'LOGIN' : 'NAVIGATION.NEXT'}
         block
         type="primary"

@@ -5,6 +5,9 @@
   "FORGOT_PASSWORD": "E-POSTAYI GÖNDER",
 
 
+  "CHANGE": "Değiştir",
+
+
   "NAVIGATION.NEXT":"İLERİ",
   "NAVIGATION.BACK": "GERİ",
 
@@ -39,7 +42,15 @@
 
 
   "FORGOT_PASSWORD.HEADER_TITLE": "Şifremi unuttum?",
-  "FORGOT_PASSWORD.HEADER_LABEL": "Lütfen hesabınızı oluşturmak için kullandığınız e-posta adresini girin, şifrenizi sıfırlamak için bir bağlantı gönderelim."
+  "FORGOT_PASSWORD.HEADER_LABEL": "Lütfen hesabınızı oluşturmak için kullandığınız e-posta adresini girin, şifrenizi sıfırlamak için bir bağlantı gönderelim.",
+
+
+
+  "RESPONSE.USER_NOT_FOUND": "Kullanıcı bulunamadı.",
+  "RESPONSE.USER_OR_PASS_WRONG": "Kullanıcı yada şifre hatalı!",
+  "RESPONSE.NOT_VERIFY": "Hesabınız aktive edilmemiştir. Lütfen e-postanıza gelen link üzerinden doğrulayınız.",
+  "RESPONSE.BLOCK_ACCOUNT": "Hesabınız bloke olmuştur. Lütfen şifremi unuttum kısmından güncelleyiniz.",
+  "RESPONSE.SERVER_ERR": "Bir nedenden dolayı sunucuda bir hata oluştu."
 
 
 

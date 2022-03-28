@@ -7,42 +7,36 @@ import { TextProps } from 'antd/lib/typography/Text';
 const { Text, Title, Paragraph, Link } = Typography;
 
 type levelNumber = 1 | 2 | 3 | 4 | 5 | undefined;
+
 interface ITypography extends TextProps {
   label: string;
   typographyType: string;
   level?: levelNumber;
+  onClick?: () => void;
 }
 
 function TypographyUI(props: ITypography) {
-  const { label, level, typographyType } = props;
+  const { label, level, typographyType, onClick } = props;
+
+  const labelUndefinedControl = label ? <FormattedMessage id={label} /> : null;
 
   const renderSwitch = (typographyType: string) => {
     switch (typographyType) {
       case 'text':
-        return (
-          <Text {...props}>
-            <FormattedMessage id={label} />
-          </Text>
-        );
+        return <Text {...props}>{labelUndefinedControl}</Text>;
       case 'title':
         return (
           <Title level={level} {...props}>
-            <FormattedMessage id={label} />
+            {labelUndefinedControl}
           </Title>
         );
 
       case 'paragraph':
-        return (
-          <Paragraph {...props}>
-            <FormattedMessage id={label} />
-          </Paragraph>
-        );
+        return <Paragraph {...props}>{labelUndefinedControl}</Paragraph>;
       case 'link':
-        return (
-          <Link>
-            <FormattedMessage id={label} />
-          </Link>
-        );
+        return <Link onClick={onClick}>{labelUndefinedControl}</Link>;
+      default:
+        return <Text {...props}>{labelUndefinedControl}</Text>;
     }
   };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardProps, Divider } from 'antd';
+import { Alert, Card, CardProps, Divider } from 'antd';
 import { IconType } from 'react-icons';
 import TypographyUI from '../typography/Typography';
 
@@ -12,9 +12,12 @@ interface ICardProps extends CardProps {
 }
 
 import styles from '../../../assets/styles/Card.module.scss';
+import { FormattedMessage } from 'react-intl';
+import { useAuth } from '../../../context/AuthContext';
 
 function CardUI(props: ICardProps) {
   const { children, icon, headerTitle, headerLabel, footerLabel, footerLink } = props;
+  const { error } = useAuth();
 
   const CardIcon = icon;
 
@@ -26,7 +29,7 @@ function CardUI(props: ICardProps) {
             style={{
               width: '35px',
               height: '35px',
-              color: '#24e21e',
+              color: '#11d40b',
               backgroundColor: '#cbfcc564',
               padding: 7,
               borderRadius: '50%'
@@ -42,8 +45,10 @@ function CardUI(props: ICardProps) {
           ) : null}
         </div>
         {headerLabel ? <TypographyUI label={headerLabel} typographyType={'text'} /> : null}
-
         <Divider style={{ marginBottom: 20 }} />
+        {error ? (
+          <Alert style={{ marginBottom: 14 }} message={<FormattedMessage id={error} />} type="error" showIcon />
+        ) : null}
       </div>
       <div className="card_content">{children}</div>
       <div className="card_footer">

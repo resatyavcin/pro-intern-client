@@ -5,8 +5,8 @@ import React from 'react';
 import styles from '../assets/styles/Sidebar.module.scss';
 
 //import Components
-// import SidebarUI from '../components/sidebar/sidebar';
-// import HeaderUI from '../components/header/Header';
+import SidebarUI from '../components/sidebar/sidebar';
+import HeaderUI from '../components/header/Header';
 
 import { Layout } from 'antd';
 
@@ -20,8 +20,6 @@ const MainLayout = (props: { children: React.ReactNode }) => {
       {/* <SidebarUI /> */}
 
       <Layout className={styles.siteLayout}>
-        {/* <HeaderUI /> */}
-
         <Content>{children}</Content>
       </Layout>
     </Layout>

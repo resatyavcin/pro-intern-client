@@ -12,6 +12,8 @@ import { FaUserCircle } from 'react-icons/fa';
 import { message } from 'antd';
 import PasswordStrengthBar from 'react-password-strength-bar';
 
+import { useAuth } from '../../context/AuthContext';
+
 type feed = '' | 'error' | 'success' | 'warning' | 'validating' | undefined;
 
 interface IFeedBack {
@@ -22,9 +24,12 @@ interface IFeedBack {
 const RegisterForm = () => {
   const [feedBack, setFeedBack] = useState<IFeedBack[]>([]);
   const [password, setPassword] = useState<string>('');
+  const [response, setError] = useState('');
+
+  const { signUp } = useAuth();
 
   const onFinish = (values: any) => {
-    console.log('Success:', values);
+    signUp({ ...values });
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -115,19 +120,8 @@ const RegisterForm = () => {
         rules={[{ required: true, message: 'Lütfen bu alanı boş bırakmayınız.' }]}
         feedback={findFeedBackState('password')}
       />
-      <PasswordStrengthBar
-        shortScoreWord={'çok kısa'}
-        scoreWords={['çok kısa', 'biraz kötü', 'eh işte!', 'iyi', 'işte bu!!']}
-        style={{ marginBottom: 30 }}
-        password={password}
-      />
-      <ButtonUI
-        htmlType="submit"
-        label={'REGISTER'}
-        onClick={() => message.error('Sunucudan kaynaklı bir sebepten kaydınız tamamlanamamıştır.')}
-        block
-        type="primary"
-      />
+      <PasswordStrengthBar shortScoreWord={false} scoreWords={[]} style={{ marginBottom: 30 }} password={password} />
+      <ButtonUI htmlType="submit" label={'REGISTER'} block type="primary" />
     </FormUI>
   );
 };

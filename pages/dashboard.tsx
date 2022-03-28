@@ -9,7 +9,7 @@ import styles from '../assets/styles/Sidebar.module.scss';
 
 import { Layout } from 'antd';
 import PreviewProfile from '../components/preview-profile/PreviewProfile';
-import ResultUI from '../components/ui/result/Result';
+import TableUI from '../components/ui/table/Table';
 
 const { Content } = Layout;
 
@@ -17,7 +17,7 @@ function Dashboard() {
   return (
     <MainLayout>
       <Row gutter={[18, 0]} style={{ margin: '24px 20px' }}>
-        <Col xs={20} lg={16}>
+        <Col xs={20} lg={18}>
           <Content
             style={{
               padding: 24,
@@ -25,10 +25,10 @@ function Dashboard() {
             }}
             className={styles.siteLayoutBackground}
           >
-            <ResultUI />
+            <TableUI />
           </Content>
         </Col>
-        <Col xs={20} lg={8}>
+        <Col xs={20} lg={6}>
           <Content
             className={styles.siteLayoutBackground}
             style={{
