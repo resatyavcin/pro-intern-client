@@ -17,18 +17,18 @@ interface IUser {
 
 interface StudentContext {
   allStudents: IUser[];
-  selectedUser?: IUser;
-  selectUser?: () => void;
+  selectedUser?: IUser[];
+  selectUser: (user?: IUser[]) => void;
 }
 
 const StudentContext = createContext<StudentContext>({} as StudentContext);
 
 function StudentProvider({ children }: { children: React.ReactNode }): JSX.Element {
   const [allStudents, setAllStudents] = useState<IUser[]>(students);
-  const [selectedUser, setSelectedUser] = useState<IUser>();
+  const [selectedUser, setSelectedUser] = useState<IUser[]>();
 
-  const selectUser = (select?: []) => {
-    console.log(select);
+  const selectUser = (user?: IUser[]) => {
+    setSelectedUser(user);
   };
   const memoedValue = useMemo(
     () => ({

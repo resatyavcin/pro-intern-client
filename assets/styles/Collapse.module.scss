@@ -1,0 +1,58 @@
+@import './variable';
+
+.panelTitle {
+  color: gray;
+  margin-left: 10px;
+}
+
+.panelTitle .active {
+  color: black;
+  font-weight: 800;
+}
+
+.panelTitle:hover {
+  color: black;
+  font-weight: 500;
+}
+
+.baseContent {
+  display: flex;
+  flex-direction: column;
+}
+
+//Collapse(close)
+.collapseRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+}
+
+.collapseRow .collapseIcon {
+  font-size: 16px;
+}
+
+.collapseRow .collapseIconActive {
+  background-color: rgb(0, 255, 64);
+  border-radius: 3px;
+  padding-left: 3px;
+  height: 13px;
+  width: 13px;
+  margin-top: -13px;
+}
+
+//Not Collapse(open)
+.collapseIconNotCollapsed {
+  display: inline;
+  font-size: 16px;
+  padding: 8px;
+  transition: background 0.3s;
+}
+
+.collapseIconNotCollapsed:hover {
+  background: #eceaea;
+}
+
+.displayNonePanelHeader {
+  display: none;
+}

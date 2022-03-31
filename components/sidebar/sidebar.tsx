@@ -2,31 +2,26 @@ import React, { useState } from 'react';
 
 import { UserOutlined } from '@ant-design/icons';
 
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, LayoutProps } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 
 const { Sider } = Layout;
 
 import styles from '../../assets/styles/Header.module.scss';
 
-function SidebarUI() {
-  const [collapsed, setCollapsed] = useState(false);
-
-  const toggle = () => {
-    setCollapsed(!collapsed);
-  };
-
+interface ISider extends LayoutProps {
+  collapsed?: boolean;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  onCollapse?: () => void;
+  width?: number;
+  collapsedWidth?: number;
+}
+function SidebarUI(props: ISider) {
+  const { collapsed, collapsedWidth, children, width, style } = props;
   return (
-    <Sider trigger={null} collapsible collapsed={collapsed}>
-      {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-        className: styles.trigger,
-        onClick: toggle
-      })}
-      <Menu theme={'dark'} mode="inline" defaultSelectedKeys={['1']}>
-        <Menu.Item key="1" icon={<UserOutlined />}>
-          Ana Sayfa
-        </Menu.Item>
-      </Menu>
+    <Sider collapsedWidth={collapsedWidth} width={width} style={style} trigger={null} collapsed={collapsed} collapsible>
+      {children}
     </Sider>
   );
 }

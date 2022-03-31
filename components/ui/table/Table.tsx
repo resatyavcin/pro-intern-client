@@ -13,8 +13,19 @@ import { DEPARTMENT_CODE } from '../../../common/constants/departmentCode/depart
 import { departmentCodeConverter } from '../../../common/utils/departmentCodeConverter';
 import { useStudent } from '../../../context/StudentContext';
 
+interface IUser {
+  id?: string;
+  first_name?: string;
+  last_name?: string;
+  student_no?: string;
+  phone?: string;
+  email?: string;
+  department_code?: DEPARTMENT_CODE;
+  grade?: number;
+}
+
 interface ITableProps {
-  users?: Array<Object>;
+  users?: IUser[];
 }
 
 function TableUI(props: ITableProps) {
@@ -47,18 +58,23 @@ function TableUI(props: ITableProps) {
 
   // rowSelection objects indicates the need for row selection
   const rowSelection = {
-    onChange: (selectedRowKeys: string[], selectedRows: any) => {
-      selectUser(selectedRowKeys);
+    onChange: (selectedRowKeys: string[], selectedRows: IUser[]) => {
+      selectUser(selectedRows);
     }
   };
 
   return (
     <>
       <Row>
+        <Col xs={3}>
+          <ButtonUI label="BUTTON_LABEL.EXPORTS" />
+        </Col>
         <Col xs={4}>
           <ButtonUI label="BUTTON_LABEL.EXPORTS" />
         </Col>
-        <Col xs={12}></Col>
+        <Col xs={12}>
+          <ButtonUI label="BUTTON_LABEL.EXPORTS" />
+        </Col>
         <Col></Col>
       </Row>
 

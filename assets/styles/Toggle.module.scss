@@ -1,0 +1,32 @@
+@import './_variable.scss';
+
+.wrapperToggle {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  position: relative;
+  border-bottom: $border-sm solid $border-primary;
+}
+
+.contentToggleRow {
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+}
+
+.baseToggle {
+  display: inherit;
+  padding: 6px;
+  font-size: 32px;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  transition: background 0.3s;
+}
+
+.toggleRowContentDisplay {
+  display: none;
+}
+.baseToggle:hover {
+  background: #eceaea;
+}

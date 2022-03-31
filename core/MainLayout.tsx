@@ -17,9 +17,9 @@ const MainLayout = (props: { children: React.ReactNode }) => {
 
   return (
     <Layout style={{ height: '100vh' }}>
-      {/* <SidebarUI /> */}
-
+      <HeaderUI />
       <Layout className={styles.siteLayout}>
+        <SidebarUI style={{ background: 'rgb(247,245,242)', height: 'calc(100vh-58px)' }} />
         <Content>{children}</Content>
       </Layout>
     </Layout>

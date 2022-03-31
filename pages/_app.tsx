@@ -9,14 +9,17 @@ import StudentProvider from '../context/StudentContext';
 //Styles
 import '../assets/styles/globals.scss';
 import 'antd/dist/antd.css';
+import ActionPanelToggleProvider from '../context/ActionPanelToggleContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <LanguageProvider>
       <AuthProvider>
-        <StudentProvider>
-          <Component {...pageProps} />
-        </StudentProvider>
+        <ActionPanelToggleProvider>
+          <StudentProvider>
+            <Component {...pageProps} />
+          </StudentProvider>
+        </ActionPanelToggleProvider>
       </AuthProvider>
     </LanguageProvider>
   );
