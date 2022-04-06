@@ -15,12 +15,16 @@
   "TIMELINE_INTERN_FILES_PROGRESS.3": "Finalization of the paperwork of the internship applied for",
 
   "BUTTON_LABEL.EXPORTS": "Exports",
+  "BUTTON_LABEL.DELETE": "Delete",
+  "BUTTON_LABEL.DELETE_ALL": "Delete Selections",
   "BUTTON_LABEL.PREVIEW": "Preview",
-
-  "DEPARTMENT.COMPUTER_ENGINEERING": "Computer Enginnering",
-  "DEPARTMENT.ELECTRICAL_ELECTRONICS_ENGINEERING": "Electrical Electronics Engineering",
-  "DEPARTMENT.FOOD_ENGINEERING": "The Food Engineering",
-  "DEPARTMENT.MACHINE_ENGINEERING": "Machine Engineering",
+  "BUTTON_LABEL.DELETE_PERMANENTLY": "Delete Permanently",
+  "BUTTON_LABEL.DELETE_ALL_PERMANENTLY": "Permanently Delete Selected",
+  
+  "DEPARTMENT.CE": "Computer Enginnering",
+  "DEPARTMENT.EE": "Electrical Electronics Engineering",
+  "DEPARTMENT.FE": "The Food Engineering",
+  "DEPARTMENT.ME": "Machine Engineering",
 
   "COLUMN.FIRST_NAME": "Name",
   "COLUMN.LAST_NAME": "Lastname",
@@ -41,7 +45,7 @@
   "FORGOT_PASSWORD.HEADER_TITLE": "Forgot Password?",
   "FORGOT_PASSWORD.HEADER_LABEL": "Please enter the email address the used to created your account, and we'll send to a link to reset your password.",
 
-
+  "PAGES.NO_DATA_IN_DUSTBIN": "There is no data in the trash.",
 
   "RESPONSE.USER_NOT_FOUND": "User not found.",
   "RESPONSE.USER_OR_PASS_WRONG": "User or password incorrect",

@@ -6,6 +6,7 @@ import { ReactNode, useMemo, useState } from 'react';
 import { registerService, loginService, activateAccountService } from '../service/authService';
 
 import { useRouter } from 'next/router';
+import { Student } from '../common/models/User/Student';
 
 interface User {
   email: string;
@@ -13,15 +14,13 @@ interface User {
   phone: string;
 }
 
-type A = Omit<User, 'phone'>;
-
 interface AuthContextType {
   user?: User;
   loading: boolean;
   error?: any;
   token?: string;
-  login: (form: A) => void;
-  signUp: (form: User) => void;
+  login: (form: Pick<Student, 'email' | 'password'>) => void;
+  signUp: (form: Student) => void;
   activeAccount: (token: string) => void;
 }
 
@@ -36,19 +35,20 @@ function AuthProvider({ children }: { children: ReactNode }): JSX.Element {
 
   const router = useRouter();
 
-  const login = async (form: A) => {
+  const login = async (form: Pick<Student, 'email' | 'password'>) => {
     const response = await loginService(form);
     if (response.status !== 500 || response.token == token) {
       setError('');
-      router.push('/');
+      localStorage.setItem('token', response.token);
+      router.push('/dashboard');
     } else {
       setError(response.data);
     }
   };
 
-  const signUp = async (form: User) => {
-    const statusCode = await registerService(form);
-    if (statusCode !== 500) {
+  const signUp = async (form: Student) => {
+    const response = await registerService(form);
+    if (response.status !== 500) {
       router.push('/auth/login');
     }
   };

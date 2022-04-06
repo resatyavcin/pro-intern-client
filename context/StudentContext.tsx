@@ -1,80 +1,71 @@
 //import Next & React
-import { createContext, useMemo, useContext, useState } from 'react';
+import { createContext, useMemo, useContext, useState, useEffect } from 'react';
+import { Student } from '../common/models/User/Student';
 
-//import Commons
-import { DEPARTMENT_CODE } from '../common/constants/departmentCode/departmentCode';
-
-interface IUser {
-  id?: string;
-  first_name?: string;
-  last_name?: string;
-  student_no?: string;
-  phone?: string;
-  email?: string;
-  department_code?: DEPARTMENT_CODE;
-  grade?: number;
-}
+import { deleteStudentPermanentlyService, fetchAllStudent, moveToTrashService } from '../service/studentService';
 
 interface StudentContext {
-  allStudents: IUser[];
-  selectedUser?: IUser[];
-  selectUser: (user?: IUser[]) => void;
+  allStudents: Student[];
+  selectedStudent?: Student[];
+  selectStudent: (student?: Student[]) => void;
+  deleteStudentPermanently: (student: Pick<Student, '_id'>[]) => void;
+  moveToTrash: (student: Pick<Student, '_id'>[]) => void;
 }
 
 const StudentContext = createContext<StudentContext>({} as StudentContext);
 
 function StudentProvider({ children }: { children: React.ReactNode }): JSX.Element {
-  const [allStudents, setAllStudents] = useState<IUser[]>(students);
-  const [selectedUser, setSelectedUser] = useState<IUser[]>();
+  //States
+  const [allStudents, setAllStudents] = useState<Student[]>([]);
+  const [selectedStudent, setSelectedStudent] = useState<Student[]>();
+  const [updatePage, setUpdatePage] = useState<Boolean>(false);
 
-  const selectUser = (user?: IUser[]) => {
-    setSelectedUser(user);
+  const refresh = () => {
+    setSelectedStudent([]);
+    setUpdatePage(true);
   };
+
+  //Start Function
+  useEffect(() => {
+    setUpdatePage(false);
+    const init = async () => {
+      const response: Student[] = await fetchAllStudent();
+      return response;
+    };
+    init().then((data) => setAllStudents(data));
+  }, [updatePage]);
+
+  //Functions
+  const selectStudent = (student?: Student[]) => {
+    setSelectedStudent(student);
+  };
+
+  const deleteStudentPermanently = async (students: Pick<Student, '_id'>[]) => {
+    const response = await deleteStudentPermanentlyService(students);
+    refresh();
+    console.log(response);
+  };
+
+  const moveToTrash = async (students: Pick<Student, '_id'>[]) => {
+    const response = await moveToTrashService(students);
+    refresh();
+    console.log(response);
+  };
+
   const memoedValue = useMemo(
     () => ({
       allStudents,
-      selectedUser,
-      selectUser
+      selectedStudent,
+      selectStudent,
+      deleteStudentPermanently,
+      moveToTrash
     }),
-    [allStudents, selectedUser]
+    [allStudents, selectStudent, selectedStudent]
   );
 
   return <StudentContext.Provider value={memoedValue}>{children}</StudentContext.Provider>;
 }
 
 export const useStudent = () => useContext(StudentContext);
-
-export const students = [
-  {
-    id: 'KQJFIWE7237852JKWF',
-    first_name: 'Reşat',
-    last_name: 'YAVÇİN',
-    student_no: '181906114',
-    phone: '+905457430302',
-    email: 'resatyavcin@outlook.com',
-    department_code: DEPARTMENT_CODE.CE,
-    grade: 4
-  },
-  {
-    id: 'YHFKDF7679HFH',
-    first_name: 'Mehmet',
-    last_name: 'SARIGÖL',
-    student_no: '181996814',
-    phone: '+905784563423',
-    email: 'mehmet03003@icloud.com',
-    department_code: DEPARTMENT_CODE.FE,
-    grade: 8
-  },
-  {
-    id: 'YHFKDF7FJEFUE679HFH',
-    first_name: 'Tuba',
-    last_name: 'KOCABIYIK',
-    student_no: '110998811',
-    phone: '+907368338383',
-    email: 'tubiss@icloud.com',
-    department_code: DEPARTMENT_CODE.CE,
-    grade: 3
-  }
-];
 
 export default StudentProvider;

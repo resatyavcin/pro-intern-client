@@ -40,7 +40,7 @@ function CollapseUI(props: ICollapseProps) {
         className={styles.baseContent}
         onChange={toggle}
         accordion={true}
-        ghost={collapsed ? false : true}
+        ghost
         style={{ border: 'none' }}
       >
         {panels?.map((panel) => (

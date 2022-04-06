@@ -17,17 +17,22 @@
   "TIMELINE_INTERN_FILES_PROGRESS.3": "Başvurusu yapılan stajın evrak işlerin son bulması",
 
   "BUTTON_LABEL.EXPORTS": "Dışarıya Aktar",
+  "BUTTON_LABEL.DELETE": "Sil",
+  "BUTTON_LABEL.DELETE_ALL": "Seçilenleri Sil",
   "BUTTON_LABEL.PREVIEW": "Önizleme",
-
-  "DEPARTMENT.COMPUTER_ENGINEERING": "Bilgisayar Mühendisliği",
-  "DEPARTMENT.ELECTRICAL_ELECTRONICS_ENGINEERING": "Elektrik Elektronik Mühendisliği",
-  "DEPARTMENT.FOOD_ENGINEERING": "Gıda Mühendisliği",
-  "DEPARTMENT.MACHINE_ENGINEERING": "Makina Mühendisliği",
+  "BUTTON_LABEL.DELETE_PERMANENTLY": "Kalıcı Olarak Sil",
+  "BUTTON_LABEL.DELETE_ALL_PERMANENTLY": "Seçilenleri Kalıcı Olarak Sil",
+  
+  "DEPARTMENT.CE": "Bilgisayar Mühendisliği",
+  "DEPARTMENT.EE": "Elektrik Elektronik Mühendisliği",
+  "DEPARTMENT.FE": "Gıda Mühendisliği",
+  "DEPARTMENT.ME": "Makina Mühendisliği",
 
   "COLUMN.FIRST_NAME": "Ad",
   "COLUMN.LAST_NAME": "Soyad",
   "COLUMN.DEPARTMENT": "Bölüm",
 
+  "PAGES.NO_DATA_IN_DUSTBIN": "Çöp kutusunda veri bulunmamaktadır.",
 
   "REGISTER.HEADER_TITLE": "Hemen Kaydolun",
   "REGISTER.HEADER_LABEL": "Kaydolmak için gerekli olan alanları eksiksiz ve doğru dordurmanız gerekmektedir.",

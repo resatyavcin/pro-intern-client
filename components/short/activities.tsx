@@ -7,7 +7,7 @@ import { useStudent } from '../../context/StudentContext';
 import TypographyUI from '../ui/typography/Typography';
 import { Avatar } from 'antd';
 
-function PreviewProfile() {
+function Activities() {
   const [current, setCurrent] = useState('app1');
   const { selectedUser } = useStudent();
 
@@ -30,4 +30,4 @@ function PreviewProfile() {
   );
 }
 
-export default PreviewProfile;
+export default Activities;

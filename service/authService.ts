@@ -1,27 +1,19 @@
 import axios from 'axios'
+import { Student } from '../common/models/User/Student';
 
 export const SERVER_BASE_URL = 'http://localhost:8080/api';
 
-interface User {
-    email: string;
-    password: string;
-    phone: string;
-}
 
-type A = Omit<User, "phone">
-
-
-export const registerService = async (form: User) => {
+export const registerService = async (form: Student) => {
     try {
-        const response = await axios.post(SERVER_BASE_URL + '/auth/register', { ...form });
+        const response = await axios.post(SERVER_BASE_URL + '/auth/register', { ...form, role: 'STUDENT' });
         return response.data;
     } catch (err: any) {
         return err.response
     }
 }
 
-
-export const loginService = async (form: A) => {
+export const loginService = async (form: Pick<Student, "email" | "password">) => {
     try {
         const response = await axios.post(SERVER_BASE_URL + '/auth/login', { ...form });
         return response.data;
