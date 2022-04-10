@@ -46,7 +46,9 @@
   "FORGOT_PASSWORD.HEADER_LABEL": "Please enter the email address the used to created your account, and we'll send to a link to reset your password.",
 
   "PAGES.NO_DATA_IN_DUSTBIN": "There is no data in the trash.",
+  "PAGES.NO_DATA_IN_SEARCH": "No results found for searches.",
 
+  
   "RESPONSE.USER_NOT_FOUND": "User not found.",
   "RESPONSE.USER_OR_PASS_WRONG": "User or password incorrect",
   "RESPONSE.NOT_VERIFY": "Your account has not been activated. Please verify via the link in your e-mail.",

@@ -24,7 +24,12 @@ const ForgotPassword_ = () => {
 function ForgotPassword() {
   return (
     <AuthLayout>
-      <CardUI icon={MdLock} headerTitle={'FORGOT_PASSWORD.HEADER_TITLE'} headerLabel={'FORGOT_PASSWORD.HEADER_LABEL'}>
+      <CardUI
+        cardType="auth"
+        icon={MdLock}
+        headerTitle={'FORGOT_PASSWORD.HEADER_TITLE'}
+        headerLabel={'FORGOT_PASSWORD.HEADER_LABEL'}
+      >
         <ForgotPassword_ />
       </CardUI>
     </AuthLayout>

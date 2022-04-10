@@ -41,7 +41,7 @@ const columns = [
   }
 ];
 function Trash() {
-  const { allStudents, selectedStudent, selectStudent, deleteStudentPermanently } = useStudent();
+  const { allStudents, selectedStudent, selectStudent, deleteStudentPermanently, getTrashFilterStudent } = useStudent();
 
   const [selectedRows, setSelectedRows] = useState<Pick<Student, '_id'>[]>([]);
   const [checkStrictly, setCheckStrictly] = useState(false);
@@ -62,13 +62,6 @@ function Trash() {
       okCancel: true,
       cancelText: 'Vazgeç'
     });
-  };
-
-  const pickTrash = () => {
-    const filterData = allStudents.filter((student) => {
-      return student.isTrash;
-    });
-    return filterData;
   };
 
   const isTrashControl = () => {
@@ -93,13 +86,18 @@ function Trash() {
         )}
       </Row>
 
-      {pickTrash() && pickTrash().length > 0 ? (
-        <TableUI keyOf={'_id'} rowSelection={{ ...rowSelection, checkStrictly }} data={pickTrash()} columns={columns} />
+      {getTrashFilterStudent() && getTrashFilterStudent().length > 0 ? (
+        <TableUI
+          keyOf={'_id'}
+          rowSelection={{ ...rowSelection, checkStrictly }}
+          data={getTrashFilterStudent()}
+          columns={columns}
+        />
       ) : (
         <div style={{ margin: '0 auto', textAlign: 'center' }}>
           <DustBin />
           <TypographyUI
-            style={{ color: '#585858' }}
+            style={{ color: '#343644' }}
             level={2}
             label={'PAGES.NO_DATA_IN_DUSTBIN'}
             typographyType={'title'}

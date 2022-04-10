@@ -16,6 +16,8 @@ import Resume from '../components/short/resume';
 import { Avatar, Layout } from 'antd';
 const Content = Layout;
 
+import { PRIVATE_ROUTE_CONFIG } from '../routes/privateRoute';
+
 import { Menu } from 'antd';
 import SubMenu from 'antd/lib/menu/SubMenu';
 import {

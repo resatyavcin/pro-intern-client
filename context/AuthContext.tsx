@@ -40,6 +40,7 @@ function AuthProvider({ children }: { children: ReactNode }): JSX.Element {
     if (response.status !== 500 || response.token == token) {
       setError('');
       localStorage.setItem('token', response.token);
+      localStorage.setItem('user', JSON.stringify(response.user));
       router.push('/dashboard');
     } else {
       setError(response.data);

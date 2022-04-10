@@ -33,6 +33,7 @@
   "COLUMN.DEPARTMENT": "Bölüm",
 
   "PAGES.NO_DATA_IN_DUSTBIN": "Çöp kutusunda veri bulunmamaktadır.",
+  "PAGES.NO_DATA_IN_SEARCH": "Aramalarda bir sonuç bulunamamıştır.",
 
   "REGISTER.HEADER_TITLE": "Hemen Kaydolun",
   "REGISTER.HEADER_LABEL": "Kaydolmak için gerekli olan alanları eksiksiz ve doğru dordurmanız gerekmektedir.",

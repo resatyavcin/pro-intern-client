@@ -13,6 +13,7 @@ function login() {
   return (
     <AuthLayout>
       <CardUI
+        cardType="auth"
         icon={FaFingerprint}
         headerTitle={'LOGIN.HEADER_TITLE'}
         headerLabel={'LOGIN.HEADER_LABEL'}

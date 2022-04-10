@@ -6,13 +6,14 @@ import { Form, FormProps } from 'antd';
 
 interface IFormProps extends FormProps {
   children: ReactNode;
+  isNotBlank?: Boolean;
 }
 
 function formUI(props: IFormProps) {
-  const { children } = props;
+  const { children, isNotBlank } = props;
 
   return (
-    <Form layout="vertical" style={{ padding: 5 }} {...props}>
+    <Form layout="vertical" style={isNotBlank ? { height: 32 } : { padding: 5 }} {...props}>
       {children}
     </Form>
   );

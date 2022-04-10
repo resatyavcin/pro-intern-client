@@ -15,6 +15,7 @@ const register = () => {
   return (
     <AuthLayout>
       <CardUI
+        cardType="auth"
         icon={FaUserCircle}
         headerTitle={'REGISTER.HEADER_TITLE'}
         headerLabel={'REGISTER.HEADER_LABEL'}
