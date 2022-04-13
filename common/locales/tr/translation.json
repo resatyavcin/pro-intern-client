@@ -22,7 +22,9 @@
   "BUTTON_LABEL.PREVIEW": "Önizleme",
   "BUTTON_LABEL.DELETE_PERMANENTLY": "Kalıcı Olarak Sil",
   "BUTTON_LABEL.DELETE_ALL_PERMANENTLY": "Seçilenleri Kalıcı Olarak Sil",
-  
+  "BUTTON.MAKE_AN_APPLICATION":"Başvuru Yap",
+
+
   "DEPARTMENT.CE": "Bilgisayar Mühendisliği",
   "DEPARTMENT.EE": "Elektrik Elektronik Mühendisliği",
   "DEPARTMENT.FE": "Gıda Mühendisliği",
@@ -51,6 +53,10 @@
   "FORGOT_PASSWORD.HEADER_LABEL": "Lütfen hesabınızı oluşturmak için kullandığınız e-posta adresini girin, şifrenizi sıfırlamak için bir bağlantı gönderelim.",
 
 
+
+  "INTERN.NO_INTERNSHIP_SUBTITLE":"Başvuru için aşağıdaki butondan yararlanabilirsiniz. Bu aşamada sınıfınızın 2 olmasına ve o dersi almış olduğunuza dikkat ediniz.",
+  "INTERN.NO_INTERNSHIP_TITLE":"Şu ana kadar bir staj başvurunuz bulunmamaktadır.",
+  
 
   "RESPONSE.USER_NOT_FOUND": "Kullanıcı bulunamadı.",
   "RESPONSE.USER_OR_PASS_WRONG": "Kullanıcı yada şifre hatalı!",

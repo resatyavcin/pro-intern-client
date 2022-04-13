@@ -19,8 +19,6 @@ export const fetchAllStudent = async () => {
     }
 }
 
-
-
 export const moveToTrashService = async (selectedUsers: Pick<Student, "_id">[]) => {
     const token = localStorage.getItem('token')
 

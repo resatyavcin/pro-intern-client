@@ -1,22 +1,17 @@
 import Router from 'next/router';
 import React, { createContext, useContext } from 'react';
-import { ReactNode, useMemo, useState } from 'react';
+import { ReactNode, useMemo, useState, useEffect } from 'react';
 
 //import Service
 import { registerService, loginService, activateAccountService } from '../service/authService';
 
 import { useRouter } from 'next/router';
 import { Student } from '../common/models/User/Student';
-
-interface User {
-  email: string;
-  password: string;
-  phone: string;
-}
+import { User } from '../common/models/User/LoginUser';
 
 interface AuthContextType {
-  user?: User;
-  loading: boolean;
+  user: User;
+  setLoginUser: (user: User) => void;
   error?: any;
   token?: string;
   login: (form: Pick<Student, 'email' | 'password'>) => void;
@@ -27,24 +22,27 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 function AuthProvider({ children }: { children: ReactNode }): JSX.Element {
-  const [user, setUser] = useState<User>();
-  const [token, setToken] = useState<string>('');
+  const [user, setUser] = useState<User>({ _id: '', email: '', firstName: '', lastName: '', role: '' });
+
   const [error, setError] = useState<string>();
-  const [loading, setLoading] = useState<boolean>(false);
-  const [loadingInitial, setLoadingInitial] = useState<boolean>(true);
 
   const router = useRouter();
 
   const login = async (form: Pick<Student, 'email' | 'password'>) => {
     const response = await loginService(form);
-    if (response.status !== 500 || response.token == token) {
+    if (response.status !== 500) {
       setError('');
       localStorage.setItem('token', response.token);
       localStorage.setItem('user', JSON.stringify(response.user));
+
       router.push('/dashboard');
     } else {
       setError(response.data);
     }
+  };
+
+  const setLoginUser = (user: User) => {
+    setUser(user);
   };
 
   const signUp = async (form: Student) => {
@@ -64,14 +62,13 @@ function AuthProvider({ children }: { children: ReactNode }): JSX.Element {
   const memoedValue = useMemo(
     () => ({
       user,
-      token,
-      loading,
+      setLoginUser,
       error,
       login,
       signUp,
       activeAccount
     }),
-    [user, loading, error]
+    [user, error]
   );
 
   return <AuthContext.Provider value={memoedValue}>{children}</AuthContext.Provider>;

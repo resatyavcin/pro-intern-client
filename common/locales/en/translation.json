@@ -20,7 +20,8 @@
   "BUTTON_LABEL.PREVIEW": "Preview",
   "BUTTON_LABEL.DELETE_PERMANENTLY": "Delete Permanently",
   "BUTTON_LABEL.DELETE_ALL_PERMANENTLY": "Permanently Delete Selected",
-  
+  "BUTTON.MAKE_AN_APPLICATION":"Make Application",
+
   "DEPARTMENT.CE": "Computer Enginnering",
   "DEPARTMENT.EE": "Electrical Electronics Engineering",
   "DEPARTMENT.FE": "The Food Engineering",
@@ -48,6 +49,9 @@
   "PAGES.NO_DATA_IN_DUSTBIN": "There is no data in the trash.",
   "PAGES.NO_DATA_IN_SEARCH": "No results found for searches.",
 
+  "INTERN.NO_INTERNSHIP_SUBTITLE":"You can use the button below to apply. At this stage, make sure that your class is 2 and that you have taken that course.",
+  "INTERN.NO_INTERNSHIP_TITLE":"You have not yet applied for an internship.",
+  
   
   "RESPONSE.USER_NOT_FOUND": "User not found.",
   "RESPONSE.USER_OR_PASS_WRONG": "User or password incorrect",

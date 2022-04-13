@@ -1,0 +1,14 @@
+.baseIcon {
+  display: block;
+  padding: 10px;
+}
+
+.sm {
+  width: 80px;
+  height: 80px;
+}
+
+.baseIcon:hover {
+  color: white;
+  background-color: rgb(32, 92, 223);
+}

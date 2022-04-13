@@ -1,17 +1,37 @@
 import React from 'react';
-import { Result } from 'antd';
+import { Result, ResultProps } from 'antd';
 import ButtonUI from '../button/buttonUI';
+import { FormattedMessage } from 'react-intl';
 
-function ResultUI() {
+interface IResultProps extends ResultProps {
+  status: 'success' | 'warning' | 'error';
+  title: string;
+  subTitle: string;
+  leftButtonLabel?: string;
+  rightButtonLabel?: string;
+  leftButtonOnClick?: () => void;
+  rightButtonOnClick?: () => void;
+}
+
+function ResultUI(props: IResultProps) {
+  const { status, title, subTitle, leftButtonLabel, rightButtonLabel, leftButtonOnClick, rightButtonOnClick } = props;
   return (
     <Result
-      status="success"
-      title="Staj Başvuru Talebiniz Başarıyla Alınmıştır."
-      subTitle="Staj ID: KJ925GREF93FE45. Lütfen staj başvuru talebinizin + öğrenci işleri tarafından onayı için 1-3 iş günü bekleyiniz."
-      extra={[
-        <ButtonUI key="console" label={'Geri Dön'} />,
-        <ButtonUI type="primary" key="console" label={'Geri Dön'} />
-      ]}
+      status={status}
+      title={<FormattedMessage id={title} />}
+      subTitle={<FormattedMessage id={subTitle} />}
+      extra={
+        leftButtonLabel
+          ? [<ButtonUI type="primary" label={leftButtonLabel} onClick={leftButtonOnClick} />]
+          : rightButtonLabel
+          ? [<ButtonUI type="primary" label={rightButtonLabel} onClick={rightButtonOnClick} />]
+          : leftButtonLabel && rightButtonLabel
+          ? [
+              <ButtonUI label={leftButtonLabel} onClick={leftButtonOnClick} />,
+              <ButtonUI type="primary" label={rightButtonLabel} onClick={rightButtonOnClick} />
+            ]
+          : null
+      }
     />
   );
 }

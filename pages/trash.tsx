@@ -1,5 +1,5 @@
 //import react
-import React, { Key, useState } from 'react';
+import React, { useState } from 'react';
 
 //import layout
 import MainLayout from '../core/MainLayout';
@@ -9,16 +9,21 @@ import TableUI from '../components/ui/table/Table';
 import ButtonUI from '../components/ui/button/buttonUI';
 import TypographyUI from '../components/ui/typography/Typography';
 
-import { Col, Row } from 'antd';
+//import Antd
+import { Modal, Row } from 'antd';
+
+//import Models
 import { Student } from '../common/models/User/Student';
 
-import { DEPARTMENT_CODE } from '../common/constants/departmentCode/departmentCode';
+//import Context
 import { useStudent } from '../context/StudentContext';
+
+//import Commons
+import { DEPARTMENT_CODE } from '../common/constants/departmentCode/departmentCode';
 import { departmentCodeConverter } from '../common/utils/departmentCodeConverter';
 
+//import Icons
 import { DustBin } from '../assets/icons/Dustbin';
-
-import { Modal } from 'antd';
 
 const columns = [
   {
@@ -40,8 +45,9 @@ const columns = [
     render: (text: DEPARTMENT_CODE) => <TypographyUI typographyType="text" label={departmentCodeConverter(text)} />
   }
 ];
+
 function Trash() {
-  const { allStudents, selectedStudent, selectStudent, deleteStudentPermanently, getTrashFilterStudent } = useStudent();
+  const { selectedStudent, selectStudent, deleteStudentPermanently, getTrashFilterStudent } = useStudent();
 
   const [selectedRows, setSelectedRows] = useState<Pick<Student, '_id'>[]>([]);
   const [checkStrictly, setCheckStrictly] = useState(false);

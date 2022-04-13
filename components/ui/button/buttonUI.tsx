@@ -7,14 +7,15 @@ import styles from '../../../assets/styles/Button.module.scss';
 
 interface IButtonProps extends ButtonProps {
   label?: string;
+  type?: 'link' | 'text' | 'ghost' | 'default' | 'primary' | 'dashed' | undefined;
 }
 
 function ButtonUI(props: IButtonProps) {
-  const { label } = props;
+  const { label, type } = props;
 
   return (
     <FormItemUI>
-      <Button className={styles.baseButton} {...props}>
+      <Button type={type} className={styles.baseButton} {...props}>
         <FormattedMessage id={label} />
       </Button>
     </FormItemUI>

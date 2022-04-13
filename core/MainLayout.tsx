@@ -35,12 +35,15 @@ import { CgPushChevronRight, CgPushChevronLeft } from 'react-icons/cg';
 //import Contexts
 import { useCollapse } from '../context/ActionPanelToggleContext';
 import { useStudent } from '../context/StudentContext';
+import { useAuth } from '../context/AuthContext';
 
 const MainLayout = (props: { children: React.ReactNode }) => {
   const { children } = props;
 
   const { collapsed, setCollapsed } = useCollapse();
+
   const { selectedStudent, selectStudent } = useStudent();
+  const { user } = useAuth();
 
   const router = useRouter();
 
@@ -52,39 +55,71 @@ const MainLayout = (props: { children: React.ReactNode }) => {
     <Layout style={{ height: '100vh' }}>
       <HeaderUI />
       <Layout className={styles.siteLayout}>
-        <SidebarUI style={{ height: 'calc(100vh-58px)' }}>
-          <Menu
-            style={{ minHeight: '93vh' }}
-            selectedKeys={[router.asPath]}
-            defaultSelectedKeys={['dashboard']}
-            defaultOpenKeys={
-              router.asPath === '/documents?verify=true' || router.asPath === '/documents?verify=false' ? ['sub1'] : []
-            }
-            mode="inline" // inlineCollapsed={this.state.collapsed}
-            onClick={({ key }) => {
-              selectStudent([]);
-              router.push(`${key}`);
-            }}
-          >
-            <Menu.Item key="/dashboard" icon={<HomeOutlined />}>
-              Ana Sayfa
-            </Menu.Item>
-            <SubMenu key="sub1" icon={<FolderOutlined />} title="Belgeler">
-              <Menu.Item key="/documents?verify=true" icon={<FileDoneOutlined />}>
-                Onaylı
+        {user && user.role === 'ADMIN' && (
+          <SidebarUI style={{ height: 'calc(100vh-58px)' }}>
+            <Menu
+              style={{ minHeight: '93vh' }}
+              selectedKeys={[router.asPath]}
+              defaultSelectedKeys={['dashboard']}
+              defaultOpenKeys={
+                router.asPath === '/documents?verify=true' || router.asPath === '/documents?verify=false'
+                  ? ['sub1']
+                  : []
+              }
+              mode="inline" // inlineCollapsed={this.state.collapsed}
+              onClick={({ key }) => {
+                selectStudent([]);
+                router.push(`${key}`);
+              }}
+            >
+              <Menu.Item key="/dashboard" icon={<HomeOutlined />}>
+                Ana Sayfa
               </Menu.Item>
-              <Menu.Item key="/documents?verify=false" icon={<FileExclamationOutlined />}>
-                Onaylanmamış
+              <SubMenu key="sub1" icon={<FolderOutlined />} title="Belgeler">
+                <Menu.Item key="/documents?verify=true" icon={<FileDoneOutlined />}>
+                  Onaylı
+                </Menu.Item>
+                <Menu.Item key="/documents?verify=false" icon={<FileExclamationOutlined />}>
+                  Onaylanmamış
+                </Menu.Item>
+              </SubMenu>
+              <Menu.Item key="/students" icon={<UserOutlined />}>
+                Öğrenciler
               </Menu.Item>
-            </SubMenu>
-            <Menu.Item key="/students" icon={<UserOutlined />}>
-              Öğrenciler
-            </Menu.Item>
-            <Menu.Item key="/trash" icon={<DeleteOutlined />}>
-              Çöp Kutusu
-            </Menu.Item>
-          </Menu>
-        </SidebarUI>
+              <Menu.Item key="/trash" icon={<DeleteOutlined />}>
+                Çöp Kutusu
+              </Menu.Item>
+            </Menu>
+          </SidebarUI>
+        )}
+
+        {user && user.role === 'STUDENT' && (
+          <SidebarUI style={{ height: 'calc(100vh-58px)' }}>
+            <Menu
+              style={{ minHeight: '93vh' }}
+              selectedKeys={[router.asPath]}
+              defaultSelectedKeys={['dashboard']}
+              defaultOpenKeys={
+                router.asPath === '/documents?verify=true' || router.asPath === '/documents?verify=false'
+                  ? ['sub1']
+                  : []
+              }
+              mode="inline" // inlineCollapsed={this.state.collapsed}
+              onClick={({ key }) => {
+                selectStudent([]);
+                router.push(`${key}`);
+              }}
+            >
+              <Menu.Item key="/" icon={<HomeOutlined />}>
+                Ana Sayfa
+              </Menu.Item>
+              <Menu.Item key="/interns" icon={<UserOutlined />}>
+                Stajlar
+              </Menu.Item>
+            </Menu>
+          </SidebarUI>
+        )}
+
         <Content
           style={{
             minHeight: 'calc(100vh-58px)',
@@ -94,7 +129,7 @@ const MainLayout = (props: { children: React.ReactNode }) => {
         >
           {children}
         </Content>
-        {selectedStudent && selectedStudent.length > 0 ? (
+        {selectedStudent && selectedStudent.length > 0 && user && user.role === 'ADMIN' && (
           <SidebarUI
             collapsedWidth={330}
             width={56}
@@ -124,7 +159,7 @@ const MainLayout = (props: { children: React.ReactNode }) => {
 
             <CollapseUI collapsed={collapsed} panels={panels} />
           </SidebarUI>
-        ) : null}
+        )}
       </Layout>
     </Layout>
   );
