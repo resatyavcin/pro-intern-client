@@ -6,6 +6,7 @@ import CustomIconComponentProps from '@ant-design/icons';
 
 type CardType = 'normal' | 'auth';
 interface ICardProps extends CardProps {
+  style?: React.CSSProperties;
   cardType: CardType;
   icon?: IconType;
   headerTitle?: string;
@@ -19,13 +20,13 @@ import { FormattedMessage } from 'react-intl';
 import { useAuth } from '../../../context/AuthContext';
 
 function CardUI(props: ICardProps) {
-  const { children, icon, headerTitle, headerLabel, footerLabel, footerLink, cardType } = props;
+  const { children, icon, style, headerTitle, headerLabel, footerLabel, footerLink, cardType } = props;
   const { error } = useAuth();
 
   const CardIcon = icon;
 
   return (
-    <Card className={styles.baseCard}>
+    <Card style={style} className={styles.baseCard}>
       <div>
         {cardType === 'auth' && (
           <Fragment>

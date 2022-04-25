@@ -9,6 +9,7 @@ const { Text, Title, Paragraph, Link } = Typography;
 type levelNumber = 1 | 2 | 3 | 4 | 5 | undefined;
 
 interface ITypography extends TextProps {
+  style?: React.CSSProperties;
   label: string;
   typographyType: string;
   level?: levelNumber;
@@ -16,17 +17,21 @@ interface ITypography extends TextProps {
 }
 
 function TypographyUI(props: ITypography) {
-  const { label, level, typographyType, onClick } = props;
+  const { label, level, typographyType, onClick, style } = props;
 
   const labelUndefinedControl = label ? <FormattedMessage id={label} /> : null;
 
   const renderSwitch = (typographyType: string) => {
     switch (typographyType) {
       case 'text':
-        return <Text {...props}>{labelUndefinedControl}</Text>;
+        return (
+          <Text style={style} {...props}>
+            {labelUndefinedControl}
+          </Text>
+        );
       case 'title':
         return (
-          <Title level={level} {...props}>
+          <Title style={style} level={level} {...props}>
             {labelUndefinedControl}
           </Title>
         );
@@ -34,9 +39,17 @@ function TypographyUI(props: ITypography) {
       case 'paragraph':
         return <Paragraph {...props}>{labelUndefinedControl}</Paragraph>;
       case 'link':
-        return <Link onClick={onClick}>{labelUndefinedControl}</Link>;
+        return (
+          <Link style={style} onClick={onClick}>
+            {labelUndefinedControl}
+          </Link>
+        );
       default:
-        return <Text {...props}>{labelUndefinedControl}</Text>;
+        return (
+          <Text style={style} {...props}>
+            {labelUndefinedControl}
+          </Text>
+        );
     }
   };
 

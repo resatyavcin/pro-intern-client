@@ -1,8 +1,9 @@
 export interface Intern {
     _id: String;
-    startDate: string
-    status: string;
-    complated: false;
+    startDate: String
+    status: String;
+    completed: false;
+    companyName: String;
     updatedAt: String,
     createdAt: String
 }

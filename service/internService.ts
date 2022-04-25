@@ -17,3 +17,20 @@ export const fetchAllInterns = async () => {
         return err.response
     }
 }
+
+
+export const applicationInternService = async (companyName: string, startDate: Date, endDate: Date) => {
+    const token = localStorage.getItem('token')
+
+    try {
+        const response = await axios.get(SERVER_BASE_URL + '/intern/application', {
+            headers: {
+                Authorization: 'Bearer '+ token                                                                                                                                                                                                          
+            }
+        });
+
+        return response.data;
+    } catch (err: any) {
+        return err.response
+    }
+}

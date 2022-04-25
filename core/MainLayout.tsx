@@ -28,7 +28,9 @@ import {
   FolderOutlined,
   FileDoneOutlined,
   FileExclamationOutlined,
-  UserOutlined
+  UserOutlined,
+  ThunderboltOutlined,
+  SettingOutlined
 } from '@ant-design/icons';
 import { CgPushChevronRight, CgPushChevronLeft } from 'react-icons/cg';
 
@@ -113,8 +115,11 @@ const MainLayout = (props: { children: React.ReactNode }) => {
               <Menu.Item key="/" icon={<HomeOutlined />}>
                 Ana Sayfa
               </Menu.Item>
-              <Menu.Item key="/interns" icon={<UserOutlined />}>
+              <Menu.Item key={'/interns'} icon={<ThunderboltOutlined />}>
                 Stajlar
+              </Menu.Item>
+              <Menu.Item key={'/settings'} icon={<SettingOutlined />}>
+                Ayarlar
               </Menu.Item>
             </Menu>
           </SidebarUI>
