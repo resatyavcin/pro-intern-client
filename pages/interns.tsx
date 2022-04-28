@@ -1,62 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import MainLayout from '../core/MainLayout';
 import { PRIVATE_ROUTE_CONFIG } from '../routes/privateRoute';
-import { Modal } from 'antd';
 import { useIntern } from '../context/InternContext';
 import ResultUI from '../components/ui/result/Result';
 
-import InputUI from '../components/ui/form/inputUI';
-
-import { DatePicker } from 'antd';
-
 import InternCard from '../components/intern-card/InternCard';
+import InternApplicationForm from '../components/intern-application-modal/InternApplicationModal';
+import { Store, StoreBaseValue, useModalForm } from 'sunflower-antd';
 
-const { RangePicker } = DatePicker;
+import { Form } from 'antd';
 
-const dateFormat = 'DD/MM/YYYY';
-
+interface a extends Store {
+  type: [];
+}
 function Interns() {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [applicationForm, setAplicationForm] = useState({});
+  const { allInterns, applicationIntern } = useIntern();
 
-  const { allInterns } = useIntern();
+  const [form] = Form.useForm();
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    //applicationIntern({ ...applicationForm });
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
-  useEffect(() => {
-    //console.log(allInterns);
-  }, []);
+  const { modalProps, formProps, show } = useModalForm({
+    defaultVisible: false,
+    autoSubmitClose: true,
+    form,
+    async submit(data) {
+      await applicationIntern(data);
+    }
+  });
 
   return (
     <MainLayout>
-      <Modal
-        title="Staj Başvurusu"
-        visible={isModalVisible}
-        okText="Başvuruyu Gönder"
-        cancelText="Vazgeç"
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <InputUI
-          name="companyName"
-          onChange={(e) => setAplicationForm({ ...applicationForm, companyName: e.target.value })}
-          placeholder="Şirket Adı"
-        />
-        <RangePicker
-          format={dateFormat}
-          onChange={(e: any) => setAplicationForm({ ...applicationForm, startDate: e[0]._d, endDate: e[1]._d })}
-        />
-      </Modal>
+      <InternApplicationForm modalProps={modalProps} formProps={formProps} />
 
       {allInterns.length === 0 ? (
         <ResultUI
@@ -64,7 +37,7 @@ function Interns() {
           subTitle="INTERN.NO_INTERNSHIP_SUBTITLE"
           title="INTERN.NO_INTERNSHIP_TITLE"
           leftButtonLabel="BUTTON.MAKE_AN_APPLICATION"
-          leftButtonOnClick={showModal}
+          leftButtonOnClick={show}
         />
       ) : (
         allInterns.map((intern, i) => <InternCard point={i + 1} intern={intern} />)
@@ -79,4 +52,7 @@ export async function getServerSideProps() {
   return {
     props: { ...PRIVATE_ROUTE_CONFIG.INTERNS }
   };
+}
+function applicationIntern() {
+  throw new Error('Function not implemented.');
 }

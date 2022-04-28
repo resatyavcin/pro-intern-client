@@ -11,7 +11,9 @@ import { Divider } from 'antd';
 import { ClockCircleFilled, CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons';
 import { Steps } from 'antd';
 import { Intern } from '../../common/models/Intern/Intern';
-import { InternStatusCode } from '../../common/constants/internStatusCode/internStatusCode';
+
+import { Alert } from 'antd';
+
 const { Step } = Steps;
 
 interface IInternCard {
@@ -59,6 +61,16 @@ function InternCard(props: IInternCard) {
 
   return (
     <div style={{ marginBottom: 23 }}>
+      {pointStep(intern.status) === 0 && (
+        <Alert
+          style={{ marginBottom: 20 }}
+          message="Ön Evrak Aşaması"
+          description="Bu aşamaya geçilmesi ayarlar kısmından imzanızı kaydedip, belgeyi imzalamanız gerekmektedir."
+          type="warning"
+          showIcon
+        />
+      )}
+
       <CardUI cardType="normal">
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div>
@@ -81,7 +93,7 @@ function InternCard(props: IInternCard) {
             />{' '}
             <br />
           </div>
-          <Link href={`/files?=${point}`}>
+          <Link href={`/intern-detail?id=${intern._id}`}>
             <ButtonUI type="dashed" label="Detaylara git" />
           </Link>
         </div>
@@ -89,11 +101,11 @@ function InternCard(props: IInternCard) {
         <Divider />
 
         <Steps current={pointStep(intern.status)} progressDot>
-          <Step title="Başvuru Aşaması" subTitle={<Fragment>{stepControl(0)}</Fragment>} />
-          <Step title="Ön Evrak Aşaması" subTitle={<Fragment>{stepControl(1)}</Fragment>} />
-          <Step title="Şirket Onayı" subTitle={<Fragment>{stepControl(2)}</Fragment>} />
-          <Step title="Staj Süreci" subTitle={<Fragment>{stepControl(3)}</Fragment>} />
-          <Step title="Son Evrak Aşaması" subTitle={<Fragment>{stepControl(4)}</Fragment>} />
+          <Step title="Ön Evrak Aşaması" subTitle={<Fragment>{stepControl(0)}</Fragment>} />
+          <Step title="Ön Evrak Onayı" subTitle={<Fragment>{stepControl(1)}</Fragment>} />
+          <Step title="Staj Süreci" subTitle={<Fragment>{stepControl(2)}</Fragment>} />
+          <Step title="Son Evrak Aşaması" subTitle={<Fragment>{stepControl(3)}</Fragment>} />
+          <Step title="Son Evrak Onayı" subTitle={<Fragment>{stepControl(4)}</Fragment>} />
         </Steps>
       </CardUI>
     </div>

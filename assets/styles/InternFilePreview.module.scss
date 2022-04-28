@@ -1,0 +1,62 @@
+.previewSmallFilesWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
+  height: 220px;
+}
+
+.previewSmall {
+  position: relative;
+  align-items: center;
+  margin: 10px 20px 60px 0px;
+  width: 176px;
+  height: 120px;
+}
+
+.previewSmallHeader {
+  background: #f8f9fa;
+  cursor: pointer;
+  padding: 20;
+  border-radius: 4px;
+  position: relative;
+  width: 176px;
+  height: 120px;
+  border: 1px solid #aab5bd;
+  margin-bottom: 10px;
+  transition: 0.3s width, 0.3s height, 0.3s border;
+}
+
+.previewSmallHeader:hover {
+  width: 186px;
+  height: 140px;
+  border: 1px solid #d7dde4;
+}
+
+.lockIcon {
+  font-size: 16px;
+  color: #068ee9;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.fileIcon {
+  font-size: 36px;
+  color: #068ee9;
+  position: absolute;
+  top: 42px;
+  left: 67px;
+  transition: 0.3s font-size, 0.3s top, 0.3s left;
+}
+
+.opaticyFifty {
+  opacity: 0.4;
+}
+
+.previewSmallHeader:hover > .fileIcon {
+  font-size: 56px;
+  color: #068ee9;
+  position: absolute;
+  top: 38px;
+  left: 65px;
+}

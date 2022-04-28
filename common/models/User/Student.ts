@@ -3,15 +3,15 @@ import { DEPARTMENT_CODE } from "../../constants/departmentCode/departmentCode";
 export interface Student {
     _id: String;
     role: String,
-    firstName: String;
-    lastName: String;
-    email: String;
-    password: String;
-    republicOfTurkeyId: String;
-    phone: String;
-    schoolNumber: String;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    republicOfTurkeyId: string;
+    phone: string;
+    schoolNumber: string;
     departmentCode: DEPARTMENT_CODE;
-    grade: String;
+    grade: string;
     interns: Array<String>,
     remainingIntern: Number,
     isBlocked: Boolean,
@@ -19,6 +19,6 @@ export interface Student {
     isVerified: Boolean,
     tokens: Array<Object>,
     rightOfEntry: Number,
-    updatedAt: String,
-    createdAt: String
+    updatedAt: string,
+    createdAt: string
 }

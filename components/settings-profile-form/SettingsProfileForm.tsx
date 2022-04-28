@@ -1,10 +1,12 @@
 import { Col, Row } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DraggerUI from '../dragger/Dragger';
 import ButtonUI from '../ui/button/buttonUI';
 import FormUI from '../ui/form/formUI';
 import InputUI from '../ui/form/inputUI';
-import UploadPicture from '../upload-profile-picture/UploadPicture';
+import { useAuth } from '../../context/AuthContext';
+import { Student } from '../../common/models/User/Student';
+
 type feed = '' | 'error' | 'success' | 'warning' | 'validating' | undefined;
 
 interface IFeedBack {
@@ -12,10 +14,23 @@ interface IFeedBack {
   feedType: feed;
 }
 
-function InternInfoForm() {
+function SettingsProfileForm() {
   const [feedBack, setFeedBack] = useState<IFeedBack[]>([]);
   const [password, setPassword] = useState<string>('');
   const [response, setError] = useState('');
+  const [profile, setProfile] = useState<Student>();
+
+  const { getProfile } = useAuth();
+
+  useEffect(() => {
+    const a = getProfile();
+    a.then((data) => {
+      if (data) {
+        setProfile(data);
+      }
+    });
+    console.log(profile);
+  }, []);
 
   const onFinish = (values: any) => {};
 
@@ -73,6 +88,9 @@ function InternInfoForm() {
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       onFieldsChange={onChangeFields}
+      initialValues={{
+        firstName: profile?.firstName
+      }}
     >
       <Row gutter={5}>
         <Col xs={12}>
@@ -155,4 +173,4 @@ function InternInfoForm() {
   );
 }
 
-export default InternInfoForm;
+export default SettingsProfileForm;

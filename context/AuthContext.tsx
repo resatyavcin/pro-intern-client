@@ -3,7 +3,7 @@ import React, { createContext, useContext } from 'react';
 import { ReactNode, useMemo, useState, useEffect } from 'react';
 
 //import Service
-import { registerService, loginService, activateAccountService } from '../service/authService';
+import { registerService, loginService, activateAccountService, fetchProfileService } from '../service/authService';
 
 import { useRouter } from 'next/router';
 import { Student } from '../common/models/User/Student';
@@ -15,6 +15,7 @@ interface AuthContextType {
   error?: any;
   token?: string;
   login: (form: Pick<Student, 'email' | 'password'>) => void;
+  getProfile: () => void;
   signUp: (form: Student) => void;
   activeAccount: (token: string) => void;
 }
@@ -45,6 +46,11 @@ function AuthProvider({ children }: { children: ReactNode }): JSX.Element {
     setUser(user);
   };
 
+  const getProfile = async () => {
+    const response = await fetchProfileService();
+    return response;
+  };
+
   const signUp = async (form: Student) => {
     const response = await registerService(form);
     if (response.status !== 500) {
@@ -62,6 +68,7 @@ function AuthProvider({ children }: { children: ReactNode }): JSX.Element {
   const memoedValue = useMemo(
     () => ({
       user,
+      getProfile,
       setLoginUser,
       error,
       login,

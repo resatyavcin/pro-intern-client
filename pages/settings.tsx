@@ -1,27 +1,41 @@
 import { Menu } from 'antd';
-import React from 'react';
+import React, { useState } from 'react';
 import CardUI from '../components/ui/card/cardUI';
 import MainLayout from '../core/MainLayout';
 import { PRIVATE_ROUTE_CONFIG } from '../routes/privateRoute';
 import { MailOutlined, SettingOutlined } from '@ant-design/icons';
-import InternInfoForm from '../components/intern-info-forms/InternInfoForm';
+import SettingsProfileForm from '../components/settings-profile-form/SettingsProfileForm';
+import DrawSignature from '../components/draw-signature/DrawSignature';
 
 function Settings() {
+  const [activeMenu, setActiveMenu] = useState<string>('personal_info');
   return (
     <MainLayout>
       <CardUI style={{ marginBottom: 15 }} cardType="normal">
-        <Menu mode="horizontal" defaultSelectedKeys={['mail']}>
-          <Menu.Item key="mail" icon={<MailOutlined />}>
+        <Menu
+          selectedKeys={[activeMenu]}
+          onClick={({ key }) => setActiveMenu(key)}
+          mode="horizontal"
+          defaultSelectedKeys={['personal_info']}
+        >
+          <Menu.Item key="personal_info" icon={<MailOutlined />}>
             Kişisel Bilgiler
           </Menu.Item>
-          <Menu.Item key="mail2" icon={<SettingOutlined />}>
+          <Menu.Item key="account_settings" icon={<SettingOutlined />}>
             Hesap Ayarları
           </Menu.Item>
         </Menu>
       </CardUI>
-      <CardUI cardType="normal">
-        <InternInfoForm />
-      </CardUI>
+      {activeMenu === 'personal_info' && (
+        <CardUI cardType="normal">
+          <SettingsProfileForm />
+        </CardUI>
+      )}
+      {activeMenu === 'account_settings' && (
+        <CardUI cardType="normal">
+          <DrawSignature />
+        </CardUI>
+      )}
     </MainLayout>
   );
 }

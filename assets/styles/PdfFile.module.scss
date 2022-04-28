@@ -1,0 +1,40 @@
+.pageWrapper {
+  position: relative;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.page {
+  position: relative;
+}
+
+.page > canvas {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  border-radius: 8px;
+  height: auto;
+  display: block;
+  background-color: white;
+  margin: 0 auto;
+  position: relative;
+}
+
+.pageNumber {
+  position: absolute;
+  z-index: 9999;
+  top: 90%;
+  left: 47%;
+  background: white;
+  opacity: 0;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.281) 0px 17px 70px 4px;
+  transition: 0.2s opacity;
+  border-radius: 5px;
+}
+
+.pageNumber:hover {
+  opacity: 1;
+}
+.page > canvas:hover ~ .pageNumber {
+  opacity: 1;
+}

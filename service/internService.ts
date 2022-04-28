@@ -18,12 +18,47 @@ export const fetchAllInterns = async () => {
     }
 }
 
-
-export const applicationInternService = async (companyName: string, startDate: Date, endDate: Date) => {
+export const applicationInternService = async (form: any) => {
     const token = localStorage.getItem('token')
 
     try {
-        const response = await axios.get(SERVER_BASE_URL + '/intern/application', {
+        const response = await axios.post(SERVER_BASE_URL + '/intern/application', {...form} ,{
+            headers: {
+                Authorization: 'Bearer '+ token                                                                                                                                                                                                          
+            }
+        });
+
+
+        return response.data;
+    } catch (err: any) {
+        return err.response
+    }
+}
+
+
+export const createSignatureFileByStudentService = async (path: string) => {
+    const token = localStorage.getItem('token')
+
+    try {
+        const response = await axios.post(SERVER_BASE_URL + '/intern/create-signature-file', { path: path } ,{
+            headers: {
+                Authorization: 'Bearer '+ token                                                                                                                                                                                                          
+            }
+        });
+
+
+        return response.data;
+    } catch (err: any) {
+        return err.response
+    }
+}
+
+
+export const fetchInternService = async (intern_id: string | string[] | undefined) => {
+    const token = localStorage.getItem('token')
+
+    try {
+        const response = await axios.get(SERVER_BASE_URL + '/intern/fetch-intern/' + intern_id ,{
             headers: {
                 Authorization: 'Bearer '+ token                                                                                                                                                                                                          
             }
@@ -34,3 +69,4 @@ export const applicationInternService = async (companyName: string, startDate: D
         return err.response
     }
 }
+

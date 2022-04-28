@@ -165,6 +165,27 @@ const MainLayout = (props: { children: React.ReactNode }) => {
             <CollapseUI collapsed={collapsed} panels={panels} />
           </SidebarUI>
         )}
+
+        {user && user.role === 'STUDENT' && (
+          <SidebarUI
+            collapsedWidth={330}
+            width={56}
+            style={{ height: 'calc(100vh-58px)', background: '#ffffff', borderLeft: '1px solid #d5d5d5' }}
+            collapsed={collapsed}
+          >
+            <div className={stylesToggle.wrapperToggle}>
+              <div className={collapsed ? stylesToggle.contentToggleRow : stylesToggle.toggleRowContentDisplay}>
+                {collapsed ? <Fragment></Fragment> : <div style={{ fontWeight: 'bold' }}>PRO INTERN</div>}
+              </div>
+              {React.createElement(collapsed ? CgPushChevronLeft : CgPushChevronRight, {
+                onClick: toggle,
+                className: stylesToggle.baseToggle
+              })}
+            </div>
+
+            <CollapseUI collapsed={collapsed} panels={filePanel} />
+          </SidebarUI>
+        )}
       </Layout>
     </Layout>
   );
@@ -190,5 +211,20 @@ export const panels = [
     icon: <FieldTimeOutlined />,
     title: 'AKTİVİTELER',
     content: <Activities />
+  }
+];
+
+export const filePanel = [
+  {
+    key: '1',
+    icon: <InfoCircleOutlined />,
+    title: 'DOSYA ÖNİZLEME',
+    content: '<Resume />'
+  },
+  {
+    key: '2',
+    icon: <FieldTimeOutlined />,
+    title: 'DOSYAYA AİT AKTİVİTELER',
+    content: '<Activities />'
   }
 ];
