@@ -11,7 +11,6 @@ export const fetchAllInterns = async () => {
                 Authorization: 'Bearer '+ token                                                                                                                                                                                                          
             }
         });
-
         return response.data;
     } catch (err: any) {
         return err.response
@@ -54,7 +53,25 @@ export const createSignatureFileByStudentService = async (path: string) => {
 }
 
 
-export const fetchInternService = async (intern_id: string | string[] | undefined) => {
+export const signatureByStudentService = async () => {
+    const token = localStorage.getItem('token')
+
+    try {
+        const response = await axios.post(SERVER_BASE_URL + '/intern/signature/student', {} ,{
+            headers: {
+                Authorization: 'Bearer '+ token                                                                                                                                                                                                          
+            }
+        });
+
+
+        return response.data;
+    } catch (err: any) {
+        return err.response
+    }
+}
+
+
+export const fetchInternService = async (intern_id: string | string[]| undefined) => {
     const token = localStorage.getItem('token')
 
     try {

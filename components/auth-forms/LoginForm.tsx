@@ -6,7 +6,7 @@ import FormUI from '../../components/ui/form/formUI';
 import { useAuth } from '../../context/AuthContext';
 
 const LoginForm = () => {
-  const { login } = useAuth();
+  const { login, loadingAuth } = useAuth();
 
   const [passwordVisibility, setPasswordVisibility] = useState(false);
 
@@ -20,17 +20,15 @@ const LoginForm = () => {
     login({ ...values });
   };
 
-  const onFinishFailed = (errorInfo: any) => {};
-
   return (
-    <FormUI onFinish={onFinish} onFinishFailed={onFinishFailed}>
+    <FormUI onFinish={onFinish}>
       <InputUI
         name="email"
         label="Email"
         placeholder="example@ogrenci.ibu.tr"
         disabled={passwordVisibility}
         suffix={
-          passwordVisibility ? <TypographyUI onClick={hidePasswordField} label="CHANGE" typographyType="link" /> : null
+          passwordVisibility ? <TypographyUI onClick={hidePasswordField} label="CHANGE" typographytype="link" /> : null
         }
       />
       {passwordVisibility ? (
@@ -48,6 +46,7 @@ const LoginForm = () => {
         label={passwordVisibility ? 'LOGIN' : 'NAVIGATION.NEXT'}
         block
         type="primary"
+        loading={passwordVisibility ? loadingAuth : false}
       />
     </FormUI>
   );

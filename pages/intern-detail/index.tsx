@@ -17,17 +17,19 @@ function Files() {
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <CardUI cardType="normal" style={{ marginBottom: 20 }}>
           <div>
-            <TypographyUI typographyType="title" level={3} label={'Açılan Dosyalar'} />
+            <TypographyUI typographytype="title" level={3} label={'Açılan Dosyalar'} />
             <Divider style={{ marginTop: 0 }} />
           </div>
           <Link href={`/intern-detail/file/?intern_id=${router.query.id}&file_id=0`}>
-            <InternFileSmallPreview lockFile={false} />
+            <div>
+              <InternFileSmallPreview lockFile={false} />
+            </div>
           </Link>
         </CardUI>
 
         <CardUI cardType="normal">
           <div>
-            <TypographyUI typographyType="title" level={3} label={'Kilitli Dosyalar'} />
+            <TypographyUI typographytype="title" level={3} label={'Kilitli Dosyalar'} />
             <Divider style={{ marginBottom: 20, marginTop: 0 }} />
           </div>
           <div style={{ display: 'flex' }}>

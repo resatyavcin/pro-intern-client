@@ -6,7 +6,7 @@ import ResultUI from '../components/ui/result/Result';
 
 import InternCard from '../components/intern-card/InternCard';
 import InternApplicationForm from '../components/intern-application-modal/InternApplicationModal';
-import { Store, StoreBaseValue, useModalForm } from 'sunflower-antd';
+import { Store, useModalForm } from 'sunflower-antd';
 
 import { Form } from 'antd';
 
@@ -33,6 +33,7 @@ function Interns() {
 
       {allInterns.length === 0 ? (
         <ResultUI
+          key="haveAInterns"
           status="warning"
           subTitle="INTERN.NO_INTERNSHIP_SUBTITLE"
           title="INTERN.NO_INTERNSHIP_TITLE"
@@ -40,7 +41,7 @@ function Interns() {
           leftButtonOnClick={show}
         />
       ) : (
-        allInterns.map((intern, i) => <InternCard point={i + 1} intern={intern} />)
+        allInterns.map((intern, i) => <InternCard key={i} point={i + 1} intern={intern} />)
       )}
     </MainLayout>
   );
@@ -52,7 +53,4 @@ export async function getServerSideProps() {
   return {
     props: { ...PRIVATE_ROUTE_CONFIG.INTERNS }
   };
-}
-function applicationIntern() {
-  throw new Error('Function not implemented.');
 }

@@ -7,9 +7,11 @@ import {
   fetchAllInterns,
   applicationInternService,
   createSignatureFileByStudentService,
-  fetchInternService
+  fetchInternService,
+  signatureByStudentService
 } from '../service/internService';
 import { Intern } from '../common/models/Intern/Intern';
+import { useAuth } from './AuthContext';
 
 interface InternContextType {
   error?: any;
@@ -17,6 +19,7 @@ interface InternContextType {
   applicationIntern: (form: any) => void;
   createSignatureFile: (path: string) => void;
   fetchIntern: (intern_id: string | string[] | undefined) => void;
+  signatureByStudent: () => void;
 }
 
 const InternContext = createContext<InternContextType>({} as InternContextType);
@@ -41,15 +44,18 @@ function InternProvider({ children }: { children: ReactNode }): JSX.Element {
     await createSignatureFileByStudentService(path);
   };
 
+  const signatureByStudent = async () => {
+    const response = await signatureByStudentService();
+    return response;
+  };
+
   const fetchIntern = async (intern_id: string | string[] | undefined) => {
     const intern = await fetchInternService(intern_id);
     return intern;
   };
 
-  const router = useRouter();
-
   const memoedValue = useMemo(
-    () => ({ error, allInterns, applicationIntern, createSignatureFile, fetchIntern }),
+    () => ({ error, allInterns, applicationIntern, createSignatureFile, fetchIntern, signatureByStudent }),
     [error, allInterns]
   );
 

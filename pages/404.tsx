@@ -11,9 +11,8 @@ function ErrorPage() {
         src="https://assets.dropbox.com/www/en-us/illustrations/spot/look-magnifying-glass.svg"
         alt="error"
       />
-      <TypographyUI level={3} label={'Aradığınız sayfa bulunamamıştır.'} typographyType={'title'} />
-      <TypographyUI label={"Lütfen girilen URL'i tekrardan kontrol ediniz."} typographyType={'text'} />
-      <ButtonUI type="primary" label="Ana Sayfaya Dön" style={{ marginTop: 30 }} />
+      <TypographyUI level={3} label={'404.TITLE'} typographytype={'title'} />
+      <TypographyUI label={'404.SUB_TITLE'} typographytype={'text'} />
     </div>
   );
 }

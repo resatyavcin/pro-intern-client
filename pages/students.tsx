@@ -27,22 +27,22 @@ import { departmentCodeConverter } from '../common/utils/departmentCodeConverter
 
 const columns = [
   {
-    title: <TypographyUI typographyType="text" label={'COLUMN.FIRST_NAME'} />,
+    title: <TypographyUI typographytype="text" label={'COLUMN.FIRST_NAME'} />,
     dataIndex: 'firstName',
     key: 'firstName',
     render: (text: any) => <a>{text}</a>
   },
   {
-    title: <TypographyUI typographyType="text" label={'COLUMN.LAST_NAME'} />,
+    title: <TypographyUI typographytype="text" label={'COLUMN.LAST_NAME'} />,
     dataIndex: 'lastName',
     key: 'lastName',
     render: (text: any) => <a>{text}</a>
   },
   {
-    title: <TypographyUI typographyType="text" label={'COLUMN.DEPARTMENT'} />,
+    title: <TypographyUI typographytype="text" label={'COLUMN.DEPARTMENT'} />,
     dataIndex: 'departmentCode',
     key: 'departmentCode',
-    render: (text: DEPARTMENT_CODE) => <TypographyUI typographyType="text" label={departmentCodeConverter(text)} />
+    render: (text: DEPARTMENT_CODE) => <TypographyUI typographytype="text" label={departmentCodeConverter(text)} />
   }
 ];
 
@@ -92,7 +92,7 @@ function Students() {
             style={{ color: '#343644' }}
             level={2}
             label={'PAGES.NO_DATA_IN_SEARCH'}
-            typographyType={'title'}
+            typographytype={'title'}
           />
         </div>
       )}

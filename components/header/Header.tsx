@@ -8,6 +8,7 @@ import FormUI from '../ui/form/formUI';
 import { useStudent } from '../../context/StudentContext';
 import { useAuth } from '../../context/AuthContext';
 import { User } from '../../common/models/User/LoginUser';
+import PrivateComponent from '../private-component/PrivateComponent';
 
 const shortName = (user: User) => {
   const firstNameLetter = user.firstName.charAt(0).toUpperCase();
@@ -55,7 +56,7 @@ function HeaderUI() {
         <div style={{ marginRight: 60 }}>{Logo()}</div>
         <Fragment>
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-            {user && user.role === 'ADMIN' && (
+            <PrivateComponent userRole={'ADMIN'}>
               <FormUI isNotBlank onValuesChange={onValuesChange}>
                 <InputUI
                   style={activeFilter ? { width: '1100px' } : { width: '240px' }}
@@ -75,7 +76,8 @@ function HeaderUI() {
                   name={'searchStudent'}
                 />
               </FormUI>
-            )}
+            </PrivateComponent>
+
             <Dropdown overlay={menu(user)} placement="bottomLeft" arrow>
               <Avatar size="small" style={{ background: 'rgb(29,25,25)', position: 'absolute', right: 20 }}>
                 {shortName(user)}

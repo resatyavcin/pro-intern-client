@@ -38,18 +38,18 @@ function TimelineUI(props: ITimeline) {
         icon: <ClockCircleOutlined />,
         color: 'red',
         countDown: <Countdown value={Date.now() + 100 * 60 * 24 * 2} />,
-        deadLine: <TypographyUI typographyType="text" disabled label="Son tarih: 22/09/2000" />
+        deadLine: <TypographyUI typographytype="text" disabled label="Son tarih: 22/09/2000" />
       };
     } else if (event.active === undefined && activeIndex > i) {
       return {
         icon: <CheckCircleFilled />,
         color: 'green',
         countDown: null,
-        deadLine: <TypographyUI typographyType="text" disabled italic label="(Tamamlandı.)" />
+        deadLine: <TypographyUI typographytype="text" disabled italic label="(Tamamlandı.)" />
       };
     } else {
       return {
-        deadLine: <TypographyUI typographyType="text" disabled label="Son tarih: 32/09/2000" />
+        deadLine: <TypographyUI typographytype="text" disabled label="Son tarih: 32/09/2000" />
       };
     }
   };
@@ -58,7 +58,7 @@ function TimelineUI(props: ITimeline) {
     <Timeline {...props}>
       {events.map((event, i) => (
         <TimelineItemUI key={i} dot={utilsRender(event, i)?.icon} color={utilsRender(event, i)?.color}>
-          <TypographyUI typographyType="text" label={event.label} />
+          <TypographyUI typographytype="text" label={event.label} />
           <br />
           {utilsRender(event, i)?.deadLine}
           {utilsRender(event, i)?.countDown}

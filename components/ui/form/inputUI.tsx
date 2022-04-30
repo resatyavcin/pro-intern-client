@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Input, InputProps } from 'antd';
+import { Input, InputNumber, InputProps } from 'antd';
 import FormItemUI from './formItemUI';
 import { Rule } from 'antd/lib/form';
 
@@ -11,21 +11,14 @@ interface IInputProps extends InputProps {
   name: string;
   label?: string;
   type?: string;
+  isNumber?: boolean;
   rules?: Rule[] | undefined;
   feedback?: { feedType: '' | 'success' | 'warning' | 'error' | 'validating' | undefined; fieldName: string };
 }
 
 function InputUI(props: IInputProps) {
-  const { name, label, rules, feedback } = props;
+  const { name, label, rules, feedback, isNumber } = props;
 
-  const inputType = (fieldName: string) => {
-    switch (fieldName) {
-      case 'password':
-        return <Password className={styles.baseInput} type={name} {...props} />;
-      default:
-        return <Input className={styles.baseInput} type={name} {...props} />;
-    }
-  };
   return (
     <Fragment>
       <FormItemUI
@@ -35,7 +28,13 @@ function InputUI(props: IInputProps) {
         rules={rules}
         feedback={feedback?.feedType}
       >
-        {inputType(name)}
+        {name === 'password' ? (
+          <Password className={styles.baseInput} type={name} {...props} />
+        ) : name !== 'password' && isNumber ? (
+          <InputNumber keyboard={false} min={1} max={4} defaultValue={3} />
+        ) : (
+          <Input className={styles.baseInput} type={name} {...props} />
+        )}
       </FormItemUI>
     </Fragment>
   );

@@ -9,7 +9,7 @@ interface IFile {
 function InternFileSmallPreview(props: IFile) {
   const { lockFile } = props;
   return (
-    <Fragment>
+    <div>
       <div className={styles.previewSmallFilesWrapper}>
         <div className={styles.previewSmall}>
           <div className={styles.previewSmallHeader}>
@@ -27,11 +27,11 @@ function InternFileSmallPreview(props: IFile) {
           </div>
           <TypographyUI
             label={lockFile ? 'Bu dosya en son aşama olan Stajın Bitmesi durumunda açılır.' : 'staj-basvuru.pdf'}
-            typographyType={lockFile ? 'text' : 'link'}
+            typographytype={lockFile ? 'text' : 'link'}
           />
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 }
 

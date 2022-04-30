@@ -46,13 +46,13 @@ function CardUI(props: ICardProps) {
               {headerTitle && (
                 <TypographyUI
                   style={{ marginBottom: 0, marginLeft: 10 }}
-                  typographyType="title"
+                  typographytype="title"
                   level={3}
                   label={headerTitle}
                 />
               )}
             </div>
-            {headerLabel && <TypographyUI label={headerLabel} typographyType={'text'} />}
+            {headerLabel && <TypographyUI label={headerLabel} typographytype={'text'} />}
             <Divider style={{ marginBottom: 20 }} />
             {error && (
               <Alert style={{ marginBottom: 14 }} message={<FormattedMessage id={error} />} type="error" showIcon />
@@ -65,8 +65,8 @@ function CardUI(props: ICardProps) {
         {footerLabel && footerLabel && (
           <div style={{ textAlign: 'center' }}>
             <Divider style={{ marginTop: 0 }} />
-            {footerLabel && <TypographyUI label={footerLabel} typographyType={'text'} />}
-            {footerLink && <TypographyUI label={footerLink} typographyType={'link'} />}
+            {footerLabel && <TypographyUI label={footerLabel} typographytype={'text'} />}
+            {footerLink && <TypographyUI label={footerLink} typographytype={'link'} />}
           </div>
         )}
       </div>

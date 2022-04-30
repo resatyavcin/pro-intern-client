@@ -1,5 +1,5 @@
 //import React
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { useRouter } from 'next/router';
 
 //import Styles
@@ -7,7 +7,7 @@ import styles from '../assets/styles/Sidebar.module.scss';
 import stylesToggle from '../assets/styles/Toggle.module.scss';
 
 //import Components
-import SidebarUI from '../components/sidebar/sidebar';
+import SidebarUI from '../components/sidebar/Sidebar';
 import HeaderUI from '../components/header/Header';
 import CollapseUI from '../components/ui/collapse/Collapse';
 import Activities from '../components/short/activities';
@@ -16,10 +16,6 @@ import Resume from '../components/short/resume';
 import { Avatar, Layout } from 'antd';
 const Content = Layout;
 
-import { PRIVATE_ROUTE_CONFIG } from '../routes/privateRoute';
-
-import { Menu } from 'antd';
-import SubMenu from 'antd/lib/menu/SubMenu';
 import {
   InfoCircleOutlined,
   FieldTimeOutlined,
@@ -32,21 +28,21 @@ import {
   ThunderboltOutlined,
   SettingOutlined
 } from '@ant-design/icons';
+
 import { CgPushChevronRight, CgPushChevronLeft } from 'react-icons/cg';
 
 //import Contexts
 import { useCollapse } from '../context/ActionPanelToggleContext';
 import { useStudent } from '../context/StudentContext';
-import { useAuth } from '../context/AuthContext';
+
+import PrivateComponent from '../components/private-component/PrivateComponent';
 
 const MainLayout = (props: { children: React.ReactNode }) => {
   const { children } = props;
 
   const { collapsed, setCollapsed } = useCollapse();
 
-  const { selectedStudent, selectStudent } = useStudent();
-  const { user } = useAuth();
-
+  const { selectedStudent } = useStudent();
   const router = useRouter();
 
   const toggle = () => {
@@ -57,73 +53,13 @@ const MainLayout = (props: { children: React.ReactNode }) => {
     <Layout style={{ height: '100vh' }}>
       <HeaderUI />
       <Layout className={styles.siteLayout}>
-        {user && user.role === 'ADMIN' && (
-          <SidebarUI style={{ height: 'calc(100vh-58px)' }}>
-            <Menu
-              style={{ minHeight: '93vh' }}
-              selectedKeys={[router.asPath]}
-              defaultSelectedKeys={['dashboard']}
-              defaultOpenKeys={
-                router.asPath === '/documents?verify=true' || router.asPath === '/documents?verify=false'
-                  ? ['sub1']
-                  : []
-              }
-              mode="inline" // inlineCollapsed={this.state.collapsed}
-              onClick={({ key }) => {
-                selectStudent([]);
-                router.push(`${key}`);
-              }}
-            >
-              <Menu.Item key="/dashboard" icon={<HomeOutlined />}>
-                Ana Sayfa
-              </Menu.Item>
-              <SubMenu key="sub1" icon={<FolderOutlined />} title="Belgeler">
-                <Menu.Item key="/documents?verify=true" icon={<FileDoneOutlined />}>
-                  Onaylı
-                </Menu.Item>
-                <Menu.Item key="/documents?verify=false" icon={<FileExclamationOutlined />}>
-                  Onaylanmamış
-                </Menu.Item>
-              </SubMenu>
-              <Menu.Item key="/students" icon={<UserOutlined />}>
-                Öğrenciler
-              </Menu.Item>
-              <Menu.Item key="/trash" icon={<DeleteOutlined />}>
-                Çöp Kutusu
-              </Menu.Item>
-            </Menu>
-          </SidebarUI>
-        )}
+        <PrivateComponent userRole="ADMIN">
+          <SidebarUI menuList={ADMIN_SIDEBAR_MENU} />
+        </PrivateComponent>
 
-        {user && user.role === 'STUDENT' && (
-          <SidebarUI style={{ height: 'calc(100vh-58px)' }}>
-            <Menu
-              style={{ minHeight: '93vh' }}
-              selectedKeys={[router.asPath]}
-              defaultSelectedKeys={['dashboard']}
-              defaultOpenKeys={
-                router.asPath === '/documents?verify=true' || router.asPath === '/documents?verify=false'
-                  ? ['sub1']
-                  : []
-              }
-              mode="inline" // inlineCollapsed={this.state.collapsed}
-              onClick={({ key }) => {
-                selectStudent([]);
-                router.push(`${key}`);
-              }}
-            >
-              <Menu.Item key="/" icon={<HomeOutlined />}>
-                Ana Sayfa
-              </Menu.Item>
-              <Menu.Item key={'/interns'} icon={<ThunderboltOutlined />}>
-                Stajlar
-              </Menu.Item>
-              <Menu.Item key={'/settings'} icon={<SettingOutlined />}>
-                Ayarlar
-              </Menu.Item>
-            </Menu>
-          </SidebarUI>
-        )}
+        <PrivateComponent userRole="STUDENT">
+          <SidebarUI menuList={STUDENT_SIDEBAR_MENU} />
+        </PrivateComponent>
 
         <Content
           style={{
@@ -134,7 +70,8 @@ const MainLayout = (props: { children: React.ReactNode }) => {
         >
           {children}
         </Content>
-        {selectedStudent && selectedStudent.length > 0 && user && user.role === 'ADMIN' && (
+
+        <PrivateComponent userRole="ADMIN">
           <SidebarUI
             collapsedWidth={330}
             width={56}
@@ -161,37 +98,74 @@ const MainLayout = (props: { children: React.ReactNode }) => {
                 className: stylesToggle.baseToggle
               })}
             </div>
-
-            <CollapseUI collapsed={collapsed} panels={panels} />
+            {selectedStudent && selectedStudent.length > 0 && (
+              <Fragment>
+                <CollapseUI collapsed={collapsed} panels={panels} />
+              </Fragment>
+            )}
           </SidebarUI>
-        )}
+        </PrivateComponent>
 
-        {user && user.role === 'STUDENT' && (
-          <SidebarUI
-            collapsedWidth={330}
-            width={56}
-            style={{ height: 'calc(100vh-58px)', background: '#ffffff', borderLeft: '1px solid #d5d5d5' }}
-            collapsed={collapsed}
-          >
-            <div className={stylesToggle.wrapperToggle}>
-              <div className={collapsed ? stylesToggle.contentToggleRow : stylesToggle.toggleRowContentDisplay}>
-                {collapsed ? <Fragment></Fragment> : <div style={{ fontWeight: 'bold' }}>PRO INTERN</div>}
+        <PrivateComponent userRole="STUDENT">
+          {router.pathname === '/intern-detail/file' ? (
+            <SidebarUI
+              collapsedWidth={330}
+              width={56}
+              style={{ height: 'calc(100vh-58px)', background: '#ffffff', borderLeft: '1px solid #d5d5d5' }}
+              collapsed={collapsed}
+            >
+              <div className={stylesToggle.wrapperToggle}>
+                <div className={collapsed ? stylesToggle.contentToggleRow : stylesToggle.toggleRowContentDisplay}>
+                  {collapsed ? <Fragment></Fragment> : <div style={{ fontWeight: 'bold' }}>PRO INTERN</div>}
+                </div>
+                {React.createElement(collapsed ? CgPushChevronLeft : CgPushChevronRight, {
+                  onClick: toggle,
+                  className: stylesToggle.baseToggle
+                })}
               </div>
-              {React.createElement(collapsed ? CgPushChevronLeft : CgPushChevronRight, {
-                onClick: toggle,
-                className: stylesToggle.baseToggle
-              })}
-            </div>
 
-            <CollapseUI collapsed={collapsed} panels={filePanel} />
-          </SidebarUI>
-        )}
+              <CollapseUI collapsed={collapsed} panels={filePanel} />
+            </SidebarUI>
+          ) : (
+            <></>
+          )}
+        </PrivateComponent>
       </Layout>
     </Layout>
   );
 };
 
 export default MainLayout;
+
+export const ADMIN_SIDEBAR_MENU = [
+  { title: 'Ana Sayfa', path: '/dashboard', icon: <HomeOutlined />, subMenu: false },
+  {
+    title: 'Belgeler',
+    path: '/files',
+    icon: <FolderOutlined />,
+    subMenu: true,
+    subMenuContent: [
+      {
+        title: 'Onaylı',
+        path: '/documents?verify=true',
+        icon: <FileDoneOutlined />
+      },
+      {
+        title: 'Onaylanmamış',
+        path: '/documents?verify=false',
+        icon: <FileExclamationOutlined />
+      }
+    ]
+  },
+  { title: 'Öğrenciler', path: '/students', icon: <UserOutlined />, subMenu: false },
+  { title: 'Çöp Kutusu', path: '/trash', icon: <DeleteOutlined />, subMenu: false }
+];
+
+export const STUDENT_SIDEBAR_MENU = [
+  { title: 'Ana Sayfa', path: '/', icon: <HomeOutlined />, subMenu: false },
+  { title: 'Stajlar', path: '/interns', icon: <ThunderboltOutlined />, subMenu: false },
+  { title: 'Ayarlar', path: '/settings', icon: <SettingOutlined />, subMenu: false }
+];
 
 export const panels = [
   {

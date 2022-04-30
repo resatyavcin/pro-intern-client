@@ -75,7 +75,7 @@ function InternCard(props: IInternCard) {
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div>
             <TypographyUI
-              typographyType="title"
+              typographytype="title"
               level={3}
               label={
                 intern.completed
@@ -84,7 +84,7 @@ function InternCard(props: IInternCard) {
               }
             />
             <TypographyUI
-              typographyType="text"
+              typographytype="text"
               label={
                 intern.completed
                   ? `${point}. Staj Dönemi Çevik Çözüm Inc. şirketinde başarı ile tamamlanmıştır.`
@@ -94,7 +94,7 @@ function InternCard(props: IInternCard) {
             <br />
           </div>
           <Link href={`/intern-detail?id=${intern._id}`}>
-            <ButtonUI type="dashed" label="Detaylara git" />
+            <ButtonUI type="dashed" label="BUTTON_LABEL.DETAILS" />
           </Link>
         </div>
 

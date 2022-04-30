@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { Typography } from 'antd';
 import { FormattedMessage } from 'react-intl';
@@ -11,13 +11,13 @@ type levelNumber = 1 | 2 | 3 | 4 | 5 | undefined;
 interface ITypography extends TextProps {
   style?: React.CSSProperties;
   label: string;
-  typographyType: string;
+  typographytype: string;
   level?: levelNumber;
   onClick?: () => void;
 }
 
 function TypographyUI(props: ITypography) {
-  const { label, level, typographyType, onClick, style } = props;
+  const { label, level, typographytype, onClick, style } = props;
 
   const labelUndefinedControl = label ? <FormattedMessage id={label} /> : null;
 
@@ -31,7 +31,7 @@ function TypographyUI(props: ITypography) {
         );
       case 'title':
         return (
-          <Title style={style} level={level} {...props}>
+          <Title style={style} {...props}>
             {labelUndefinedControl}
           </Title>
         );
@@ -53,7 +53,7 @@ function TypographyUI(props: ITypography) {
     }
   };
 
-  return <>{renderSwitch(typographyType)}</>;
+  return <Fragment>{renderSwitch(typographytype)}</Fragment>;
 }
 
 export default TypographyUI;

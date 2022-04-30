@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Col, message, Row } from 'antd';
+import { Col, InputNumber, message, Row } from 'antd';
 import PasswordStrengthBar from 'react-password-strength-bar';
 
 import { useAuth } from '../../context/AuthContext';
@@ -8,7 +8,11 @@ import { useAuth } from '../../context/AuthContext';
 import InputUI from '../../components/ui/form/inputUI';
 import ButtonUI from '../../components/ui/button/buttonUI';
 import FormUI from '../../components/ui/form/formUI';
+import { Select } from 'antd';
+import FormItem from 'antd/lib/form/FormItem';
+import FormItemUI from '../ui/form/formItemUI';
 
+const { Option } = Select;
 type feed = '' | 'error' | 'success' | 'warning' | 'validating' | undefined;
 
 interface IFeedBack {
@@ -88,7 +92,10 @@ const RegisterForm = () => {
           <InputUI
             name="firstName"
             label="Ad"
-            rules={[{ required: true, message: 'Lütfen bu alanı boş bırakmayınız.' }]}
+            rules={[
+              { required: true, message: 'Lütfen bu alanı boş bırakmayınız.' },
+              { min: 2, message: 'En az iki karakterden oluşmalıdır.' }
+            ]}
             feedback={findFeedBackState('firstName')}
           />
         </Col>
@@ -96,7 +103,10 @@ const RegisterForm = () => {
           <InputUI
             name="lastName"
             label="Soyad"
-            rules={[{ required: true, message: 'Lütfen bu alanı boş bırakmayınız.' }]}
+            rules={[
+              { required: true, message: 'Lütfen bu alanı boş bırakmayınız.' },
+              { min: 2, message: 'En az iki karakterden oluşmalıdır.' }
+            ]}
             feedback={findFeedBackState('lastName')}
           />
         </Col>
@@ -104,18 +114,28 @@ const RegisterForm = () => {
 
       <Row gutter={5}>
         <Col xs={18}>
-          <InputUI
-            name="departmentCode"
-            label="Bölüm"
+          <FormItemUI
+            name={'departmentCode'}
+            label={'Bölüm'}
             rules={[{ required: true, message: 'Lütfen bu alanı boş bırakmayınız.' }]}
-            feedback={findFeedBackState('departmentCode')}
-          />
+            feedback={'success'}
+          >
+            <Select defaultValue="CE">
+              <Option value="CE">Computer Engineer</Option>
+              <Option value="ME">Machine Engineer</Option>
+              <Option value="FE">Food Engineer</Option>
+              <Option value="EE">Electrical Engineer</Option>
+            </Select>
+          </FormItemUI>
         </Col>
         <Col xs={6}>
           <InputUI
             name="grade"
             label="Sınıf"
-            rules={[{ required: true, message: 'Lütfen bu alanı boş bırakmayınız.' }]}
+            rules={[
+              { required: true, message: 'Lütfen bu alanı boş bırakmayınız.' },
+              { pattern: new RegExp('[1-4]'), message: '1-4 aralığında sınıf seçiniz' }
+            ]}
             feedback={findFeedBackState('grade')}
           />
         </Col>
@@ -130,7 +150,10 @@ const RegisterForm = () => {
       <InputUI
         name="republicOfTurkeyId"
         label="TC"
-        rules={[{ required: true, message: 'Lütfen bu alanı boş bırakmayınız.' }]}
+        rules={[
+          { required: true, message: 'Lütfen bu alanı boş bırakmayınız.' },
+          { pattern: new RegExp('^.{11,11}$'), message: 'Lütfen doğru bir kimlik numarası giriniz.' }
+        ]}
         feedback={findFeedBackState('republicOfTurkeyId')}
       />
 

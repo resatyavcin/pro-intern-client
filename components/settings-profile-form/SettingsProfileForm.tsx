@@ -22,16 +22,6 @@ function SettingsProfileForm() {
 
   const { getProfile } = useAuth();
 
-  useEffect(() => {
-    const a = getProfile();
-    a.then((data) => {
-      if (data) {
-        setProfile(data);
-      }
-    });
-    console.log(profile);
-  }, []);
-
   const onFinish = (values: any) => {};
 
   const onFinishFailed = (errorInfo: any) => {
@@ -168,7 +158,7 @@ function SettingsProfileForm() {
         feedback={findFeedBackState('phone')}
       />
 
-      <ButtonUI htmlType="submit" label={'UPDATE'} block type="primary" />
+      <ButtonUI htmlType="submit" label={'BUTTON_LABEL.UPDATE'} block type="primary" />
     </FormUI>
   );
 }

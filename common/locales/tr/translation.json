@@ -22,6 +22,8 @@
   "BUTTON_LABEL.PREVIEW": "Önizleme",
   "BUTTON_LABEL.DELETE_PERMANENTLY": "Kalıcı Olarak Sil",
   "BUTTON_LABEL.DELETE_ALL_PERMANENTLY": "Seçilenleri Kalıcı Olarak Sil",
+  "BUTTON_LABEL.UPDATE": "Güncelle",
+  "BUTTON_LABEL.DETAILS": "Detaylar",
   "BUTTON.MAKE_AN_APPLICATION":"Başvuru Yap",
 
 
@@ -58,12 +60,16 @@
   "INTERN.NO_INTERNSHIP_TITLE":"Şu ana kadar bir staj başvurunuz bulunmamaktadır.",
   
 
+  "404.TITLE": "Aradığınız sayfa bulunamamıştır.",
+  "404.SUB_TITLE": "Lütfen girilen URL'i tekrardan kontrol ediniz.",
+
+
   "RESPONSE.USER_NOT_FOUND": "Kullanıcı bulunamadı.",
   "RESPONSE.USER_OR_PASS_WRONG": "Kullanıcı yada şifre hatalı!",
   "RESPONSE.NOT_VERIFY": "Hesabınız aktive edilmemiştir. Lütfen e-postanıza gelen link üzerinden doğrulayınız.",
   "RESPONSE.BLOCK_ACCOUNT": "Hesabınız bloke olmuştur. Lütfen şifremi unuttum kısmından güncelleyiniz.",
-  "RESPONSE.SERVER_ERR": "Bir nedenden dolayı sunucuda bir hata oluştu."
-
+  "RESPONSE.SERVER_ERR": "Bir nedenden dolayı sunucuda bir hata oluştu.",
+  "RESPONSE.ALREADY_EXIST": "Bu hesap zaten bulunmaktadır."
 
 
 }
