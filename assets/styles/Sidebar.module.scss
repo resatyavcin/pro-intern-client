@@ -1,5 +1,7 @@
 .baseSidebar {
   height: calc(100vh - (58px));
+  display: flex;
+  flex-direction: column;
 }
 
 .trigger {

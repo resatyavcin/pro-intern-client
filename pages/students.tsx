@@ -88,6 +88,14 @@ function Students() {
       {activeFilter && getFilterAllStudent().length == 0 && filterText && (
         <div style={{ margin: '0 auto', textAlign: 'center' }}>
           <NoResult />
+          {filterText && (
+            <TypographyUI
+              style={{ color: '#73757e', marginTop: 20 }}
+              level={3}
+              label={`Aranan: "${filterText}"`}
+              typographytype={'title'}
+            />
+          )}
           <TypographyUI
             style={{ color: '#343644' }}
             level={2}
@@ -99,7 +107,7 @@ function Students() {
 
       {!activeFilter ? (
         <Fragment>
-          <Row>
+          <Row style={{ position: 'absolute' }}>
             {selectedStudent && selectedStudent.length == 1 && (
               <ButtonUI onClick={moveTrash} label="BUTTON_LABEL.DELETE" />
             )}
@@ -107,14 +115,13 @@ function Students() {
               <ButtonUI onClick={moveTrash} label="BUTTON_LABEL.DELETE_ALL" />
             )}
           </Row>
-          <CardUI cardType={'normal'}>
-            <TableUI
-              keyOf={'_id'}
-              rowSelection={{ ...rowSelection, checkStrictly }}
-              data={getFilterAllStudent()}
-              columns={columns}
-            />
-          </CardUI>
+          <TableUI
+            style={{ marginTop: 50 }}
+            keyOf={'_id'}
+            rowSelection={{ ...rowSelection, checkStrictly }}
+            data={getFilterAllStudent()}
+            columns={columns}
+          />
         </Fragment>
       ) : null}
     </MainLayout>

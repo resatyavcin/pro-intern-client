@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { Avatar, Col, Dropdown, Menu, Row } from 'antd';
 import { Logo } from '../../assets/icons/Logo';
 import InputUI from '../../components/ui/form/inputUI';
@@ -38,6 +38,26 @@ const menu = (user: User) => {
   );
 };
 
+const useClickOutside = (ref, callback) => {
+  const handleClick = (e) => {
+    if (ref.current && !ref.current.contains(e.target)) {
+      callback();
+    }
+  };
+  React.useEffect(() => {
+    document.addEventListener('click', handleClick);
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  });
+};
+
+const ClickBox = ({ onClickOutside, children }: any) => {
+  const clickRef = React.useRef(null);
+  useClickOutside(clickRef, onClickOutside);
+  return <div ref={clickRef}>{children}</div>;
+};
+
 function HeaderUI() {
   const { user } = useAuth();
 
@@ -48,44 +68,46 @@ function HeaderUI() {
 
   return (
     <div style={{ borderBottom: '1px solid #d5d5d57d' }}>
-      <Menu
-        style={{ borderBottom: 'none', display: 'flex', alignItems: 'center' }}
-        mode="horizontal"
-        defaultSelectedKeys={['2']}
-      >
-        <div style={{ marginRight: 60 }}>{Logo()}</div>
-        <Fragment>
-          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-            <PrivateComponent userRole={'ADMIN'}>
-              <FormUI isNotBlank onValuesChange={onValuesChange}>
-                <InputUI
-                  style={activeFilter ? { width: '1100px' } : { width: '240px' }}
-                  prefix={<SearchOutlined />}
-                  onFocus={() => {
-                    setActiveFilter(true);
-                  }}
-                  suffix={
-                    <CloseOutlined
-                      style={!activeFilter ? { display: 'none' } : {}}
-                      onClick={() => {
-                        setActiveFilter(false);
-                      }}
-                    />
-                  }
-                  placeholder="Öğrencilerde Eşzamanlı Ara"
-                  name={'searchStudent'}
-                />
-              </FormUI>
-            </PrivateComponent>
+      <ClickBox onClickOutside={() => setActiveFilter(false)}>
+        <Menu
+          style={{ borderBottom: 'none', display: 'flex', alignItems: 'center' }}
+          mode="horizontal"
+          defaultSelectedKeys={['2']}
+        >
+          <div style={{ marginRight: 60 }}>{Logo()}</div>
+          <Fragment>
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+              <PrivateComponent userRole={'ADMIN'}>
+                <FormUI isNotBlank onValuesChange={onValuesChange}>
+                  <InputUI
+                    style={activeFilter ? { width: '1100px' } : { width: '240px' }}
+                    prefix={<SearchOutlined />}
+                    onFocus={() => {
+                      setActiveFilter(true);
+                    }}
+                    suffix={
+                      <CloseOutlined
+                        style={!activeFilter ? { display: 'none' } : {}}
+                        onClick={() => {
+                          setActiveFilter(false);
+                        }}
+                      />
+                    }
+                    placeholder="Öğrencilerde Eşzamanlı Ara"
+                    name={'searchStudent'}
+                  />
+                </FormUI>
+              </PrivateComponent>
 
-            <Dropdown overlay={menu(user)} placement="bottomLeft" arrow>
-              <Avatar size="small" style={{ background: 'rgb(29,25,25)', position: 'absolute', right: 20 }}>
-                {shortName(user)}
-              </Avatar>
-            </Dropdown>
-          </div>
-        </Fragment>
-      </Menu>
+              <Dropdown overlay={menu(user)} placement="bottomLeft" arrow>
+                <Avatar size="small" style={{ background: 'rgb(29,25,25)', position: 'absolute', right: 20 }}>
+                  {shortName(user)}
+                </Avatar>
+              </Dropdown>
+            </div>
+          </Fragment>
+        </Menu>
+      </ClickBox>
     </div>
   );
 }

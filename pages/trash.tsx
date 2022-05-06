@@ -103,14 +103,17 @@ function Trash() {
       ) : (
         <div style={{ margin: '0 auto', textAlign: 'center' }}>
           <DustBin />
+          {filterText && (
+            <TypographyUI
+              style={{ color: '#73757e', marginTop: 20 }}
+              level={3}
+              label={`Aranan: "${filterText}"`}
+              typographytype={'title'}
+            />
+          )}
+
           <TypographyUI
             style={{ color: '#232429', marginTop: 20 }}
-            level={3}
-            label={`Aranan: "${filterText}"`}
-            typographytype={'title'}
-          />
-          <TypographyUI
-            style={{ color: '#343644' }}
             level={2}
             label={'PAGES.NO_DATA_IN_DUSTBIN'}
             typographytype={'title'}

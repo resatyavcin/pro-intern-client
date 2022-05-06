@@ -30,7 +30,6 @@ function CollapseUI(props: ICollapseProps) {
 
   const toggle = () => {
     collapsed ? null : setCollapsed(true);
-    console.log();
   };
 
   return (
@@ -70,7 +69,7 @@ function CollapseUI(props: ICollapseProps) {
               )
             }
           >
-            <div style={{ height: 'calc(516px)', overflow: 'scroll', padding: 10 }}>
+            <div style={{ height: '524.4px', overflow: 'scroll', padding: 10, border: 'none' }}>
               <p>{panel.content}</p>
             </div>
           </Panel>
