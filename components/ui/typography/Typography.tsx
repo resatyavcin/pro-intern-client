@@ -17,9 +17,9 @@ interface ITypography extends TextProps {
 }
 
 function TypographyUI(props: ITypography) {
-  const { label, level, typographytype, onClick, style } = props;
+  const { label, typographytype, onClick, style } = props;
 
-  const labelUndefinedControl = label ? <FormattedMessage id={label} /> : null;
+  const labelUndefinedControl = label ? <FormattedMessage id={label} /> : <FormattedMessage id={''} />;
 
   const renderSwitch = (typographyType: string) => {
     switch (typographyType) {

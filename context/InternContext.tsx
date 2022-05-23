@@ -1,25 +1,26 @@
 //import React & Next
 import React, { createContext, useContext, ReactNode, useMemo, useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 
 //import Service
 import {
   fetchAllInterns,
   applicationInternService,
-  createSignatureFileByStudentService,
   fetchInternService,
-  signatureByStudentService
+  createSignature,
+  signatureFileService,
+  commitSignatureToFileService
 } from '../service/internService';
 import { Intern } from '../common/models/Intern/Intern';
-import { useAuth } from './AuthContext';
 
 interface InternContextType {
   error?: any;
   allInterns: Intern[];
   applicationIntern: (form: any) => void;
   createSignatureFile: (path: string) => void;
+  signatureFile: (fileID: string, internID: string, page: number) => void;
+  processSignatureFile: (fileID: string, internID: string, page: number) => void;
+
   fetchIntern: (intern_id: string | string[] | undefined) => void;
-  signatureByStudent: () => void;
 }
 
 const InternContext = createContext<InternContextType>({} as InternContextType);
@@ -36,16 +37,30 @@ function InternProvider({ children }: { children: ReactNode }): JSX.Element {
     init();
   }, []);
 
+  const errorDedection = (status: number, errorText: string) => {
+    if (status === 500) {
+      setError(errorText);
+    }
+  };
+
   const applicationIntern = async (form: any) => {
-    await applicationInternService({ ...form });
+    const response = await applicationInternService({ ...form });
+    return response;
   };
 
   const createSignatureFile = async (path: string) => {
-    await createSignatureFileByStudentService(path);
+    const response = await createSignature(path);
+    return response;
   };
 
-  const signatureByStudent = async () => {
-    const response = await signatureByStudentService();
+  const signatureFile = async (fileID: string, internID: string, page: number) => {
+    const response = await signatureFileService(fileID, internID, page);
+    errorDedection(response.status, response.data);
+    return response;
+  };
+
+  const processSignatureFile = async (fileID: string, internID: string, page: number) => {
+    const response = await commitSignatureToFileService(fileID, internID, page);
     return response;
   };
 
@@ -55,7 +70,15 @@ function InternProvider({ children }: { children: ReactNode }): JSX.Element {
   };
 
   const memoedValue = useMemo(
-    () => ({ error, allInterns, applicationIntern, createSignatureFile, fetchIntern, signatureByStudent }),
+    () => ({
+      error,
+      allInterns,
+      signatureFile,
+      processSignatureFile,
+      applicationIntern,
+      createSignatureFile,
+      fetchIntern
+    }),
     [error, allInterns]
   );
 

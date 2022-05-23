@@ -9,7 +9,6 @@ import stylesToggle from '../assets/styles/Toggle.module.scss';
 //import Components
 import SidebarUI from '../components/sidebar/Sidebar';
 import HeaderUI from '../components/header/Header';
-import CollapseUI from '../components/ui/collapse/Collapse';
 import Activities from '../components/short/activities';
 import Resume from '../components/short/resume';
 
@@ -77,7 +76,8 @@ const MainLayout = (props: { children: React.ReactNode }) => {
         </PrivateComponent>
 
         <PrivateComponent userRole="STUDENT">
-          {router.pathname === '/intern-detail/file' ? (
+          <div></div>
+          {/* {router.pathname === '/intern-detail/file' ? (
             <SidebarUI
               collapsedWidth={330}
               width={56}
@@ -98,7 +98,7 @@ const MainLayout = (props: { children: React.ReactNode }) => {
             </SidebarUI>
           ) : (
             <></>
-          )}
+          )} */}
         </PrivateComponent>
       </Layout>
     </Layout>

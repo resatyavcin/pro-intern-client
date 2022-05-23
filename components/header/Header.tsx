@@ -38,8 +38,8 @@ const menu = (user: User) => {
   );
 };
 
-const useClickOutside = (ref, callback) => {
-  const handleClick = (e) => {
+const useClickOutside = (ref: any, callback: any) => {
+  const handleClick = (e: any) => {
     if (ref.current && !ref.current.contains(e.target)) {
       callback();
     }
@@ -68,46 +68,40 @@ function HeaderUI() {
 
   return (
     <div style={{ borderBottom: '1px solid #d5d5d57d' }}>
-      <ClickBox onClickOutside={() => setActiveFilter(false)}>
-        <Menu
-          style={{ borderBottom: 'none', display: 'flex', alignItems: 'center' }}
-          mode="horizontal"
-          defaultSelectedKeys={['2']}
-        >
-          <div style={{ marginRight: 60 }}>{Logo()}</div>
-          <Fragment>
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-              <PrivateComponent userRole={'ADMIN'}>
-                <FormUI isNotBlank onValuesChange={onValuesChange}>
-                  <InputUI
-                    style={activeFilter ? { width: '1100px' } : { width: '240px' }}
-                    prefix={<SearchOutlined />}
-                    onFocus={() => {
-                      setActiveFilter(true);
-                    }}
-                    suffix={
-                      <CloseOutlined
-                        style={!activeFilter ? { display: 'none' } : {}}
-                        onClick={() => {
-                          setActiveFilter(false);
-                        }}
-                      />
-                    }
-                    placeholder="Öğrencilerde Eşzamanlı Ara"
-                    name={'searchStudent'}
-                  />
-                </FormUI>
-              </PrivateComponent>
+      <div style={{ borderBottom: 'none', display: 'flex', alignItems: 'center', background: 'white', padding: 10 }}>
+        <div style={{ marginRight: 60, marginTop: -10 }}>{Logo()}</div>
+        <Fragment>
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+            <PrivateComponent userRole={'ADMIN'}>
+              <FormUI isNotBlank onValuesChange={onValuesChange}>
+                <InputUI
+                  style={activeFilter ? { width: '1100px' } : { width: '240px' }}
+                  prefix={<SearchOutlined />}
+                  onFocus={() => {
+                    setActiveFilter(true);
+                  }}
+                  suffix={
+                    <CloseOutlined
+                      style={!activeFilter ? { display: 'none' } : {}}
+                      onClick={() => {
+                        setActiveFilter(false);
+                      }}
+                    />
+                  }
+                  placeholder="Öğrencilerde Eşzamanlı Ara"
+                  name={'searchStudent'}
+                />
+              </FormUI>
+            </PrivateComponent>
 
-              <Dropdown overlay={menu(user)} placement="bottomLeft" arrow>
-                <Avatar size="small" style={{ background: 'rgb(29,25,25)', position: 'absolute', right: 20 }}>
-                  {shortName(user)}
-                </Avatar>
-              </Dropdown>
-            </div>
-          </Fragment>
-        </Menu>
-      </ClickBox>
+            <Dropdown overlay={menu(user)} placement="bottomLeft" arrow>
+              <Avatar size="small" style={{ background: 'rgb(29,25,25)', position: 'absolute', right: 20 }}>
+                {shortName(user)}
+              </Avatar>
+            </Dropdown>
+          </div>
+        </Fragment>
+      </div>
     </div>
   );
 }

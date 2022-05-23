@@ -10,9 +10,6 @@ import { Store, useModalForm } from 'sunflower-antd';
 
 import { Form } from 'antd';
 
-interface a extends Store {
-  type: [];
-}
 function Interns() {
   const { allInterns, applicationIntern } = useIntern();
 

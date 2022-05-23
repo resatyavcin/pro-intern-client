@@ -37,11 +37,13 @@ function StudentProvider({ children }: { children: React.ReactNode }): JSX.Eleme
   //Start Function
   useEffect(() => {
     setUpdatePage(false);
-    const init = async () => {
-      const response: Student[] = await fetchAllStudent();
-      return response;
-    };
-    init().then((data) => setAllStudents(data));
+    if (JSON.parse(localStorage.getItem('user')) && JSON.parse(localStorage.getItem('user')).role === 'ADMIN') {
+      const init = async () => {
+        const response: Student[] = await fetchAllStudent();
+        return response;
+      };
+      init().then((data) => setAllStudents(data));
+    }
   }, [updatePage]);
 
   //Functions
