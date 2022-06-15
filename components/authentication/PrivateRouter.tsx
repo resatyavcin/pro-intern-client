@@ -12,7 +12,7 @@ function PrivateRouter(props: IPrivateRouter) {
   const { children, pageProps } = props;
 
   const [login, setLogin] = useState<User>({ _id: '', email: '', firstName: '', lastName: '', role: '' });
-  const [token, setToken] = useState<string | null>('');
+  const [token, setToken] = useState<string | null>(null);
 
   const { setLoginUser } = useAuth();
 
