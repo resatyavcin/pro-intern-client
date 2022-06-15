@@ -22,8 +22,8 @@
   "BUTTON_LABEL.DELETE_ALL_PERMANENTLY": "Delete Permanently all selected",
   "BUTTON_LABEL.UPDATE": "Update",
   "BUTTON_LABEL.DETAILS": "Details",
-  "BUTTON.MAKE_AN_APPLICATION":"Make Application",
-  "BUTTON.SIGNATURE":"Signature",
+  "BUTTON.MAKE_AN_APPLICATION": "Make Application",
+  "BUTTON.SIGNATURE": "Signature",
 
   "DEPARTMENT.CE": "Computer Enginnering",
   "DEPARTMENT.EE": "Electrical Electronics Engineering",
@@ -39,8 +39,6 @@
   "REGISTER.FOOTER_LABEL": "Already have an account? ",
   "REGISTER.FOOTER_LINK": "Log in",
 
-
-
   "LOGIN.HEADER_TITLE": "Login",
   "LOGIN.HEADER_LABEL": "You must fill in the required fields completely and correctly to log in.",
   "LOGIN.FOOTER_LABEL": "Don't have an account?",
@@ -52,17 +50,16 @@
   "PAGES.NO_DATA_IN_DUSTBIN": "There is no data in the trash.",
   "PAGES.NO_DATA_IN_SEARCH": "No results found for searches.",
 
-  "INTERN.NO_INTERNSHIP_SUBTITLE":"You can use the button below to apply. At this stage, make sure that your class is 2 and that you have taken that course.",
-  "INTERN.NO_INTERNSHIP_TITLE":"You have not yet applied for an internship.",
-  
+  "INTERN.NO_INTERNSHIP_SUBTITLE": "You can use the button below to apply. At this stage, make sure that your class is 2 and that you have taken that course.",
+  "INTERN.NO_INTERNSHIP_TITLE": "You have not yet applied for an internship.",
+
   "404.TITLE": "The page you are looking for could not be found.",
   "404.SUB_TITLE": "Please recheck the entered URL.",
-  
+
   "RESPONSE.USER_NOT_FOUND": "User not found.",
   "RESPONSE.USER_OR_PASS_WRONG": "User or password incorrect",
   "RESPONSE.NOT_VERIFY": "Your account has not been activated. Please verify via the link in your e-mail.",
   "RESPONSE.BLOCK_ACCOUNT": "Your account has been blocked. Please update it in the forgot password section.",
   "RESPONSE.SERVER_ERR": "Your account has been blocked. Please update it in the forgot password section.",
   "RESPONSE.ALREADY_EXIST": "This accountalready exist."
-
 }

@@ -4,11 +4,9 @@
   "LOGIN": "GİRİŞ",
   "FORGOT_PASSWORD": "E-POSTAYI GÖNDER",
 
-
   "CHANGE": "Değiştir",
 
-
-  "NAVIGATION.NEXT":"İLERİ",
+  "NAVIGATION.NEXT": "İLERİ",
   "NAVIGATION.BACK": "GERİ",
 
   "TIMELINE_INTERN_FILES_PROGRESS.0": "Öğrenci tarafından staj başvurusunun yapılması",
@@ -24,9 +22,8 @@
   "BUTTON_LABEL.DELETE_ALL_PERMANENTLY": "Seçilenleri Kalıcı Olarak Sil",
   "BUTTON_LABEL.UPDATE": "Güncelle",
   "BUTTON_LABEL.DETAILS": "Detaylar",
-  "BUTTON.MAKE_AN_APPLICATION":"Başvuru Yap",
-  "BUTTON.SIGNATURE":"İmzala",
-
+  "BUTTON.MAKE_AN_APPLICATION": "Başvuru Yap",
+  "BUTTON.SIGNATURE": "İmzala",
 
   "DEPARTMENT.CE": "Bilgisayar Mühendisliği",
   "DEPARTMENT.EE": "Elektrik Elektronik Mühendisliği",
@@ -45,25 +42,19 @@
   "REGISTER.FOOTER_LABEL": "Eğer hesabınız varsa",
   "REGISTER.FOOTER_LINK": " giriş yapın",
 
-
   "LOGIN.HEADER_TITLE": "Giriş",
   "LOGIN.HEADER_LABEL": "Giriş yapmak için gerekli olan alanları eksiksiz ve doğru dordurmanız gerekmektedir.",
   "LOGIN.FOOTER_LABEL": "Hesabınız yok mu?",
   "LOGIN.FOOTER_LINK": " kaydolun",
 
-
   "FORGOT_PASSWORD.HEADER_TITLE": "Şifremi unuttum?",
   "FORGOT_PASSWORD.HEADER_LABEL": "Lütfen hesabınızı oluşturmak için kullandığınız e-posta adresini girin, şifrenizi sıfırlamak için bir bağlantı gönderelim.",
 
-
-
-  "INTERN.NO_INTERNSHIP_SUBTITLE":"Başvuru için aşağıdaki butondan yararlanabilirsiniz. Bu aşamada sınıfınızın 2 olmasına ve o dersi almış olduğunuza dikkat ediniz.",
-  "INTERN.NO_INTERNSHIP_TITLE":"Şu ana kadar bir staj başvurunuz bulunmamaktadır.",
-  
+  "INTERN.NO_INTERNSHIP_SUBTITLE": "Başvuru için aşağıdaki butondan yararlanabilirsiniz. Bu aşamada sınıfınızın 2 olmasına ve o dersi almış olduğunuza dikkat ediniz.",
+  "INTERN.NO_INTERNSHIP_TITLE": "Şu ana kadar bir staj başvurunuz bulunmamaktadır.",
 
   "404.TITLE": "Aradığınız sayfa bulunamamıştır.",
   "404.SUB_TITLE": "Lütfen girilen URL'i tekrardan kontrol ediniz.",
-
 
   "RESPONSE.USER_NOT_FOUND": "Kullanıcı bulunamadı.",
   "RESPONSE.USER_OR_PASS_WRONG": "Kullanıcı yada şifre hatalı!",
@@ -71,6 +62,4 @@
   "RESPONSE.BLOCK_ACCOUNT": "Hesabınız bloke olmuştur. Lütfen şifremi unuttum kısmından güncelleyiniz.",
   "RESPONSE.SERVER_ERR": "Bir nedenden dolayı sunucuda bir hata oluştu.",
   "RESPONSE.ALREADY_EXIST": "Bu hesap zaten bulunmaktadır."
-
-
 }

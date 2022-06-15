@@ -1,7 +1,5 @@
 import { PDFDocument, PDFPage, rgb, StandardFonts } from 'pdf-lib';
 
-
-
 export async function ApplicationFile(signatures: { userRole: string; signature: string }[]) {
   const url = '../basvuru-belgesi.pdf';
   const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
@@ -46,7 +44,7 @@ export async function ApplicationFile(signatures: { userRole: string; signature:
   const { width, height } = secondPage.getSize();
 
   if (signatures && signatures !== undefined && signatures.length > 0) {
-    console.log(signatures)
+    console.log(signatures);
     const signatureByte = await fetch(signatures[0].signature).then((res) => res.arrayBuffer());
     const signatureImage = await pdfDoc.embedPng(signatureByte);
     secondPage.drawImage(signatureImage, { width: 80, height: 50, opacity: 1, x: 100, y: 100 });
