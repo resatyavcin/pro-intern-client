@@ -6,11 +6,11 @@ const nextConfig = {
     locales: ['en', 'tr'],
     domains: [
       {
-        domain: 'http://localhost:3000',
+        domain: 'pro-intern-client.vercel.app',
         defaultLocale: 'tr'
       },
       {
-        domain: 'http://localhost:3000/en',
+        domain: 'pro-intern-client.vercel.app/en',
         defaultLocale: 'en'
       }
     ],
