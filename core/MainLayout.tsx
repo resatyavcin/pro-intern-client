@@ -1,18 +1,16 @@
 //import React
-import React, { Fragment } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
 
 //import Styles
 import styles from '../assets/styles/Sidebar.module.scss';
-import stylesToggle from '../assets/styles/Toggle.module.scss';
 
 //import Components
-import SidebarUI from '../components/sidebar/Sidebar';
+import SidebarUI from '../components/sidebar/sidebar';
 import HeaderUI from '../components/header/Header';
 import Activities from '../components/short/activities';
 import Resume from '../components/short/resume';
 
-import { Avatar, Layout } from 'antd';
+import { Layout } from 'antd';
 const Content = Layout;
 
 import {
@@ -28,10 +26,7 @@ import {
   SettingOutlined
 } from '@ant-design/icons';
 
-import { CgPushChevronRight, CgPushChevronLeft } from 'react-icons/cg';
-
 //import Contexts
-import { useCollapse } from '../context/ActionPanelToggleContext';
 import { useStudent } from '../context/StudentContext';
 
 import PrivateComponent from '../components/private-component/PrivateComponent';
@@ -40,14 +35,7 @@ import ToolBarUI from '../components/tool-bar/ToolBar';
 const MainLayout = (props: { children: React.ReactNode }) => {
   const { children } = props;
 
-  const { collapsed, setCollapsed } = useCollapse();
-
   const { selectedStudent } = useStudent();
-  const router = useRouter();
-
-  const toggle = () => {
-    setCollapsed(!collapsed);
-  };
 
   return (
     <Layout style={{ height: '100vh' }}>

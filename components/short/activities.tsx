@@ -1,15 +1,10 @@
-import { Badge, Col, List, Menu, Row, Spin } from 'antd';
+import { Spin } from 'antd';
 import React, { useState } from 'react';
 
 import TimelineUI from '../ui/timeline/Timeline';
 
-import { useStudent } from '../../context/StudentContext';
-import TypographyUI from '../ui/typography/Typography';
-import { Avatar } from 'antd';
-
 function Activities() {
-  const [current, setCurrent] = useState('app1');
-  const { selectedUser } = useStudent();
+  const [current] = useState('app1');
 
   return (
     <Spin spinning={true ? false : true} delay={500}>

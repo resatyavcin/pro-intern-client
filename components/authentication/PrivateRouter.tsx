@@ -20,6 +20,7 @@ function PrivateRouter(props: IPrivateRouter) {
     if (typeof window !== undefined) {
       const user = localStorage.getItem('user');
       const token = localStorage.getItem('token');
+
       if (user) {
         setLogin(JSON.parse(user));
         setLoginUser(JSON.parse(user));
@@ -31,6 +32,7 @@ function PrivateRouter(props: IPrivateRouter) {
   if (pageProps.hasProfile.includes(login?.role) && login && token) {
     return <Fragment>{children}</Fragment>;
   }
+
   return (
     <Fragment>
       <ErrorPage />

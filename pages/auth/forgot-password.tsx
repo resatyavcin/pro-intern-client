@@ -1,5 +1,5 @@
 //react
-import React, { useState } from 'react';
+import React from 'react';
 
 import AuthLayout from '../../core/AuthLayout';
 
@@ -11,15 +11,13 @@ import FormUI from '../../components/ui/form/formUI';
 
 import { MdLock } from 'react-icons/md';
 
-const ForgotPassword_ = () => {
-  return (
-    <FormUI>
-      <InputUI name="email" label="Email" placeholder="example@ogrenci.ibu.tr" />
+const ForgotPassword_ = () => (
+  <FormUI>
+    <InputUI name="email" label="Email" placeholder="example@ogrenci.ibu.tr" />
 
-      <ButtonUI htmlType="submit" label={'FORGOT_PASSWORD'} block type="primary" />
-    </FormUI>
-  );
-};
+    <ButtonUI htmlType="submit" label={'FORGOT_PASSWORD'} block type="primary" />
+  </FormUI>
+);
 
 function ForgotPassword() {
   return (

@@ -1,9 +1,8 @@
-import React from 'react';
-import { message, MessageArgsProps } from 'antd';
+import { message } from 'antd';
 
-interface IMessageProps extends MessageArgsProps {}
+// interface IMessageProps extends MessageArgsProps {}
 
-function MessageUI(props: IMessageProps) {
+function MessageUI() {
   return message.info('This is a normal message');
 }
 

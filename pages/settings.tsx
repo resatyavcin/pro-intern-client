@@ -9,6 +9,7 @@ import DrawSignature from '../components/draw-signature/DrawSignature';
 
 function Settings() {
   const [activeMenu, setActiveMenu] = useState<string>('personal_info');
+
   return (
     <MainLayout>
       <CardUI style={{ marginBottom: 15 }} cardType="normal">

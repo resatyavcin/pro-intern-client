@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SignatureCanvas from 'react-signature-canvas';
 import ButtonUI from '../ui/button/buttonUI';
 import { useIntern } from '../../context/InternContext';

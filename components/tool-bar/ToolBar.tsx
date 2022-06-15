@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { useStudent } from '../../context/StudentContext';
 import { Avatar } from 'antd';
-import SidebarUI from '../sidebar/Sidebar';
+import SidebarUI from '../sidebar/sidebar';
 import stylesToggle from '../../assets/styles/Toggle.module.scss';
 import { CgPushChevronRight, CgPushChevronLeft } from 'react-icons/cg';
 
@@ -31,8 +31,9 @@ function ToolBarUI() {
           {collapsed && selectedStudent?.length !== 0 ? (
             <Fragment>
               <Avatar.Group maxCount={2} maxStyle={{ background: '#7e3901' }}>
-                {selectedStudent?.map((user) => (
+                {selectedStudent?.map((user, i: number) => (
                   <span
+                    key={i}
                     className={isSelect(user._id) ? 'ant-avatar ant-avatar-circle' : 'ant-avatar ant-avatar-circle'}
                     style={
                       isSelect(user._id)

@@ -5,7 +5,7 @@ import { Rule } from 'antd/lib/form';
 
 import styles from '../../../assets/styles/Input.module.scss';
 
-const { Password, Search, Group, TextArea } = Input;
+const { Password } = Input;
 
 interface IInputProps extends InputProps {
   name: string;

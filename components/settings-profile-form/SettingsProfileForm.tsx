@@ -1,10 +1,8 @@
 import { Col, Row } from 'antd';
-import React, { useEffect, useState } from 'react';
-import DraggerUI from '../dragger/Dragger';
+import React, { useState } from 'react';
 import ButtonUI from '../ui/button/buttonUI';
 import FormUI from '../ui/form/formUI';
 import InputUI from '../ui/form/inputUI';
-import { useAuth } from '../../context/AuthContext';
 import { Student } from '../../common/models/User/Student';
 
 type feed = '' | 'error' | 'success' | 'warning' | 'validating' | undefined;
@@ -16,13 +14,9 @@ interface IFeedBack {
 
 function SettingsProfileForm() {
   const [feedBack, setFeedBack] = useState<IFeedBack[]>([]);
-  const [password, setPassword] = useState<string>('');
-  const [response, setError] = useState('');
-  const [profile, setProfile] = useState<Student>();
+  const [profile] = useState<Student>();
 
-  const { getProfile } = useAuth();
-
-  const onFinish = (values: any) => {};
+  const onFinish = () => {};
 
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
@@ -69,9 +63,8 @@ function SettingsProfileForm() {
     }
   };
 
-  const onValuesChange = (changedValues: any, allValues: any) => {
-    setPassword(changedValues.password);
-  };
+  const onValuesChange = () => {};
+
   return (
     <FormUI
       onValuesChange={onValuesChange}

@@ -6,7 +6,7 @@ import ResultUI from '../components/ui/result/Result';
 
 import InternCard from '../components/intern-card/InternCard';
 import InternApplicationForm from '../components/intern-application-modal/InternApplicationModal';
-import { Store, useModalForm } from 'sunflower-antd';
+import { useModalForm } from 'sunflower-antd';
 
 import { Form } from 'antd';
 

@@ -4,20 +4,22 @@ import { useStudent } from '../../context/StudentContext';
 import { Steps } from 'antd';
 
 const { Step } = Steps;
+
 function Resume() {
-  const { selectedUser } = useStudent();
-  const selectedFirstUser = selectedUser ? selectedUser[0] : null;
+  const { selectedStudent } = useStudent();
+  const selectedFirstUser = selectedStudent ? selectedStudent[0] : null;
+
   return (
     <div>
       {selectedFirstUser ? (
         <Fragment>
           <Avatar style={{ backgroundColor: '#c25c09' }}>
-            {selectedFirstUser.first_name[0]}
-            {selectedFirstUser.last_name[0]}
+            {selectedFirstUser.firstName[0]}
+            {selectedFirstUser.lastName[0]}
           </Avatar>
           <div>
-            {selectedFirstUser.first_name}
-            {selectedFirstUser.last_name}
+            {selectedFirstUser.firstName}
+            {selectedFirstUser.lastName}
           </div>
           <Steps direction="vertical" current={1}>
             <Step status="finish" title="1. Staj" description="Çevik Çözüm Inc. şirketinde yapılmıştır." />

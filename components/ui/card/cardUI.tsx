@@ -1,8 +1,7 @@
-import React, { ComponentType, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Alert, Card, CardProps, Divider } from 'antd';
 import { IconType } from 'react-icons';
 import TypographyUI from '../typography/Typography';
-import CustomIconComponentProps from '@ant-design/icons';
 
 type CardType = 'normal' | 'auth';
 interface ICardProps extends CardProps {

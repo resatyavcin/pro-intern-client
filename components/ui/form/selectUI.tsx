@@ -6,9 +6,8 @@ import { Select, SelectProps } from 'antd';
 
 //import components
 import FormItemUI from './formItemUI';
-import { DefaultOptionType } from 'antd/lib/select';
 
-const { Option, OptGroup } = Select;
+const { OptGroup } = Select;
 
 interface ISelectProps extends SelectProps {
   optionTitle: string;

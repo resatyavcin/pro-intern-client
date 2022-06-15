@@ -15,7 +15,6 @@ import { Student } from '../common/models/User/Student';
 import TableUI from '../components/ui/table/Table';
 import ButtonUI from '../components/ui/button/buttonUI';
 import TypographyUI from '../components/ui/typography/Typography';
-import CardUI from '../components/ui/card/cardUI';
 
 //import Commons
 import { DEPARTMENT_CODE } from '../common/constants/departmentCode/departmentCode';
@@ -50,7 +49,7 @@ function Students() {
   const { activeFilter, selectedStudent, selectStudent, filterText, moveToTrash, getFilterAllStudent } = useStudent();
 
   const [selectedRows, setSelectedRows] = useState<Pick<Student, '_id'>[]>([]);
-  const [checkStrictly, setCheckStrictly] = useState(false);
+  const [checkStrictly] = useState(false);
 
   // rowSelection objects indicates the need for row selection
   const rowSelection = {

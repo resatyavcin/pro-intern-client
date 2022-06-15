@@ -1,5 +1,5 @@
 //react & next
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 //layout
@@ -40,6 +40,7 @@ function File() {
 
     pdf?.then((data) => {
       const blob = new Blob([new Uint8Array(data)]);
+
       setPage(blob);
     });
   };
@@ -49,6 +50,7 @@ function File() {
 
     const init = async () => {
       const signs = await processSignatureFile(file_id as string, intern_id as string, pageNumber);
+
       return signs;
     };
 

@@ -7,8 +7,10 @@
     "build": "next build",
     "start": "next start",
     "prepare": "husky install",
-    "format": "prettier . --write \"**/*.{js,json}\"",
-    "fix:all": "npm run format"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --fix --ext \"**/*.{ts,tsx,js,jsx}\"",
+    "format": "prettier . --write \"**/*.{ts,tsx,js,jsx,json}\"",
+    "fix:all": "npm run format && npm run lint:fix"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",

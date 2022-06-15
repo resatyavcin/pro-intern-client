@@ -1,14 +1,12 @@
 import React, { Fragment } from 'react';
-import FormUI from '../ui/form/formUI';
 import InputUI from '../ui/form/inputUI';
 
 interface IInternApplicationOfficialForm {
   formProps: Object;
 }
 
-function InternApplicationOfficialForm(props: IInternApplicationOfficialForm) {
-  const { formProps } = props;
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function InternApplicationOfficialForm(_props: IInternApplicationOfficialForm) {
   return (
     <Fragment>
       <InputUI

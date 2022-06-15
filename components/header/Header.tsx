@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Avatar, Col, Dropdown, Menu, Row } from 'antd';
 import { Logo } from '../../assets/icons/Logo';
 import InputUI from '../../components/ui/form/inputUI';
@@ -13,50 +13,53 @@ import PrivateComponent from '../private-component/PrivateComponent';
 const shortName = (user: User) => {
   const firstNameLetter = user.firstName.charAt(0).toUpperCase();
   const lastNameLetter = user.lastName.charAt(0).toUpperCase();
+
   return firstNameLetter + lastNameLetter;
 };
 
-const menu = (user: User) => {
-  return (
-    <Menu style={{ minWidth: '280px', padding: 16 }}>
-      <div style={{ marginBottom: 15 }}>
-        <Row style={{ display: 'flex', alignItems: 'center' }}>
-          <Col xs={4}>
-            <Avatar style={{ background: '#522725' }}>{shortName(user)}</Avatar>
-          </Col>
-          <Col xs={17}>
-            {user.firstName} {user.lastName}
-            <br /> <span style={{ color: 'gray' }}>{user.email}</span>
-          </Col>
-        </Row>
-      </div>
+const menu = (user: User) => (
+  <Menu style={{ minWidth: '280px', padding: 16 }}>
+    <div style={{ marginBottom: 15 }}>
+      <Row style={{ display: 'flex', alignItems: 'center' }}>
+        <Col xs={4}>
+          <Avatar style={{ background: '#522725' }}>{shortName(user)}</Avatar>
+        </Col>
+        <Col xs={17}>
+          {user.firstName} {user.lastName}
+          <br /> <span style={{ color: 'gray' }}>{user.email}</span>
+        </Col>
+      </Row>
+    </div>
 
-      <Menu.Item>Profil</Menu.Item>
-      <Menu.Item>Ayarlar</Menu.Item>
-      <Menu.Item>Çıkış</Menu.Item>
-    </Menu>
-  );
-};
+    <Menu.Item>Profil</Menu.Item>
+    <Menu.Item>Ayarlar</Menu.Item>
+    <Menu.Item>Çıkış</Menu.Item>
+  </Menu>
+);
 
-const useClickOutside = (ref: any, callback: any) => {
-  const handleClick = (e: any) => {
-    if (ref.current && !ref.current.contains(e.target)) {
-      callback();
-    }
-  };
-  React.useEffect(() => {
-    document.addEventListener('click', handleClick);
-    return () => {
-      document.removeEventListener('click', handleClick);
-    };
-  });
-};
+// const useClickOutside = (ref: any, callback: any) => {
+//   const handleClick = (e: any) => {
+//     if (ref.current && !ref.current.contains(e.target)) {
+//       callback();
+//     }
+//   };
 
-const ClickBox = ({ onClickOutside, children }: any) => {
-  const clickRef = React.useRef(null);
-  useClickOutside(clickRef, onClickOutside);
-  return <div ref={clickRef}>{children}</div>;
-};
+//   React.useEffect(() => {
+//     document.addEventListener('click', handleClick);
+
+//     return () => {
+//       document.removeEventListener('click', handleClick);
+//     };
+//   });
+// };
+
+// const ClickBox = ({ onClickOutside, children }: any) => {
+//   const clickRef = React.useRef(null);
+
+//   useClickOutside(clickRef, onClickOutside);
+
+//   return <div ref={clickRef}>{children}</div>;
+// };
 
 function HeaderUI() {
   const { user } = useAuth();

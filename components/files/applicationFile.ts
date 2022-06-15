@@ -19,9 +19,11 @@ export async function ApplicationFile(signatures: { userRole: string; signature:
       divide.map((number, i) => {
         if (i === divideLength - 1) {
           let valueSliceO = value.slice(count, value.length);
+
           str += valueSliceO;
         } else {
           let valueSlice = value.slice(count, number + count) + '\n';
+
           count = count + number;
           str += valueSlice;
         }
@@ -47,6 +49,7 @@ export async function ApplicationFile(signatures: { userRole: string; signature:
     console.log(signatures);
     const signatureByte = await fetch(signatures[0].signature).then((res) => res.arrayBuffer());
     const signatureImage = await pdfDoc.embedPng(signatureByte);
+
     secondPage.drawImage(signatureImage, { width: 80, height: 50, opacity: 1, x: 100, y: 100 });
   }
 
@@ -98,5 +101,6 @@ export async function ApplicationFile(signatures: { userRole: string; signature:
   drawTextArea(secondPage, 'date', { x: width - 1.85 * 270, y: height / 2 - 260.5 });
 
   const pdfBytes = await pdfDoc.save();
+
   return pdfBytes;
 }

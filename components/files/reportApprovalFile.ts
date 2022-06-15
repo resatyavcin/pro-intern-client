@@ -106,5 +106,6 @@ export async function ReportApprovalFile() {
   });
 
   const pdfBytes = await pdfDoc.save();
+
   return pdfBytes;
 }

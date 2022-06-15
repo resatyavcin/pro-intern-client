@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app';
 //Provider
 import PrivateRouter from '../components/authentication/PrivateRouter';
 import { LanguageProvider } from '../context/LanguageContext';
-import AuthProvider, { useAuth } from '../context/AuthContext';
+import AuthProvider from '../context/AuthContext';
 import StudentProvider from '../context/StudentContext';
 
 //Styles

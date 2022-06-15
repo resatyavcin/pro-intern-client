@@ -1,35 +1,39 @@
 import React, { useState } from 'react';
-import { Upload, Modal, message } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { Upload, message } from 'antd';
 
-function getBase64(file: any) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-  });
-}
+// function getBase64(file: any) {
+//   return new Promise((resolve, reject) => {
+//     const reader = new FileReader();
+
+//     reader.readAsDataURL(file);
+//     reader.onload = () => resolve(reader.result);
+//     reader.onerror = (error) => reject(error);
+//   });
+// }
 
 function beforeUpload(file: any) {
   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+
   if (!isJpgOrPng) {
     message.error('You can only upload JPG/PNG file!');
   }
   const isLt2M = file.size / 1024 / 1024 < 2;
+
   if (!isLt2M) {
     message.error('Image must smaller than 2MB!');
   }
+
   return isJpgOrPng && isLt2M;
 }
 
 function UploadPicture() {
-  const [loading, setLoading] = useState(false);
-  const [imgUrl, setImgUrl] = useState();
+  // const [loading, setLoading] = useState(false);
+  const [imgUrl] = useState();
 
   const handleChange = (info: any) => {
     if (info.file.status === 'uploading') {
-      setLoading(true);
+      // setLoading(true);
+
       return;
     }
     if (info.file.status === 'done') {

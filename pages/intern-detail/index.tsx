@@ -40,14 +40,14 @@ const columns = [
 ];
 
 function Files() {
-  const [checkStrictly, setCheckStrictly] = useState(false);
+  const [checkStrictly] = useState(false);
   const [internDetail, setInternDetail] = useState<Intern>();
 
   const router = useRouter();
 
   // rowSelection objects indicates the need for row selection
   const rowSelection = {
-    onChange: (selectedRowKeys: any, selectedRows: any) => {
+    onChange: () => {
       console.log('first');
     }
   };
@@ -57,9 +57,11 @@ function Files() {
   useEffect(() => {
     const init = async () => {
       const data = await fetchIntern(router.query.id);
+
       return data;
     };
     const intern = init();
+
     intern.then((data) => {
       console.log(data);
       if (data !== undefined) {

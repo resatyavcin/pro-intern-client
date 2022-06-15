@@ -2,7 +2,7 @@ export const DustBin = () => (
   <svg
     role="presentation"
     style={{ width: '200px' }}
-    class="dig-Illustration dig-Illustration-spot"
+    className="dig-Illustration dig-Illustration-spot"
     viewBox="0 0 500 500"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

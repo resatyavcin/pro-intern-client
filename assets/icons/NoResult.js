@@ -1,7 +1,7 @@
 export const NoResult = () => (
   <svg
     role="presentation"
-    class="dig-Illustration dig-Illustration-spot"
+    className="dig-Illustration dig-Illustration-spot"
     viewBox="0 0 500 500"
     fill="none"
     width="400"

@@ -1,6 +1,5 @@
-import Router from 'next/router';
 import React, { createContext, useContext } from 'react';
-import { ReactNode, useMemo, useState, useEffect } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 
 //import Service
 import { registerService, loginService, activateAccountService, fetchProfileService } from '../service/authService';
@@ -33,6 +32,7 @@ function AuthProvider({ children }: { children: ReactNode }): JSX.Element {
   const login = async (form: Pick<Student, 'email' | 'password'>) => {
     setLoading(true);
     const response = await loginService(form);
+
     if (response) {
       setLoading(false);
       if (response.status !== 500) {
@@ -58,9 +58,11 @@ function AuthProvider({ children }: { children: ReactNode }): JSX.Element {
     setLoading(true);
 
     const response = await fetchProfileService();
+
     if (response) {
       setLoading(false);
     }
+
     return response;
   };
 
@@ -68,6 +70,7 @@ function AuthProvider({ children }: { children: ReactNode }): JSX.Element {
     setLoading(true);
 
     const response = await registerService(form);
+
     if (response) {
       setLoading(false);
       setError('');
@@ -83,6 +86,7 @@ function AuthProvider({ children }: { children: ReactNode }): JSX.Element {
     setLoading(true);
 
     const statusCode = await activateAccountService(token);
+
     if (statusCode) {
       setLoading(false);
     }

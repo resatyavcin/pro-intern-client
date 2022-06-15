@@ -1,5 +1,4 @@
 import React from 'react';
-import ButtonUI from '../components/ui/button/buttonUI';
 import TypographyUI from '../components/ui/typography/Typography';
 
 function ErrorPage() {

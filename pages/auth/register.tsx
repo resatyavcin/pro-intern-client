@@ -11,21 +11,19 @@ import RegisterForm from '../../components/auth-forms/RegisterForm';
 //import React Icons
 import { FaUserCircle } from 'react-icons/fa';
 
-const register = () => {
-  return (
-    <AuthLayout>
-      <CardUI
-        cardType="auth"
-        icon={FaUserCircle}
-        headerTitle={'REGISTER.HEADER_TITLE'}
-        headerLabel={'REGISTER.HEADER_LABEL'}
-        footerLabel={'REGISTER.FOOTER_LABEL'}
-        footerLink={'REGISTER.FOOTER_LINK'}
-      >
-        <RegisterForm />
-      </CardUI>
-    </AuthLayout>
-  );
-};
+const register = () => (
+  <AuthLayout>
+    <CardUI
+      cardType="auth"
+      icon={FaUserCircle}
+      headerTitle={'REGISTER.HEADER_TITLE'}
+      headerLabel={'REGISTER.HEADER_LABEL'}
+      footerLabel={'REGISTER.FOOTER_LABEL'}
+      footerLink={'REGISTER.FOOTER_LINK'}
+    >
+      <RegisterForm />
+    </CardUI>
+  </AuthLayout>
+);
 
 export default register;

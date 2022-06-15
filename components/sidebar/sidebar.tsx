@@ -31,7 +31,7 @@ interface ISider extends LayoutProps {
   menuList?: IMenuList[];
 }
 function SidebarUI(props: ISider) {
-  const { collapsed, collapsedWidth, children, width, style, menuList, ...rest } = props;
+  const { collapsed, collapsedWidth, children, width, style, menuList } = props;
   const router = useRouter();
   const { selectStudent } = useStudent();
 

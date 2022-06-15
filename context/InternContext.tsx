@@ -32,8 +32,10 @@ function InternProvider({ children }: { children: ReactNode }): JSX.Element {
   useEffect(() => {
     const init = async () => {
       const interns = await fetchAllInterns();
+
       setAllInterns(interns);
     };
+
     init();
   }, []);
 
@@ -45,27 +47,33 @@ function InternProvider({ children }: { children: ReactNode }): JSX.Element {
 
   const applicationIntern = async (form: any) => {
     const response = await applicationInternService({ ...form });
+
     return response;
   };
 
   const createSignatureFile = async (path: string) => {
     const response = await createSignature(path);
+
     return response;
   };
 
   const signatureFile = async (fileID: string, internID: string, page: number) => {
     const response = await signatureFileService(fileID, internID, page);
+
     errorDedection(response.status, response.data);
+
     return response;
   };
 
   const processSignatureFile = async (fileID: string, internID: string, page: number) => {
     const response = await commitSignatureToFileService(fileID, internID, page);
+
     return response;
   };
 
   const fetchIntern = async (intern_id: string | string[] | undefined) => {
     const intern = await fetchInternService(intern_id);
+
     return intern;
   };
 

@@ -51,7 +51,7 @@ function Trash() {
   const { selectedStudent, selectStudent, deleteStudentPermanently, getTrashFilterStudent, filterText } = useStudent();
 
   const [selectedRows, setSelectedRows] = useState<Pick<Student, '_id'>[]>([]);
-  const [checkStrictly, setCheckStrictly] = useState(false);
+  const [checkStrictly] = useState(false);
 
   // rowSelection objects indicates the need for row selection
   const rowSelection = {
@@ -72,12 +72,12 @@ function Trash() {
   };
 
   const isTrashControl = () => {
-    const filterData = selectedStudent?.filter((student) => {
-      return student.isTrash;
-    });
+    const filterData = selectedStudent?.filter((student) => student.isTrash);
+
     if (filterData && filterData?.length > 0) {
       return true;
     }
+
     return false;
   };
 

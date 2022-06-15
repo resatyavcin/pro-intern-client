@@ -1,4 +1,3 @@
-import Router from 'next/router';
 import React, { createContext, useContext, useState, ReactNode, useMemo } from 'react';
 
 interface ActionPanelToggleContextType {

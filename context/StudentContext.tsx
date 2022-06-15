@@ -37,11 +37,16 @@ function StudentProvider({ children }: { children: React.ReactNode }): JSX.Eleme
   //Start Function
   useEffect(() => {
     setUpdatePage(false);
-    if (JSON.parse(localStorage.getItem('user')) && JSON.parse(localStorage.getItem('user')).role === 'ADMIN') {
+    if (
+      JSON.parse(localStorage.getItem('user') as string) &&
+      JSON.parse(localStorage.getItem('user') as string).role === 'ADMIN'
+    ) {
       const init = async () => {
         const response: Student[] = await fetchAllStudent();
+
         return response;
       };
+
       init().then((data) => setAllStudents(data));
     }
   }, [updatePage]);
@@ -53,34 +58,31 @@ function StudentProvider({ children }: { children: React.ReactNode }): JSX.Eleme
 
   const deleteStudentPermanently = async (students: Pick<Student, '_id'>[]) => {
     const response = await deleteStudentPermanentlyService(students);
+
     refresh();
     console.log(response);
   };
 
   const moveToTrash = async (students: Pick<Student, '_id'>[]) => {
     const response = await moveToTrashService(students);
+
     refresh();
     console.log(response);
   };
 
-  const getFilterData = (student: Student, filter: String) => {
-    return (
-      student.firstName.toLowerCase().includes(filter.toLowerCase()) ||
-      student.lastName.toLowerCase().includes(filter.toLowerCase())
-    );
-  };
+  const getFilterData = (student: Student, filter: String) =>
+    student.firstName.toLowerCase().includes(filter.toLowerCase()) ||
+    student.lastName.toLowerCase().includes(filter.toLowerCase());
 
   const getFilterAllStudent = () => {
-    const filterData = allStudents.filter((student) => {
-      return !student.isTrash && getFilterData(student, filterText);
-    });
+    const filterData = allStudents.filter((student) => !student.isTrash && getFilterData(student, filterText));
+
     return filterData;
   };
 
   const getTrashFilterStudent = () => {
-    const filterData = allStudents.filter((student) => {
-      return student.isTrash && getFilterData(student, filterText);
-    });
+    const filterData = allStudents.filter((student) => student.isTrash && getFilterData(student, filterText));
+
     return filterData;
   };
 

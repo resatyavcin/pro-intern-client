@@ -15,6 +15,7 @@ interface IResultProps extends ResultProps {
 
 function ResultUI(props: IResultProps) {
   const { status, title, subTitle, leftButtonLabel, rightButtonLabel, leftButtonOnClick, rightButtonOnClick } = props;
+
   return (
     <Result
       status={status}
@@ -22,13 +23,13 @@ function ResultUI(props: IResultProps) {
       subTitle={<FormattedMessage id={subTitle} />}
       extra={
         leftButtonLabel
-          ? [<ButtonUI type="primary" label={leftButtonLabel} onClick={leftButtonOnClick} />]
+          ? [<ButtonUI key={'a'} type="primary" label={leftButtonLabel} onClick={leftButtonOnClick} />]
           : rightButtonLabel
-          ? [<ButtonUI type="primary" label={rightButtonLabel} onClick={rightButtonOnClick} />]
+          ? [<ButtonUI key={'a'} type="primary" label={rightButtonLabel} onClick={rightButtonOnClick} />]
           : leftButtonLabel && rightButtonLabel
           ? [
-              <ButtonUI label={leftButtonLabel} onClick={leftButtonOnClick} />,
-              <ButtonUI type="primary" label={rightButtonLabel} onClick={rightButtonOnClick} />
+              <ButtonUI key={'a'} label={leftButtonLabel} onClick={leftButtonOnClick} />,
+              <ButtonUI key={'a'} type="primary" label={rightButtonLabel} onClick={rightButtonOnClick} />
             ]
           : null
       }

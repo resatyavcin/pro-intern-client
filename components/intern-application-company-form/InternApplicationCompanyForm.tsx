@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
-import FormUI from '../ui/form/formUI';
 import InputUI from '../ui/form/inputUI';
-import { Checkbox, DatePicker, Radio } from 'antd';
+import { DatePicker, Radio } from 'antd';
 import FormItem from 'antd/lib/form/FormItem';
 
 const { RangePicker } = DatePicker;
@@ -12,8 +11,8 @@ interface IInternApplicationCompanyForm {
   formProps: Object;
 }
 
-function InternApplicationCompanyForm(props: IInternApplicationCompanyForm) {
-  const { formProps } = props;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function InternApplicationCompanyForm(_props: IInternApplicationCompanyForm) {
   return (
     <Fragment>
       <InputUI

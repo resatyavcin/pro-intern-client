@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Col, InputNumber, message, Row } from 'antd';
+import { Col, Row } from 'antd';
 import PasswordStrengthBar from 'react-password-strength-bar';
 
 import { useAuth } from '../../context/AuthContext';
@@ -9,10 +9,10 @@ import InputUI from '../../components/ui/form/inputUI';
 import ButtonUI from '../../components/ui/button/buttonUI';
 import FormUI from '../../components/ui/form/formUI';
 import { Select } from 'antd';
-import FormItem from 'antd/lib/form/FormItem';
 import FormItemUI from '../ui/form/formItemUI';
 
 const { Option } = Select;
+
 type feed = '' | 'error' | 'success' | 'warning' | 'validating' | undefined;
 
 interface IFeedBack {
@@ -23,7 +23,6 @@ interface IFeedBack {
 const RegisterForm = () => {
   const [feedBack, setFeedBack] = useState<IFeedBack[]>([]);
   const [password, setPassword] = useState<string>('');
-  const [response, setError] = useState('');
 
   const { signUp } = useAuth();
 
@@ -76,7 +75,7 @@ const RegisterForm = () => {
     }
   };
 
-  const onValuesChange = (changedValues: any, allValues: any) => {
+  const onValuesChange = (changedValues: any) => {
     setPassword(changedValues.password);
   };
 
